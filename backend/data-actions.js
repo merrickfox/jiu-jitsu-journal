@@ -1,4 +1,8 @@
-import {User} from './models'
+import {User, createNewUser, findUser} from './models'
+import AWS from 'aws-sdk';
+
+
+
 
 const mapItem = (item) => {
 	return item.attrs;
@@ -7,25 +11,39 @@ const mapItem = (item) => {
 const mapItems = (items) => items.map(mapItem);
 
 export const createUser = (args) => {
+	const {firstName, lastName} = args;
+	return new Promise((resolve, reject) => {
+		createNewUser(resolve, reject);
 
+	});
 }
 
-/* TODO
-	change query to return array?
-	rewrite that map function for Users model
- */
+
 export const getUser = (args) => {
-	console.log('args', args)
+	const dynamodb = new AWS.DynamoDB.DocumentClient();
 	return new Promise((resolve, reject) => {
-		User.scan()
-			.where('firstName').gte(args.firstName)
-			.exec((err, result) => {
-				if (err) {
-					console.log('err', err);
-				} else {
-					console.log('loaded result', result);
-					resolve(mapItems(result.Items))
-				}
-			});
+		const params = {
+			TableName : 'jjj-api-dev-users',
+			ProjectionExpression: "id, firstName, lastName",
+			FilterExpression: "#address.#thing.#year = :start_yr",
+			ExpressionAttributeNames: {
+				"#address": "address",
+				"#thing": "thing",
+				"#year": "year",
+			},
+			ExpressionAttributeValues: {
+				":start_yr": 1982,
+			}
+		};
+
+		dynamodb.scan(params, (err, data) => {
+			if (err) {
+				console.log('scan error', err)
+				reject(err);
+			} else {
+				console.log('scan success', data.Items)
+				resolve(data.Items);
+			}
+		});
 	});
 }

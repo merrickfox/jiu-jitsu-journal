@@ -5,13 +5,15 @@
   "main": "handler.js",
   "dependencies": {
     "apollo-server-lambda": "^1.2.0",
+    "auth0": "^2.8.0",
     "aws-sdk": "^2.136.0",
     "babel-runtime": "^6.26.0",
     "dynogels": "^8.0.1",
     "eslint-plugin-react": "^7.4.0",
     "graphql": "^0.11.7",
     "graphql-tools": "^2.7.2",
-    "joi": "^13.0.1"
+    "joi": "^13.0.1",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
