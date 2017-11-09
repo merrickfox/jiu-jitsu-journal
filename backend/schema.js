@@ -1,4 +1,4 @@
-import {getUser, createUser} from "./resolvers";
+import * as resolvers from "./resolvers";
 
 import { makeExecutableSchema } from 'graphql-tools';
 
@@ -16,7 +16,7 @@ const model = `
 	
 	type Mutation {
 		# Set the username of user with id
-		createUser(firstName: String!, lastName: String!): User
+		createActivity(firstName: String!, lastName: String!): User
 	}
 	
 	schema {
@@ -28,12 +28,12 @@ const model = `
 const resolver = {
 	Query: {
 		user (_, {firstName}, context) {
-			return getUser({firstName});
+			return resolvers.getUser({firstName});
 		}
 	},
 	Mutation: {
-		createUser (_, {firstName, lastName}) {
-			return createUser({firstName, lastName});
+		createActivity (_, {firstName, lastName}) {
+			return resolvers.createActivity({firstName, lastName});
 		}
 	}
 }

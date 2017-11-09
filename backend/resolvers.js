@@ -1,19 +1,12 @@
-import * as data from './data-actions'
+import * as Activity from './db-actions/Activity'
 
-const promisify = foo => new Promise((resolve, reject) => {
-	foo((error, result) => {
-		if (error) {
-			reject(error);
-		} else {
-			resolve(result);
-		}
-	});
-});
 
 export const getUser = (args) => {
-	return data.getUser(args);
+	return [];
 }
 
-export const createUser = (args) => {
-	return data.createUser(args);
+export const createActivity = async (args) => {
+	const activity = await Activity.create(args);
+	console.log(activity);
+	return activity;
 }
