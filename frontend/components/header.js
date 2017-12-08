@@ -40,8 +40,10 @@ export default class Header extends React.Component {
 				<style jsx>{`
       header {
         background: #57a5bf;
-        display: flex;
+        margin-left: 240px;
+        position: absolute;
         font-size: 14px;
+				width: calc(100% - 240px);
       }
 
       .logo {

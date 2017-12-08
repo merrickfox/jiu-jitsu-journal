@@ -10,7 +10,7 @@ class Index extends React.Component {
 	render () {
 		return(
 			<Page>
-				<StartingOptions/>
+				
 
 				{ /*language=CSS*/ }
 				<style jsx global>{`

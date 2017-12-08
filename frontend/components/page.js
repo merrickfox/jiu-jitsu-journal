@@ -1,5 +1,6 @@
 import Header from './header'
 import Meta from './meta'
+import DrawerMenu from './drawer'
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 
@@ -12,18 +13,19 @@ export default ({ children }) => (
 		<div className="main">
 			<Meta />
 			<Header />
-
+			<DrawerMenu/>
 			<div className="page">
 				{ children }
 			</div>
 			{ /*language=SCSS*/ }
 			<style jsx>{`
 				.main {
-					width: 85%;
-					margin: auto;
-					padding: 10px 0 0 0;
+					display: flex;
 				}
 				.page {
+          width: 100%;
+          padding: 10px 0 0 0;
+          margin-top: 64px;
 					color: #828282;
 					background: #fff;
 					padding: 3px 10px;

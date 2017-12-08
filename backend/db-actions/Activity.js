@@ -1,4 +1,16 @@
-const dynamodb = new AWS.DynamoDB.DocumentClient();
+let dynamodb;
+if (process.env.IS_OFFLINE) {
+	dynamodb = new AWS.DynamoDB.DocumentClient({
+		region: 'localhost',
+		endpoint: 'http://localhost:3333'
+	})
+} else {
+	dynamodb = new AWS.DynamoDB.DocumentClient();
+}
+
+
+
+
 import AWS from 'aws-sdk';
 import uuid from 'uuid';
 
@@ -10,8 +22,6 @@ export const create = (activity) => {
 	newActivity.id = uuid.v4();
 	newActivity.createdAt = timestamp;
 	newActivity.updatedAt = timestamp;
-
-	console.log('newActivity:', newActivity);
 
 	const params = {
 		TableName: process.env.ACTIVITIES_TABLE,
