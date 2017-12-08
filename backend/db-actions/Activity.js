@@ -2,21 +2,20 @@ const dynamodb = new AWS.DynamoDB.DocumentClient();
 import AWS from 'aws-sdk';
 import uuid from 'uuid';
 
-export const create = (args) => {
+export const create = (activity) => {
 	const timestamp = new Date().getTime();
+	let newActivity = {...activity};
+
+
+	newActivity.id = uuid.v4();
+	newActivity.createdAt = timestamp;
+	newActivity.updatedAt = timestamp;
+
+	console.log('newActivity:', newActivity);
 
 	const params = {
-		TableName: process.env.ACTIVITIES_TABLE, // <- need to get correct env + name
-		Item: {
-			id: uuid.v4(),
-			activity_date: timestamp,
-			user: '324234234234',
-			activities: [
-				bjjClassExample
-			],
-			createdAt: timestamp,
-			updatedAt: timestamp
-		}
+		TableName: process.env.ACTIVITIES_TABLE,
+		Item: newActivity
 	};
 
 	return new Promise((resolve, reject) => {

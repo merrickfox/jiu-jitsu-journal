@@ -5,7 +5,7 @@ export const getUser = (args) => {
 	return [];
 }
 
-export const createActivity = async (args) => {
+export const addBjjClass = async (args) => {
 	const activity = await Activity.create(args);
 	console.log(activity);
 	return activity;

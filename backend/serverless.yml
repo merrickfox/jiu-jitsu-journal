@@ -61,5 +61,6 @@ resources:
             TableName: "${self:provider.environment.USERS_TABLE}"
 plugins:
   - serverless-webpack
+  - serverless-offline
 custom:
   webpackIncludeModules: true # enable auto-packing of external modules
