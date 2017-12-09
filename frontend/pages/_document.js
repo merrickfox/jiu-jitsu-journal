@@ -8,7 +8,7 @@ class MyDocument extends Document {
     return (
       <html lang="en" dir="ltr">
         <Head>
-          <title>My page</title>
+          <title>JiuJitsu Journal</title>
           <meta charSet="utf-8" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
           <meta
@@ -27,7 +27,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content={this.props.stylesContext.theme.palette.primary[500]} />
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
           />
         </Head>
         <body>
