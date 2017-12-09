@@ -10,6 +10,9 @@ import DraftsIcon from 'material-ui-icons/Drafts';
 const drawerWidth = 240;
 
 const styles = theme => ({
+	text: {
+		color: '#91a6bb'
+	},
 	drawerPaper: {
 		position: 'fixed',
 		height: '100vh',
@@ -49,25 +52,37 @@ class DrawerMenu extends React.Component {
 				<Divider />
 				<List>
 					<ListItem button>
-						<ListItemIcon>
+						<ListItemIcon classes={{
+							root: classes.text,
+						}}>
 							<InboxIcon />
 						</ListItemIcon>
-						<ListItemText primary="Inbox" />
+						<ListItemText primary="Inbox" classes={{
+							text: classes.text,
+						}} />
 					</ListItem>
 					<ListItem button>
-						<ListItemIcon>
+						<ListItemIcon classes={{
+							root: classes.text,
+						}}>
 							<DraftsIcon />
 						</ListItemIcon>
-						<ListItemText primary="Drafts" />
+						<ListItemText primary="Drafts" classes={{
+							text: classes.text,
+						}}/>
 					</ListItem>
 				</List>
 				<Divider />
 				<List>
 					<ListItem button>
-						<ListItemText primary="Trash" />
+						<ListItemText primary="Trash" classes={{
+							text: classes.text,
+						}}/>
 					</ListItem>
 					<ListItem button component="a" href="#simple-list">
-						<ListItemText primary="Spam" />
+						<ListItemText primary="Spam" classes={{
+							text: classes.text,
+						}}/>
 					</ListItem>
 				</List>
 			</Drawer>
