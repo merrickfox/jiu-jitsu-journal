@@ -1,63 +1,159 @@
-import React from 'react'
+/* eslint-disable flowtype/require-valid-file-annotation */
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import withRoot from '../components/withRoot';
 import Page from '../components/page'
-import StartingOptions from '../components/starting-options'
-import VideoGrid from '../components/video-grid'
-import { initStore } from '../store'
-import withRedux from 'next-redux-wrapper'
 
+const styles = {
+  root: {
+  },
+};
 
-class Index extends React.Component {
-	render () {
-		return(
-			<Page>
-				
+class Index extends Component {
+  state = {
+    open: false,
+  };
 
-				{ /*language=CSS*/ }
-				<style jsx global>{`
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
 
-          html {
-            box-sizing: border-box;
-            font-weight: 400;
-            font-size: 1em;
-          }
+  handleClick = () => {
+    this.setState({
+      open: true,
+    });
+  };
 
-          *, *:before, *:after {
-            box-sizing: inherit;
-          }
-
-          button {
-            background: none;
-            cursor: pointer;
-            padding: 25px 12px;
-            display: inline-block;
-            margin: 15px 16px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            outline: none;
-            position: relative;
-            transition: all 0.3s;
-            border-radius: 50px;
-            overflow: hidden;
-            min-width: 135px;
-          }
-
-          .btn-primary {
-            border: 3px solid #ffa436;
-            color: #ffa436;
-          }
-
-          .btn-warn {
-            border: 3px solid #ff5531;
-            color: #ff5531;
-          }
-
-
-				`}</style>
-			</Page>
-		)
-	}
-
+  render() {
+    return (
+      <div className={this.props.classes.root}>
+        <Page>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+          <div>Thing</div>
+        </Page>
+      </div>
+    );
+  }
 }
 
-export default withRedux(initStore, null, null)(Index)
+Index.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withRoot(withStyles(styles)(Index));

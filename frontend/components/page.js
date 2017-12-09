@@ -1,43 +1,57 @@
-import Header from './header'
-import Meta from './meta'
-import DrawerMenu from './drawer'
-import ApolloClient, { createNetworkInterface } from 'apollo-client'
-import { ApolloProvider } from 'react-apollo'
+import React, { Component } from 'react';
+import { withStyles } from 'material-ui/styles';
+import withRoot from '../components/withRoot';
+import DrawerMenu from '../components/drawer'
+import TopToolbar from '../components/top-toolbar'
 
-const client = new ApolloClient({
-	networkInterface: createNetworkInterface({ uri: 'http://localhost:3001/graphql'}),
+const drawerWidth = 240;
+
+const styles = theme => ({
+	root: {
+		width: '100%',
+		zIndex: 1,
+		overflow: 'hidden',
+	},
+	appFrame: {
+		position: 'relative',
+		display: 'flex',
+		width: '100%',
+		height: '100%',
+	},
+	content: {
+		backgroundColor: theme.palette.background.default,
+		width: '100%',
+		padding: theme.spacing.unit * 3,
+		height: 'calc(100% - 56px)',
+		marginTop: 56,
+		marginLeft: drawerWidth,
+		[theme.breakpoints.up('sm')]: {
+			height: 'calc(100% - 64px)',
+			marginTop: 64,
+		},
+	},
 });
 
-export default ({ children }) => (
-	<ApolloProvider client={client}>
-		<div className="main">
-			<Meta />
-			<Header />
-			<DrawerMenu/>
-			<div className="page">
-				{ children }
+
+class Page extends Component {
+
+	render() {
+		const { classes, children } = this.props;
+
+		return (
+			<div className={classes.root}>
+				<div className={classes.appFrame}>
+					<TopToolbar/>
+					<DrawerMenu/>
+					<main className={classes.content}>
+						{children}
+					</main>
+				</div>
 			</div>
-			{ /*language=SCSS*/ }
-			<style jsx>{`
-				.main {
-					display: flex;
-          min-height: 100vh;
-				}
-				.page {
-          width: 100%;
-          padding: 10px 0 0 0;
-          margin-top: 64px;
-					color: #828282;
-					background: #fff;
-					padding: 3px 10px;
-				}
-				@media (max-width: 750px) {
-					.main {
-						padding: 0;
-						width: auto;
-					}
-				}
-			`}</style>
-		</div>
-	</ApolloProvider>
-)
+		);
+	}
+}
+
+
+
+export default withRoot(withStyles(styles)(Page));
