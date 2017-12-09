@@ -19,7 +19,7 @@ const styles = theme => ({
 		height: '100%',
 	},
 	content: {
-		backgroundColor: theme.palette.background.default,
+		background: theme.palette.background.default,
 		width: '100%',
 		padding: theme.spacing.unit * 3,
 		height: 'calc(100% - 56px)',

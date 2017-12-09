@@ -29,7 +29,7 @@ class TopToolbar extends React.Component {
 
 		return (
 
-			<AppBar className={classNames(classes.appBar, classes[`appBar-${anchor}`])}>
+			<AppBar className={classNames(classes.appBar, classes[`appBar-${anchor}`])} color="white">
 				<Toolbar>
 					<Typography type="title" color="inherit" noWrap>
 						Yolo

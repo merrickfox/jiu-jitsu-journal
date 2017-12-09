@@ -12,6 +12,8 @@ const styles = theme => ({
       background: theme.palette.background.default,
       WebkitFontSmoothing: 'antialiased', // Antialiasing.
       MozOsxFontSmoothing: 'grayscale', // Antialiasing.
+			// background: 'url("/static/background_dark.jpg") no-repeat center center fixed',
+			// 'background-size': 'cover'
     },
     body: {
       margin: 0,

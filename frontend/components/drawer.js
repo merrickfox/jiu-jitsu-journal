@@ -13,10 +13,13 @@ const styles = theme => ({
 	drawerPaper: {
 		position: 'fixed',
 		height: '100vh',
-		color: 'white',
+		backgroundColor: '#222f3c',
 		width: drawerWidth,
 	},
-	drawerHeader: theme.mixins.toolbar,
+	drawerHeader: {
+		backgroundColor: '#1c2732',
+		minHeight: '64px'
+	}
 });
 
 class DrawerMenu extends React.Component {
