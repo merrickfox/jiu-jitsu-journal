@@ -83,7 +83,7 @@ class DrawerMenu extends React.Component {
 				}}
 				anchor={anchor}
 			>
-				<div className={classes.drawerHeader} />
+				<div className={classes.drawerHeader}>JiuJitsu Journal</div>
 				<Divider />
 				<List>
 					<ListItem button>

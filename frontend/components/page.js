@@ -21,6 +21,7 @@ export default ({ children }) => (
 			<style jsx>{`
 				.main {
 					display: flex;
+          min-height: 100vh;
 				}
 				.page {
           width: 100%;

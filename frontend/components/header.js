@@ -2,11 +2,31 @@ import Nav from './nav'
 import Link from 'next/link'
 import React from 'react'
 import { connect } from 'react-redux'
+import { withStyles } from 'material-ui/styles';
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
+import IconButton from 'material-ui/IconButton';
+import MenuIcon from 'material-ui-icons/Menu';
 import { autobind } from 'core-decorators';
 import Auth from '../services/auth';
 
+const styles = theme => ({
+	root: {
+		marginTop: theme.spacing.unit * 3,
+		width: '100%',
+	},
+	flex: {
+		flex: 1,
+	},
+	menuButton: {
+		marginLeft: -12,
+		marginRight: 20,
+	},
+});
 
-export default class Header extends React.Component {
+class Header extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -19,94 +39,27 @@ export default class Header extends React.Component {
 	}
 
 	render () {
-		return(
-			<header>
-				<div className="left">
-					<Link prefetch href="/">
-						<a>
-         <span className="logo">
-         </span>
-							<span className="title">Gripipedia</span>
-						</a>
-					</Link>
-					<div className="nav">
-						<Nav />
-					</div>
-				</div>
-				<div className="right">
-					<a className="login" onClick={this.login}>login</a>
-				</div>
-				{ /*language=SCSS*/ }
-				<style jsx>{`
-      header {
-        background: #57a5bf;
-        margin-left: 240px;
-        position: absolute;
-        font-size: 14px;
-				width: calc(100% - 240px);
-      }
+		const { classes } = this.props;
 
-      .logo {
-        margin: 4px 5px 2px 4px;
-        display: inline-block;
-      }
-
-      .left {
-        flex: 9;
-      }
-
-      .right {
-        flex: 1;
-        text-align: right;
-      }
-
-      .title {
-        font-weight: bold;
-        display: inline-block;
-        font-size: 14px;
-        text-decoration: none;
-        padding: 8px 10px 8px 4px;
-        color: #000;
-        vertical-align: top;
-      }
-
-      a.login {
-        padding: 10px;
-        display: inline-block;
-        font-size: 11px;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: #000;
-      }
-
-      .login:hover {
-        color: #fff;
-      }
-
-      .nav {
-        display: inline-block;
-        vertical-align: top;
-      }
-
-      @media (max-width: 750px) {
-        .title {
-          font-size: 16px;
-          padding-bottom: 0;
-        }
-
-        a.login {
-          padding: 24px 10px 23px;
-        }
-
-        .nav {
-          display: block;
-        }
-      }
-    `}</style>
-			</header>
+		return (
+			<div className={classes.root}>
+				<AppBar position="static">
+					<Toolbar>
+						<IconButton className={classes.menuButton} color="contrast" aria-label="Menu">
+							<MenuIcon />
+						</IconButton>
+						<Typography type="title" color="inherit" className={classes.flex}>
+							Title
+						</Typography>
+						<Button color="contrast">Login</Button>
+					</Toolbar>
+				</AppBar>
+			</div>
 		)
 	}
 }
+
+export default withStyles(styles)(Header);
 
 // const mapStateToProps = state => {
 // 	return {
