@@ -7,6 +7,9 @@ import withRoot from '../components/withRoot';
 import Grid from 'material-ui/Grid';
 import {subDays, format} from 'date-fns';
 import {times} from 'lodash';
+import Router from 'next/router'
+import autobind from 'autobind-decorator'
+
 
 
 const styles = theme => ({
@@ -53,9 +56,10 @@ class Week extends React.Component {
 		return days;
 	}
 
-	addActivity () {
-		console.log(this)
-		this.props.setDate('aint dat some shieeeet')
+	@autobind
+	addActivity (day) {
+		this.props.setDateForAddActivity(day)
+		Router.push('/add-activity')
 	}
 
 	render() {
@@ -75,7 +79,7 @@ class Week extends React.Component {
 									<Typography type="headline">{format(day, 'MMM')}</Typography>
 								</CardContent>
 								<CardActions>
-									<Button dense onClick={this.addActivity}>Add Activity</Button>
+									<Button dense onClick={()=> this.addActivity(day)}>Add Activity</Button>
 								</CardActions>
 							</Card>
 						</Grid>

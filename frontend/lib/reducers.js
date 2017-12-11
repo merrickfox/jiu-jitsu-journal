@@ -1,11 +1,10 @@
 const init = {
-	date: 'yolo'
 }
 
 export default {
-	setDate: (state = init, action) => {
+	setDateForAddActivity: (state = init, action) => {
 		switch (action.type) {
-			case 'SET_DATE':
+			case 'SET_DATE_FOR_CREATE_ACTIVITY':
 				return Object.assign({}, state, {
 					date: action.date
 				})
