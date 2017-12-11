@@ -1,5 +1,3 @@
-/* eslint-disable flowtype/require-valid-file-annotation */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
@@ -10,11 +8,10 @@ import Grid from 'material-ui/Grid';
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';
+import compose from 'recompose/compose'
 import withData from '../lib/withData'
 
 const styles = {
-  root: {
-  },
 };
 
 class Dashboard extends Component {
@@ -43,4 +40,13 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators(actionCreators, dispatch)
 }
 
-export default withData(connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(Dashboard))));
+const reduxWrapper = connect(mapStateToProps, mapDispatchToProps);
+
+export default compose(
+	withData,
+	reduxWrapper,
+  withRoot,
+	withStyles(styles),
+)(Dashboard)
+
+//export default withData(connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(Dashboard))));
