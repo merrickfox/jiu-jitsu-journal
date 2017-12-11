@@ -7,6 +7,10 @@ import withRoot from '../components/withRoot';
 import Page from '../components/page'
 import Week from '../components/week-picker'
 import Grid from 'material-ui/Grid';
+import {bindActionCreators} from 'redux';
+import * as actionCreators from '../lib/actionCreators';
+import {connect} from 'react-redux';
+import withData from '../lib/withData'
 
 const styles = {
   root: {
@@ -20,7 +24,7 @@ class Dashboard extends Component {
       <div className={this.props.classes.root}>
         <Page>
           <div>
-            <Week/>
+            <Week {...this.props} />
           </div>
         </Page>
       </div>
@@ -28,4 +32,15 @@ class Dashboard extends Component {
   }
 }
 
-export default withRoot(withStyles(styles)(Dashboard));
+function mapStateToProps(state) {
+  console.log('state', state)
+	return{
+		date: state.date,
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators(actionCreators, dispatch)
+}
+
+export default withData(connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(Dashboard))));

@@ -38,6 +38,7 @@ class Week extends React.Component {
 
 	constructor (props) {
 		super (props)
+		this.addActivity = this.addActivity.bind(this);
 		this.generateWeek();
 	}
 
@@ -50,6 +51,11 @@ class Week extends React.Component {
 		})
 
 		return days;
+	}
+
+	addActivity () {
+		console.log(this)
+		this.props.setDate('aint dat some shieeeet')
 	}
 
 	render() {
@@ -69,7 +75,7 @@ class Week extends React.Component {
 									<Typography type="headline">{format(day, 'MMM')}</Typography>
 								</CardContent>
 								<CardActions>
-									<Button dense>Add Activity</Button>
+									<Button dense onClick={this.addActivity}>Add Activity</Button>
 								</CardActions>
 							</Card>
 						</Grid>
