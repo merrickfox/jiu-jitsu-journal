@@ -6,12 +6,16 @@ import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import InboxIcon from 'material-ui-icons/Inbox';
 import DraftsIcon from 'material-ui-icons/Drafts';
+import Typography from 'material-ui/Typography';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
 	text: {
 		color: '#91a6bb'
+	},
+	title: {
+		color: 'white'
 	},
 	drawerPaper: {
 		position: 'fixed',
@@ -21,7 +25,10 @@ const styles = theme => ({
 	},
 	drawerHeader: {
 		backgroundColor: '#1c2732',
-		minHeight: '64px'
+		minHeight: '64px',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center'
 	}
 });
 
@@ -48,7 +55,17 @@ class DrawerMenu extends React.Component {
 				}}
 				anchor={anchor}
 			>
-				<div className={classes.drawerHeader} />
+				<div className={classes.drawerHeader}>
+					<Typography
+						type="headline"
+						color="secondary"
+						noWrap
+						classes={{
+							headline: classes.title,
+						}}>
+						Jiu-Jitsu Journal
+					</Typography>
+				</div>
 				<Divider />
 				<List>
 					<ListItem button>
