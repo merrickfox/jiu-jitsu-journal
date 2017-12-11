@@ -58,7 +58,7 @@ class Week extends React.Component {
 
 	@autobind
 	addActivity (day) {
-		this.props.setDateForAddActivity(day)
+		this.props.setDateForAddActivity(day.toString())
 		Router.push('/add-activity')
 	}
 

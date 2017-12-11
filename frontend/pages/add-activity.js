@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
 import withRoot from '../components/withRoot';
 import Page from '../components/page'
+import BjjClassForm from '../components/addBjjClassForm'
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';
@@ -18,7 +19,7 @@ class AddActivity extends Component {
       <div className={this.props.classes.root}>
         <Page title="Add Activity">
           <div>
-            add activity
+            <BjjClassForm {...this.props}/>
           </div>
         </Page>
       </div>
@@ -27,8 +28,9 @@ class AddActivity extends Component {
 }
 
 function mapStateToProps(state) {
+	console.log('state', state)
 	return{
-		date: state.date,
+		activity_date: state.dates.activity_date,
 	}
 }
 
