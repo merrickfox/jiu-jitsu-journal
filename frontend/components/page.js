@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
-import withRoot from '../components/withRoot';
-import DrawerMenu from '../components/drawer'
-import TopToolbar from '../components/top-toolbar'
+import withRoot from './withRoot';
+import DrawerMenu from './drawer'
+import TopToolbar from './top-toolbar'
 
 const drawerWidth = 240;
 
@@ -36,12 +36,12 @@ const styles = theme => ({
 class Page extends Component {
 
 	render() {
-		const { classes, children } = this.props;
+		const { classes, children, title } = this.props;
 
 		return (
 			<div className={classes.root}>
 				<div className={classes.appFrame}>
-					<TopToolbar/>
+					<TopToolbar title={title}/>
 					<DrawerMenu/>
 					<main className={classes.content}>
 						{children}

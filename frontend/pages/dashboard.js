@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import withRoot from '../components/withRoot';
 import Page from '../components/page'
 import Week from '../components/week-picker'
-import Grid from 'material-ui/Grid';
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';
@@ -19,9 +17,103 @@ class Dashboard extends Component {
   render() {
     return (
       <div className={this.props.classes.root}>
-        <Page>
+        <Page title="Dashboard">
           <div>
             <Week {...this.props} />
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
+						<div>sdfsfd</div>
           </div>
         </Page>
       </div>

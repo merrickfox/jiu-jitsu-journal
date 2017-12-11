@@ -4,8 +4,8 @@ import Drawer from 'material-ui/Drawer';
 import withRoot from '../components/withRoot';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
-import InboxIcon from 'material-ui-icons/Inbox';
-import DraftsIcon from 'material-ui-icons/Drafts';
+import DashboardIcon from 'material-ui-icons/Dashboard';
+import Router from 'next/router'
 import Typography from 'material-ui/Typography';
 
 const drawerWidth = 240;
@@ -68,40 +68,18 @@ class DrawerMenu extends React.Component {
 				</div>
 				<Divider />
 				<List>
-					<ListItem button>
+					<ListItem button onClick={() => Router.push('/dashboard')}>
 						<ListItemIcon classes={{
 							root: classes.text,
 						}}>
-							<InboxIcon />
+							<DashboardIcon />
 						</ListItemIcon>
-						<ListItemText primary="Inbox" classes={{
+						<ListItemText primary="My Dashboard" classes={{
 							text: classes.text,
 						}} />
 					</ListItem>
-					<ListItem button>
-						<ListItemIcon classes={{
-							root: classes.text,
-						}}>
-							<DraftsIcon />
-						</ListItemIcon>
-						<ListItemText primary="Drafts" classes={{
-							text: classes.text,
-						}}/>
-					</ListItem>
 				</List>
 				<Divider />
-				<List>
-					<ListItem button>
-						<ListItemText primary="Trash" classes={{
-							text: classes.text,
-						}}/>
-					</ListItem>
-					<ListItem button component="a" href="#simple-list">
-						<ListItemText primary="Spam" classes={{
-							text: classes.text,
-						}}/>
-					</ListItem>
-				</List>
 			</Drawer>
 		);
 	}

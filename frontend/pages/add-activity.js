@@ -16,7 +16,7 @@ class AddActivity extends Component {
 	render() {
 		return (
       <div className={this.props.classes.root}>
-        <Page>
+        <Page title="Add Activity">
           <div>
             add activity
           </div>
