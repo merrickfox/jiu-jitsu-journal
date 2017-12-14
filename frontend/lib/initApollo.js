@@ -12,7 +12,7 @@ function create () {
 	return new ApolloClient({
 		ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
 		networkInterface: createNetworkInterface({
-			uri: 'https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn', // Server URL (must be absolute)
+			uri: 'https://6nbt5eyyz4.execute-api.us-east-1.amazonaws.com/dev/query', // Server URL (must be absolute)
 			opts: { // Additional fetch() options like `credentials` or `headers`
 				credentials: 'same-origin'
 			}

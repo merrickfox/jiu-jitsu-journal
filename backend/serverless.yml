@@ -19,10 +19,12 @@ functions:
       - http:
           path: query
           method: post
+          cors: true
   graphiql:
     handler: handler.graphiql
     events:
       - http: GET /
+        cors: true
 resources:
   Resources:
     ActivitiesTable:
