@@ -93,6 +93,66 @@ const model = `
 	}
 	
 	##########################################
+	# Instructor
+	##########################################
+	
+	input InstructorInput {
+  	first_name: String
+  	last_name: String
+  	academy: String
+  	picture_url: String
+	}
+	
+	type Instructor {
+		id: String
+		class_reference_count: Int
+		first_name: String
+  	last_name: String
+  	academy: String
+  	picture_url: String
+	}
+	
+	##########################################
+	# Academy
+	##########################################
+	
+	input AcademyInput {
+  	name: String
+  	postcode: String
+  	address: String
+  	country: String
+  	picture_url: String
+	}
+	
+	type Academy {
+		id: String
+		class_reference_count: Int
+		name: String
+		address: String
+  	postcode: String
+  	country: String
+  	picture_url: String
+	}
+	
+	##########################################
+	# Technique
+	##########################################
+	
+	input TechniqueInput {
+  	name: String
+  	type: String
+  	video_url: String
+	}
+	
+	type Technique {
+		id: String
+		name: String
+  	type: String
+  	video_url: String
+		hit_reference_count: Int
+	}
+	
+	##########################################
 	# Queries Mutations
 	##########################################
 	
@@ -103,7 +163,10 @@ const model = `
 	}
 	
 	type Mutation {
-		addBjjClass(class: BjjClassInput): BjjClass
+		addBjjClass(class: BjjClassInput): BjjClass,
+		addInstructor(instructor: InstructorInput): Instructor
+		addAcademy(academy: AcademyInput): Academy
+		addTechnique(technique: TechniqueInput): Technique
 	}
 	
 	##########################################
@@ -125,7 +188,16 @@ const resolver = {
 	Mutation: {
 		addBjjClass (_, data) {
 			return resolvers.addBjjClass(data.class);
-		}
+		},
+		addInstructor (_, data) {
+			return resolvers.addInstructor(data.instructor);
+		},
+		addAcademy (_, data) {
+			return resolvers.addAcademy(data.academy);
+		},
+		addTechnique (_, data) {
+			return resolvers.addTechnique(data.technique);
+		},
 	}
 }
 

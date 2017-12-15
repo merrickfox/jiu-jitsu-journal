@@ -14,18 +14,18 @@ if (process.env.IS_OFFLINE) {
 import AWS from 'aws-sdk';
 import uuid from 'uuid';
 
-export const create = (activity) => {
+export const create = (instructor) => {
 	const timestamp = new Date().getTime();
-	let newActivity = {...activity};
+	let newInstructor = {...instructor};
 
 
-	newActivity.id = uuid.v4();
-	newActivity.createdAt = timestamp;
-	newActivity.updatedAt = timestamp;
+	newInstructor.id = uuid.v4();
+	newInstructor.createdAt = timestamp;
+	newInstructor.updatedAt = timestamp;
 
 	const params = {
-		TableName: process.env.ACTIVITIES_TABLE,
-		Item: newActivity
+		TableName: process.env.INSTRUCTOR_TABLE,
+		Item: newInstructor
 	};
 
 	return new Promise((resolve, reject) => {
@@ -36,7 +36,7 @@ export const create = (activity) => {
 				reject(new Error('Couldn\'t create'));
 				return;
 			}
-			console.log('created Activity!', params.Item)
+			console.log('created Instructor!', params.Item)
 			resolve(params.Item);
 		});
 	})

@@ -14,18 +14,18 @@ if (process.env.IS_OFFLINE) {
 import AWS from 'aws-sdk';
 import uuid from 'uuid';
 
-export const create = (activity) => {
+export const create = (academy) => {
 	const timestamp = new Date().getTime();
-	let newActivity = {...activity};
+	let newAcademy = {...academy};
 
 
-	newActivity.id = uuid.v4();
-	newActivity.createdAt = timestamp;
-	newActivity.updatedAt = timestamp;
+	newAcademy.id = uuid.v4();
+	newAcademy.createdAt = timestamp;
+	newAcademy.updatedAt = timestamp;
 
 	const params = {
-		TableName: process.env.ACTIVITIES_TABLE,
-		Item: newActivity
+		TableName: process.env.ACADEMY_TABLE,
+		Item: newAcademy
 	};
 
 	return new Promise((resolve, reject) => {
@@ -36,7 +36,7 @@ export const create = (activity) => {
 				reject(new Error('Couldn\'t create'));
 				return;
 			}
-			console.log('created Activity!', params.Item)
+			console.log('created Academy!', params.Item)
 			resolve(params.Item);
 		});
 	})

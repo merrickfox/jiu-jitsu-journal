@@ -6,6 +6,9 @@ provider:
   environment:
     USERS_TABLE: "${self:provider.stage}-users-${self:service}"
     ACTIVITIES_TABLE: "${self:provider.stage}-activities-${self:service}"
+    INSTRUCTOR_TABLE: "${self:provider.stage}-instructor-${self:service}"
+    ACADEMY_TABLE: "${self:provider.stage}-academy-${self:service}"
+    TECHNIQUE_TABLE: "${self:provider.stage}-technique-${self:service}"
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -45,22 +48,73 @@ resources:
           WriteCapacityUnits: 1
         TableName: "${self:provider.environment.ACTIVITIES_TABLE}"
     UsersTable:
-          Type: 'AWS::DynamoDB::Table'
-          Properties:
-            AttributeDefinitions:
-              - AttributeName: id
-                AttributeType: S
-              - AttributeName: auth0id
-                AttributeType: S
-            KeySchema:
-              - AttributeName: id
-                KeyType: HASH
-              - AttributeName: auth0id
-                KeyType: RANGE
-            ProvisionedThroughput:
-              ReadCapacityUnits: 1
-              WriteCapacityUnits: 1
-            TableName: "${self:provider.environment.USERS_TABLE}"
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: auth0id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: auth0id
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: "${self:provider.environment.USERS_TABLE}"
+    InstructorTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: first_name
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: first_name
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: "${self:provider.environment.INSTRUCTOR_TABLE}"
+    AcademyTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: name
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: name
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: "${self:provider.environment.ACADEMY_TABLE}"
+    TechniqueTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: name
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: name
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: "${self:provider.environment.TECHNIQUE_TABLE}"
 plugins:
   - serverless-webpack
   - serverless-dynamodb-local
