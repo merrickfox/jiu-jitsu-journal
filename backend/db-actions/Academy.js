@@ -1,3 +1,7 @@
+import AWS from 'aws-sdk';
+import uuid from 'uuid';
+
+
 let dynamodb;
 if (process.env.IS_OFFLINE) {
 	dynamodb = new AWS.DynamoDB.DocumentClient({
@@ -7,12 +11,6 @@ if (process.env.IS_OFFLINE) {
 } else {
 	dynamodb = new AWS.DynamoDB.DocumentClient();
 }
-
-
-
-
-import AWS from 'aws-sdk';
-import uuid from 'uuid';
 
 export const create = (academy) => {
 	const timestamp = new Date().getTime();

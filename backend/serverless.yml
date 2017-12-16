@@ -23,6 +23,13 @@ functions:
           path: query
           method: post
           cors: true
+  image-upload:
+    handler: handler.imageUpload
+    events:
+      - http:
+          path: image-upload
+          method: post
+          cors: true
   graphiql:
     handler: handler.graphiql
     events:

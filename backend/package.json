@@ -9,8 +9,10 @@
     "aws-sdk": "^2.136.0",
     "babel-runtime": "^6.26.0",
     "eslint-plugin-react": "^7.4.0",
+    "formidable": "^1.1.1",
     "graphql": "^0.11.7",
     "graphql-tools": "^2.7.2",
+    "stream": "0.0.2",
     "uuid": "^3.1.0"
   },
   "devDependencies": {

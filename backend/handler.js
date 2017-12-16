@@ -1,7 +1,8 @@
 import schema from './schema';
 import { graphqlLambda, graphiqlLambda } from "apollo-server-lambda";
+import imageUpload from './handlers/image-upload'
 
-//module.exports.query = graphqlLambda({ schema });
+
 
 module.exports.query = function graphqlHandler(event, context, callback) {
 	function callbackFilter(error, output) {
@@ -18,4 +19,6 @@ if (process.env.IS_OFFLINE) {
 } else {
 	module.exports.graphiql = graphiqlLambda({ endpointURL: '/dev/query' });
 }
+
+module.exports.imageUpload = imageUpload;
 
