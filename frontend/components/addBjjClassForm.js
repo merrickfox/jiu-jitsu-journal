@@ -5,9 +5,7 @@ import {format} from 'date-fns'
 import { gql, graphql } from 'react-apollo'
 import compose from 'recompose/compose'
 import autobind from 'autobind-decorator'
-import AvatarEditor from 'react-avatar-editor'
-import Dropzone from 'react-dropzone'
-import config from '../config'
+import ImageUpload from './image-upload'
 
 const styles = theme => ({
 	container: {
@@ -28,8 +26,6 @@ const styles = theme => ({
 class BjjClassForm extends React.Component {
 	state = {
 		name: 'Cat in the Hat',
-		files: [],
-		test_img_url: ''
 	};
 
 	handleChange = name => event => {
@@ -38,61 +34,13 @@ class BjjClassForm extends React.Component {
 		});
 	};
 
-	@autobind
-	onClickSave() {
-		if (this.editor) {
-			// This returns a HTMLCanvasElement, it can be made into a data URL or a blob,
-			// drawn on another canvas, or added to the DOM.
-			const canvas = this.editor.getImage();
-			canvas.toBlob((blob) => {
-				console.log(blob)
-				var newImg = document.createElement('img'),
-					url = URL.createObjectURL(blob);
 
-				this.setState({
-					test_img_url: url,
-				});
-
-				const data = canvas.toDataURL();
-				this.uploadImage(data);
-			});
-			// If you want the image resized to the canvas size (also a HTMLCanvasElement)
-			const canvasScaled = this.editor.getImageScaledToCanvas()
-		}
-	}
-
-
-	setEditorRef = (editor) => this.editor = editor
-
-	@autobind
-	onDrop(files) {
-		this.setState({
-			files
-		});
-	}
-
-	@autobind
-	uploadImage (image) {
-		const url = `${config.LOCAL_API}image-upload`;
-
-		const data = {
-			image
-		}
-
-		fetch(url, {
-			method: 'POST',
-			body: JSON.stringify(data)
-		}).then((res) => {
-			console.log(res)
-		})
-
-	}
 
 	@autobind
 	submit () {
-		// console.log('submitting')
+		console.log('submitting')
 		// this.props.createActivity();
-		this.onClickSave();
+
 	}
 
 	render() {
@@ -120,34 +68,11 @@ class BjjClassForm extends React.Component {
 					}}
 				/>
 
-				<div className="dropzone">
-					<Dropzone
-						multiple={false}
-						onDrop={this.onDrop}
-					>
-						<p>Try dropping some files here, or click to select files to upload.</p>
-					</Dropzone>
-					<ul>
-						{
-							this.state.files.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
-						}
-					</ul>
-				</div>
 
-				<AvatarEditor
-					ref={this.setEditorRef}
-					image={this.state.files[0]}
-					width={250}
-					height={250}
-					border={10}
-					borderRadius={200}
-					color={[255, 255, 255, 0.6]} // RGBA
-					scale={1.5}
-					rotate={0}
-				/>
-				<button type="button" onClick={this.onClickSave}>click</button>
+				<button type="button" onClick={this.submit}>click</button>
 
-				<img src={this.state.test_img_url} alt=""/>
+
+				<ImageUpload/>
 			</form>
 		);
 	}

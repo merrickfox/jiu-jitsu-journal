@@ -8,7 +8,6 @@ export default async (event, context, callback) => {
 
 	const buffer = new Buffer(body.image.replace(/^data:image\/\w+;base64,/, ""),'base64')
 	const s3Response = await upload(buffer);
-	console.log(s3Response)
 	const response = {
 		statusCode: 200,
 		headers: {
