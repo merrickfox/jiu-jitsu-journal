@@ -12,6 +12,7 @@ import Slider from 'rc-slider';
 import rcSliderIndex from 'rc-slider/assets/index.css';
 import rcToolTip from 'rc-tooltip/assets/bootstrap.css';
 import Button from 'material-ui/Button';
+import Paper from 'material-ui/Paper';
 
 const sliderStyles = `${rcSliderIndex} ${rcToolTip}`;
 
@@ -23,14 +24,21 @@ const styles = theme => ({
 		flexGrow: 1,
 	},
 	grid_item: {
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center'
+
 	},
 	button: {
 		margin: theme.spacing.unit,
 	},
+	paper: theme.mixins.gutters({
+		paddingTop: 16,
+		paddingBottom: 16,
+		marginTop: theme.spacing.unit * 3,
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+		minHeight: '250px'
+	}),
 });
 
 
@@ -85,11 +93,10 @@ class ImageUpload extends Component {
 					test_img_url: url,
 				});
 
+				this.props.openToast('YOLO SWAG')
+
 				const data = canvas.toDataURL();
-				this.uploadImage(data);
 			});
-			// If you want the image resized to the canvas size (also a HTMLCanvasElement)
-			const canvasScaled = this.editor.getImageScaledToCanvas()
 		}
 	}
 
@@ -166,31 +173,35 @@ class ImageUpload extends Component {
 				{this.state.files.length > 0 &&
 				<Grid container spacing={16} justify="center" className={classes.grid}>
 					<Grid item xs={6} className={classes.grid_item}>
-						<AvatarEditor
-							ref={this.setEditorRef}
-							image={this.state.files[0]}
-							width={200}
-							height={200}
-							border={10}
-							borderRadius={200}
-							color={[250, 250, 250, 1]} // RGBA
-							scale={this.state.scale}
-							rotate={0}
-						/>
-						<Typography type="body1">Drag to reposition your image</Typography>
+						<Paper className={classes.paper} elevation={4}>
+							<AvatarEditor
+								ref={this.setEditorRef}
+								image={this.state.files[0]}
+								width={200}
+								height={200}
+								border={10}
+								borderRadius={200}
+								color={[255, 255, 255, 1]} // RGBA
+								scale={this.state.scale}
+								rotate={0}
+							/>
+							<Typography type="body1">Drag to reposition your image</Typography>
+						</Paper>
 					</Grid>
 					<Grid item xs={6} className={classes.grid_item}>
-						<Typography type="body1">Scale your image</Typography>
-						<div style={wrapperStyle}>
-							<Slider min={0} max={200} defaultValue={100} handle={handle} onChange={this.onSliderChange} />
-						</div>
-						<Button raised color="primary" className={classes.button}>
-							Done
-						</Button>
+						<Paper className={classes.paper} elevation={4}>
+							<Typography type="body1">Scale your image</Typography>
+							<div style={wrapperStyle}>
+								<Slider min={0} max={200} defaultValue={100} handle={handle} onChange={this.onSliderChange} />
+							</div>
+							<Button raised color="primary" className={classes.button} onClick={this.onClickSave}>
+								Done
+							</Button>
+						</Paper>
 					</Grid>
 				</Grid>
 				}
-				
+
 				<style global jsx>
 					{sliderStyles}
 				</style>

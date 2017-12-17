@@ -44,7 +44,7 @@ class BjjClassForm extends React.Component {
 	}
 
 	render() {
-		const { classes, activity_date} = this.props;
+		const { classes, activity_date, ...rest} = this.props;
 		console.log(format(activity_date, 'yyyy-mm-dd'))
 		return (
 			<form className={classes.container} noValidate autoComplete="off">
@@ -72,7 +72,7 @@ class BjjClassForm extends React.Component {
 				<button type="button" onClick={this.submit}>click</button>
 
 
-				<ImageUpload/>
+				<ImageUpload {...rest}/>
 			</form>
 		);
 	}

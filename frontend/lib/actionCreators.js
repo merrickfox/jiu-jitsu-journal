@@ -4,3 +4,16 @@ export function setDateForAddActivity (date) {
 		date
 	}
 }
+
+export function openToast (text) {
+	return {
+		type: 'OPEN_TOAST',
+		text
+	}
+}
+
+export function closeToast () {
+	return {
+		type: 'CLOSE_TOAST'
+	}
+}

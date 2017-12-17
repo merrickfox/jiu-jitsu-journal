@@ -8,6 +8,7 @@ import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';
 import compose from 'recompose/compose'
 import withData from '../lib/withData'
+import Toast from '../components/toast'
 
 const styles = {
 };
@@ -22,6 +23,7 @@ class AddActivity extends Component {
             <BjjClassForm {...this.props}/>
           </div>
         </Page>
+				<Toast />
       </div>
 		);
 	}
@@ -31,6 +33,7 @@ function mapStateToProps(state) {
 	console.log('state', state)
 	return{
 		activity_date: state.dates.activity_date,
+		toast_data: state.toast,
 	}
 }
 

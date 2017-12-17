@@ -10,5 +10,21 @@ export default {
 			default:
 				return state
 		}
+	},
+	toast: (state = init, action) => {
+		switch (action.type) {
+			case 'OPEN_TOAST':
+				return Object.assign({}, state, {
+					toast_text: action.text,
+					is_toast_open: true
+				})
+			case 'CLOSE_TOAST':
+				return Object.assign({}, state, {
+					toast_text: '',
+					is_toast_open: false
+				})
+			default:
+				return state
+		}
 	}
 }
