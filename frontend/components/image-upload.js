@@ -81,22 +81,10 @@ class ImageUpload extends Component {
 	@autobind
 	onClickSave() {
 		if (this.editor) {
-			// This returns a HTMLCanvasElement, it can be made into a data URL or a blob,
-			// drawn on another canvas, or added to the DOM.
 			const canvas = this.editor.getImage();
-			canvas.toBlob((blob) => {
-				console.log(blob)
-				var newImg = document.createElement('img'),
-					url = URL.createObjectURL(blob);
-
-				this.setState({
-					test_img_url: url,
-				});
-
-				this.props.openToast('YOLO SWAG')
-
-				const data = canvas.toDataURL();
-			});
+			const data = canvas.toDataURL();
+			this.props.onSave(data);
+			this.props.openToast('Image cropped');
 		}
 	}
 
@@ -135,39 +123,41 @@ class ImageUpload extends Component {
 		return (
 			<Grid container spacing={16} className={classes.grid}>
 				<Grid item xs={12}>
-					<Dropzone
-						multiple={false}
-						onDrop={this.onDrop}
-						accept=".jpeg,.jpg,.png"
-						style={{
-							display: 'flex',
-							flexDirection: 'column',
-							justifyContent: 'center',
-							alignItems: 'center',
-							pointer: 'cursor',
-							width: '100%',
-							height: '200px',
-							borderWidth: '3px',
-							borderColor: '#8f8f8f',
-							borderStyle: 'dashed',
-							borderRadius: '10px',
-							backgroundColor: '#fafafa'
-						}}
-						rejectStyle={{
-							backgroundColor: 'red'
-						}}
-					>
-						<Typography type="headline">Please drag your image file here, or click here to select an image.</Typography>
-						<div>
-							<Typography type="body2">
+					<Paper className={classes.paper} elevation={4}>
+						<Dropzone
+							multiple={false}
+							onDrop={this.onDrop}
+							accept=".jpeg,.jpg,.png"
+							style={{
+								display: 'flex',
+								flexDirection: 'column',
+								justifyContent: 'center',
+								alignItems: 'center',
+								pointer: 'cursor',
+								width: '100%',
+								height: '200px',
+								borderWidth: '3px',
+								borderColor: '#8f8f8f',
+								borderStyle: 'dashed',
+								borderRadius: '10px',
+								backgroundColor: '#fafafa'
+							}}
+							rejectStyle={{
+								backgroundColor: 'red'
+							}}
+						>
+							<Typography type="headline">Please drag your image file here, or click here to select an image.</Typography>
+							<div>
+								<Typography type="body2">
 
-									{
-										this.state.files.map(f => <span key={f.name}>{f.name} - {f.size} bytes</span>)
-									}
+										{
+											this.state.files.map(f => <span key={f.name}>{f.name} - {f.size} bytes</span>)
+										}
 
-							</Typography>
-						</div>
-					</Dropzone>
+								</Typography>
+							</div>
+						</Dropzone>
+					</Paper>
 				</Grid>
 
 				{this.state.files.length > 0 &&
