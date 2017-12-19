@@ -17,3 +17,16 @@ export function closeToast () {
 		type: 'CLOSE_TOAST'
 	}
 }
+
+export function setUser (user) {
+	return {
+		type: 'SET_USER',
+		user
+	}
+}
+
+export function removeUser () {
+	return {
+		type: 'REMOVE_USER'
+	}
+}

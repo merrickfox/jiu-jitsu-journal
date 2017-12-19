@@ -186,8 +186,8 @@ const resolver = {
 		}
 	},
 	Mutation: {
-		addBjjClass (_, data) {
-			return resolvers.addBjjClass(data.class);
+		addBjjClass (_, data, context) {
+			return resolvers.addBjjClass(data.class, context);
 		},
 		addInstructor (_, data) {
 			return resolvers.addInstructor(data.instructor);

@@ -26,5 +26,19 @@ export default {
 			default:
 				return state
 		}
+	},
+	user: (state = init, action) => {
+		switch (action.type) {
+			case 'SET_USER':
+				return Object.assign({}, state, {
+					userName: action.user,
+				})
+			case 'REMOVE_USER':
+				return Object.assign({}, state, {
+					userName: null,
+				})
+			default:
+				return state
+		}
 	}
 }

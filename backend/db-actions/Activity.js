@@ -8,13 +8,16 @@ if (process.env.IS_OFFLINE) {
 	dynamodb = new AWS.DynamoDB.DocumentClient();
 }
 
-
-
-
 import AWS from 'aws-sdk';
 import uuid from 'uuid';
+import getUser from '../lib/auth'
 
-export const create = (activity) => {
+
+
+export async function create (activity, context) {
+
+	const user = await getUser(context.auth);
+
 	const timestamp = new Date().getTime();
 	let newActivity = {...activity};
 
@@ -36,7 +39,6 @@ export const create = (activity) => {
 				reject(new Error('Couldn\'t create'));
 				return;
 			}
-			console.log('created Activity!', params.Item)
 			resolve(params.Item);
 		});
 	})

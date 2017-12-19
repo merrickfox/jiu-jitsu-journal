@@ -39,7 +39,7 @@ class BjjClassForm extends React.Component {
 	@autobind
 	submit () {
 		console.log('submitting')
-		// this.props.createActivity();
+		this.props.createActivity();
 
 	}
 
@@ -69,7 +69,7 @@ class BjjClassForm extends React.Component {
 				/>
 
 
-				<button type="button" onClick={this.submit}>click</button>
+				<button type="button" onClick={this.submit}>Submit test</button>
 
 
 				<ImageUpload {...rest}/>

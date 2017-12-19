@@ -2,6 +2,7 @@
   "name": "next.js",
   "version": "1.0.0",
   "dependencies": {
+    "auth0-js": "^8.12.1",
     "autobind-decorator": "^2.1.0",
     "classnames": "^2.2.5",
     "date-fns": "^1.29.0",

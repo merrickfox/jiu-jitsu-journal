@@ -8,16 +8,34 @@ if (!process.browser) {
 	global.fetch = fetch
 }
 
+const deployedUrl = 'https://6nbt5eyyz4.execute-api.us-east-1.amazonaws.com/dev/query';
+const local = 'http://localhost:3001/query'
+
 function create () {
-	return new ApolloClient({
+	const config = {
 		ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
 		networkInterface: createNetworkInterface({
-			uri: 'https://6nbt5eyyz4.execute-api.us-east-1.amazonaws.com/dev/query', // Server URL (must be absolute)
+			uri: local, // Server URL (must be absolute)
 			opts: { // Additional fetch() options like `credentials` or `headers`
 				credentials: 'same-origin'
 			}
 		})
-	})
+	}
+
+	config.networkInterface.use([{
+		applyMiddleware (req, next) {
+			if (!req.options.headers) {
+				req.options.headers = {}
+			}
+			// get the authentication token from local storage if it exists
+			if (localStorage.getItem('access_token')) {
+				req.options.headers.authorization = `Bearer ${localStorage.getItem('access_token')}`
+			}
+			next()
+		},
+	}])
+
+	return new ApolloClient(config)
 }
 
 export default function initApollo () {

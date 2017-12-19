@@ -5,8 +5,11 @@ import withRoot from '../components/withRoot';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import DashboardIcon from 'material-ui-icons/Dashboard';
+import PersonIcon from 'material-ui-icons/Person';
 import Router from 'next/router'
 import Typography from 'material-ui/Typography';
+import autobind from 'autobind-decorator';
+import Auth from '../lib/auth0';
 
 const drawerWidth = 240;
 
@@ -37,11 +40,11 @@ class DrawerMenu extends React.Component {
 		anchor: 'left',
 	};
 
-	handleChange = event => {
-		this.setState({
-			anchor: event.target.value,
-		});
-	};
+	@autobind
+	login () {
+		const auth = new Auth();
+		auth.login();
+	}
 
 	render() {
 		const { classes } = this.props;
@@ -68,6 +71,16 @@ class DrawerMenu extends React.Component {
 				</div>
 				<Divider />
 				<List>
+					<ListItem button onClick={this.login}>
+						<ListItemIcon classes={{
+							root: classes.text,
+						}}>
+							<PersonIcon />
+						</ListItemIcon>
+						<ListItemText primary="Login" classes={{
+							text: classes.text,
+						}} />
+					</ListItem>
 					<ListItem button onClick={() => Router.push('/dashboard')}>
 						<ListItemIcon classes={{
 							root: classes.text,
