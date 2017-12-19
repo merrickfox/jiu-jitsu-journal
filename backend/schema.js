@@ -3,11 +3,6 @@ import * as resolvers from "./resolvers";
 import { makeExecutableSchema } from 'graphql-tools';
 
 const model = `
-	type User {
-  	firstName: String
-  	lastName: String
-  	id: String
-	}
 	
 	##########################################
 	# S&C
@@ -64,7 +59,6 @@ const model = `
 	
 	input BjjClassInput {
   	activity_date: Int!
-  	user: String!
 		time: Int!
 		instructor_id: String!
 		academy_id: String!
@@ -153,13 +147,40 @@ const model = `
 	}
 	
 	##########################################
+	# User
+	##########################################
+	
+	input UserInput {
+  	first_name: String! 
+  	last_name: String! 
+  	email: String! 
+  	academy_id: String! 
+  	country: String! 
+  	belt: String! 
+  	avatar_url: String! 
+  	is_instructor: Boolean! 
+	}
+	
+	type User {
+		id: String
+		first_name: String 
+  	last_name: String 
+  	email: String 
+  	academy_id: String 
+  	country: String 
+  	belt: String 
+  	avatar_url: String 
+  	is_instructor: Boolean 
+	}
+	
+	##########################################
 	# Queries Mutations
 	##########################################
 	
 	
 	type Query {
 		# Get user by firstName
-		user(firstName: String!): [User]
+		user(id: String!): User
 	}
 	
 	type Mutation {
@@ -167,6 +188,7 @@ const model = `
 		addInstructor(instructor: InstructorInput): Instructor
 		addAcademy(academy: AcademyInput): Academy
 		addTechnique(technique: TechniqueInput): Technique
+		addUser(user: UserInput): User
 	}
 	
 	##########################################
@@ -181,22 +203,25 @@ const model = `
 
 const resolver = {
 	Query: {
-		user (_, {firstName}, context) {
-			return resolvers.getUser({firstName});
+		user (_, id, context) {
+			return resolvers.getUser(id, context);
 		}
 	},
 	Mutation: {
 		addBjjClass (_, data, context) {
 			return resolvers.addBjjClass(data.class, context);
 		},
-		addInstructor (_, data) {
-			return resolvers.addInstructor(data.instructor);
+		addInstructor (_, data, context) {
+			return resolvers.addInstructor(data.instructor, context);
 		},
-		addAcademy (_, data) {
-			return resolvers.addAcademy(data.academy);
+		addAcademy (_, data, context) {
+			return resolvers.addAcademy(data.academy, context);
 		},
-		addTechnique (_, data) {
-			return resolvers.addTechnique(data.technique);
+		addTechnique (_, data, context) {
+			return resolvers.addTechnique(data.technique, context);
+		},
+		addUser (_, data, context) {
+			return resolvers.addUser(data.technique, context);
 		},
 	}
 }
@@ -211,35 +236,3 @@ const schema = makeExecutableSchema({
 })
 
 export default schema;
-
-const bjjClass = {
-	"activity_date": 3452435245,
-	"user": "2regrg-2reg2erg-2ergerg",
-	"time": 45456456,
-	"instructor_id": "2gerg2rg2g-2erg2reg",
-	"academy_id": "2gerg2rg2g-2erg2reg",
-	"class_length": 90,
-	"warmup_time": 15,
-	"technique_time": 30,
-	"rolling_time": 45,
-	"techniques_learned": [
-		{
-			"id": "234-23-4234-sd",
-			"notes": "sdfsdf sdf sdf sdf sdfsdfsdf sdf s"
-		}
-	],
-	"sparring_details": [
-		{
-			"nemesis_id": "2gerg2rg2g-2erg2reg",
-			"techniques_hit": ["2gerg2rg2g-2erg2reg", "2gerg2rg2g-2erg2reg"],
-			"techniques_succumbed": ["2gerg2rg2g-2erg2reg", "2gerg2rg2g-2erg2reg"],
-			"notes": "sdfsdfsdf asdas dasd asd asdsd"
-		},
-		{
-			"nemesis_id": "2gerg2rg2g-2ergasd2reg",
-			"techniques_hit": ["2gerg2rg2g-2erg2reg", "2gerg2rgasd2g-2erg2reg"],
-			"techniques_succumbed": ["2gerg2rasdsag2g-2erg2reg", "2gerg2rg2g-2erg2reg"],
-			"notes": "sdfsdfsdf asdas dasd asd asasdasd222dsd"
-		}
-	]
-}

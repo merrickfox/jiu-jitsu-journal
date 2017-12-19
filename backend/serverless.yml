@@ -4,7 +4,7 @@ provider:
   name: aws
   runtime: nodejs6.10
   environment:
-    USERS_TABLE: "${self:provider.stage}-users-${self:service}"
+    USER_TABLE: "${self:provider.stage}-users-${self:service}"
     ACTIVITIES_TABLE: "${self:provider.stage}-activities-${self:service}"
     INSTRUCTOR_TABLE: "${self:provider.stage}-instructor-${self:service}"
     ACADEMY_TABLE: "${self:provider.stage}-academy-${self:service}"
@@ -60,17 +60,17 @@ resources:
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
-          - AttributeName: auth0id
+          - AttributeName: academy_id
             AttributeType: S
         KeySchema:
           - AttributeName: id
             KeyType: HASH
-          - AttributeName: auth0id
+          - AttributeName: academy_id
             KeyType: RANGE
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: "${self:provider.environment.USERS_TABLE}"
+        TableName: "${self:provider.environment.USER_TABLE}"
     InstructorTable:
       Type: 'AWS::DynamoDB::Table'
       Properties:
@@ -132,8 +132,8 @@ custom:
     start:
       port: 3333
       inMemory: true
-      # migrate: true
+      migrate: true
       # Uncomment only if you already have a DynamoDB running locally
-      noStart: true
+      #noStart: true
   serverless-offline:
     port: 3001

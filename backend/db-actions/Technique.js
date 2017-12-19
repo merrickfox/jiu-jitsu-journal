@@ -29,15 +29,15 @@ export const create = (technique) => {
 	};
 
 	return new Promise((resolve, reject) => {
-		dynamodb.put(params, (error) => {
+		dynamodb.put(params, (error, data) => {
 			// handle errors
 			if (error) {
 				console.error(error);
 				reject(new Error('Couldn\'t create'));
 				return;
 			}
-			console.log('created Technique!', params.Item)
-			resolve(params.Item);
+			console.log('created Technique!', data.Item)
+			resolve(data.Item);
 		});
 	})
 

@@ -7,6 +7,7 @@ import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';
 import compose from 'recompose/compose'
 import withData from '../lib/withData'
+import { gql, graphql } from 'react-apollo'
 import Auth from '../lib/auth0';
 
 const styles = {
@@ -54,12 +55,30 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators(actionCreators, dispatch)
 }
 
+const user = gql`
+  query GetUser($id: String!) {
+    user(id: $id) {
+      id
+      first_name
+    }
+  }
+`
+
+const gqlWrapper = graphql(user, {
+	options: (ownProps) => ({
+		variables: {
+			id: 'some-id',
+		}
+	}),
+})
+
 const reduxWrapper = connect(mapStateToProps, mapDispatchToProps);
+
 
 export default compose(
 	withData,
 	reduxWrapper,
-  withRoot,
+	withRoot,
 	withStyles(styles),
+	gqlWrapper,
 )(Login);
-

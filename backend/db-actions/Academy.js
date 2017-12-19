@@ -27,15 +27,15 @@ export const create = (academy) => {
 	};
 
 	return new Promise((resolve, reject) => {
-		dynamodb.put(params, (error) => {
+		dynamodb.put(params, (error, data) => {
 			// handle errors
 			if (error) {
 				console.error(error);
 				reject(new Error('Couldn\'t create'));
 				return;
 			}
-			console.log('created Academy!', params.Item)
-			resolve(params.Item);
+			console.log('created Academy!', data.Item)
+			resolve(data.Item);
 		});
 	})
 

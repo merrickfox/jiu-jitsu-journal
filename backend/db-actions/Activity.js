@@ -12,8 +12,6 @@ import AWS from 'aws-sdk';
 import uuid from 'uuid';
 import getUser from '../lib/auth'
 
-
-
 export async function create (activity, context) {
 
 	const user = await getUser(context.auth);
@@ -21,8 +19,8 @@ export async function create (activity, context) {
 	const timestamp = new Date().getTime();
 	let newActivity = {...activity};
 
-
 	newActivity.id = uuid.v4();
+	newActivity.user = user.sub;
 	newActivity.createdAt = timestamp;
 	newActivity.updatedAt = timestamp;
 
@@ -32,14 +30,14 @@ export async function create (activity, context) {
 	};
 
 	return new Promise((resolve, reject) => {
-		dynamodb.put(params, (error) => {
+		dynamodb.put(params, (error, data) => {
 			// handle errors
 			if (error) {
 				console.error(error);
 				reject(new Error('Couldn\'t create'));
 				return;
 			}
-			resolve(params.Item);
+			resolve(data.Item);
 		});
 	})
 

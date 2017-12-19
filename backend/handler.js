@@ -5,7 +5,21 @@ import imageUpload from './handlers/image-upload'
 
 
 module.exports.query = function graphqlHandler(event, context, callback) {
-	const tokenParts = event.headers.authorization.split(' ')
+	// TODO clean this pile of shit up
+	console.log('headers', event.headers.Authorization)
+	if (!event.headers.Authorization) {
+		let response = {
+			statusCode: '401',
+			body: JSON.stringify({error: 'No auth token'}),
+			headers: {
+				'Content-Type': 'application/json',
+			}
+		};
+
+		context.succeed(response);
+	}
+
+	const tokenParts = event.headers.Authorization.split(' ')
 	const tokenValue = tokenParts[1];
 
 	if (!tokenValue) {

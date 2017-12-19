@@ -93,7 +93,6 @@ const gqlWrapper = graphql(addClass, {
 			variables: {
 				"class": {
 					"activity_date": 111111,
-					"user": "frontend2",
 					"time": 45456456,
 					"instructor_id": "2gerg2rg2g-2erg2reg",
 					"academy_id": "2gerg2rg2g-2erg2reg",

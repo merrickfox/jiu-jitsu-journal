@@ -8,14 +8,14 @@ if (!process.browser) {
 	global.fetch = fetch
 }
 
-const deployedUrl = 'https://6nbt5eyyz4.execute-api.us-east-1.amazonaws.com/dev/query';
+const deployedUrl = 'https://08d7az07jh.execute-api.us-east-1.amazonaws.com/dev/query';
 const local = 'http://localhost:3001/query'
 
 function create () {
 	const config = {
 		ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
 		networkInterface: createNetworkInterface({
-			uri: local, // Server URL (must be absolute)
+			uri: deployedUrl, // Server URL (must be absolute)
 			opts: { // Additional fetch() options like `credentials` or `headers`
 				credentials: 'same-origin'
 			}
@@ -29,7 +29,7 @@ function create () {
 			}
 			// get the authentication token from local storage if it exists
 			if (localStorage.getItem('access_token')) {
-				req.options.headers.authorization = `Bearer ${localStorage.getItem('access_token')}`
+				req.options.headers.Authorization = `Bearer ${localStorage.getItem('access_token')}`
 			}
 			next()
 		},
