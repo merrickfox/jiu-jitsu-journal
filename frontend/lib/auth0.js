@@ -66,7 +66,6 @@ export default class Auth {
 	getUserInfo () {
 		const tokens = this.getTokens();
 		const promise = new Promise((resolve, reject) => {
-			console.log('token', tokens.access_token)
 			this.auth0.client.userInfo(tokens.access_token, function(err, user) {
 				if (err) {
 					reject(err)
@@ -78,6 +77,20 @@ export default class Auth {
 
 
 		return promise;
+	}
+
+	formatAuth0UserObject (user) {
+		let formattedUser = {};
+		formattedUser.id = user.sub;
+
+		Object.entries(user).forEach(([key, value]) => {
+			if (key.includes('http')) {
+				const newKey = key.split('custom-data/')[1];
+				formattedUser[newKey] = value;
+			}
+		});
+
+		return formattedUser;
 	}
 
 	login() {

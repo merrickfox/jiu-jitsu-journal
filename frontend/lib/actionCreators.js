@@ -18,6 +18,19 @@ export function closeToast () {
 	}
 }
 
+export function openMerrickMessage (text) {
+	return {
+		type: 'OPEN_MERRICK_MESSAGE',
+		text
+	}
+}
+
+export function closeMerrickMessage () {
+	return {
+		type: 'CLOSE_MERRICK_MESSAGE'
+	}
+}
+
 export function setUser (user) {
 	return {
 		type: 'SET_USER',

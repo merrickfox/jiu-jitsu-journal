@@ -27,15 +27,31 @@ export default {
 				return state
 		}
 	},
+	merrickMessage: (state = init, action) => {
+		switch (action.type) {
+			case 'OPEN_MERRICK_MESSAGE':
+				return Object.assign({}, state, {
+					message_text: action.text,
+					is_message_open: true
+				})
+			case 'CLOSE_MERRICK_MESSAGE':
+				return Object.assign({}, state, {
+					message_text: '',
+					is_message_open: false
+				})
+			default:
+				return state
+		}
+	},
 	user: (state = init, action) => {
 		switch (action.type) {
 			case 'SET_USER':
 				return Object.assign({}, state, {
-					userName: action.user,
+					...action.user,
 				})
 			case 'REMOVE_USER':
 				return Object.assign({}, state, {
-					userName: null,
+					user: null,
 				})
 			default:
 				return state

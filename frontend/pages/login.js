@@ -7,8 +7,9 @@ import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';
 import compose from 'recompose/compose'
 import withData from '../lib/withData'
-import { gql, graphql } from 'react-apollo'
+import { gql, graphql, withApollo } from 'react-apollo'
 import Auth from '../lib/auth0';
+import Router from 'next/router';
 
 const styles = {
 };
@@ -19,17 +20,45 @@ class Login extends Component {
 		const auth = new Auth();
 		if (auth.isAuthenticated()) {
 			console.log('already authed')
-			const userInfo = await auth.getUserInfo();
-			console.log('user', userInfo);
 		} else {
 			console.log('setting auth')
 			const didStoreAuth = await auth.handleAuthentication();
-			const userInfo = await auth.getUserInfo();
-			console.log('user', userInfo);
 		}
 
-		//const user = await auth.getUserInfo();
-		//console.log(user)
+		const auth0User = await auth.getUserInfo();
+		this.props.setUser(auth.formatAuth0UserObject(auth0User));
+
+		const userIsRegistered = await this.isUserRegistered(auth0User.sub);
+		if (userIsRegistered) {
+			Router.push('/dashboard')
+		} else {
+			Router.push('/register')
+		}
+	}
+
+	async isUserRegistered (id) {
+		const result = await this.props.client.query({
+			query: gql`
+				query GetUser($id: String!) {
+					user(id: $id) {
+						id
+						first_name
+						last_name
+						email
+						academy_id 
+						country 
+						belt 
+						avatar_url 
+						is_instructor 
+					}
+				}
+			`,
+			variables: {
+				id,
+			},
+		})
+		if (result.data.user) this.props.setUser(result.data.user);
+		return !!result.data.user;
 	}
 
   render() {
@@ -45,34 +74,14 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps(state) {
-	return{
-		date: state.date,
-	}
-}
+
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators(actionCreators, dispatch)
 }
 
-const user = gql`
-  query GetUser($id: String!) {
-    user(id: $id) {
-      id
-      first_name
-    }
-  }
-`
 
-const gqlWrapper = graphql(user, {
-	options: (ownProps) => ({
-		variables: {
-			id: 'some-id',
-		}
-	}),
-})
-
-const reduxWrapper = connect(mapStateToProps, mapDispatchToProps);
+const reduxWrapper = connect(null, mapDispatchToProps);
 
 
 export default compose(
@@ -80,5 +89,5 @@ export default compose(
 	reduxWrapper,
 	withRoot,
 	withStyles(styles),
-	gqlWrapper,
+	withApollo,
 )(Login);
