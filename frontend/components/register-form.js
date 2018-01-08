@@ -5,7 +5,16 @@ import {format} from 'date-fns'
 import { gql, graphql } from 'react-apollo'
 import compose from 'recompose/compose'
 import autobind from 'autobind-decorator'
+import {bindActionCreators} from 'redux';
+import * as actionCreators from '../lib/actionCreators';
+import {connect} from 'react-redux';
+import { MenuItem } from 'material-ui/Menu';
+import Input, { InputLabel } from 'material-ui/Input';
+import { FormControl, FormHelperText, FormControlLabel } from 'material-ui/Form';
+import Checkbox from 'material-ui/Checkbox';
+import Select from 'material-ui/Select';
 import ImageUpload from './image-upload'
+import {countries} from '../lib/countries'
 
 const styles = theme => ({
 	container: {
@@ -20,20 +29,39 @@ const styles = theme => ({
 	menu: {
 		width: 200,
 	},
+	formControl: {
+		margin: theme.spacing.unit,
+		minWidth: 120,
+	},
+	selectEmpty: {
+		marginTop: theme.spacing.unit * 2,
+	},
 });
 
 
 class RegisterForm extends React.Component {
 	state = {
-		name: 'Cat in the Hat',
+		first_name: '',
+		last_name: '',
+		email: this.props.user.email,
+		country: '',
+		avatar_url: '',
+		belt: '',
+		is_instructor: false,
 	};
 
-	handleChange = name => event => {
+	handleChange = name => event =>  {
 		this.setState({
 			[name]: event.target.value,
 		});
+
 	};
 
+	handleCheckboxChange = name => (event, checked) =>  {
+		this.setState({
+			[name]: checked,
+		});
+	};
 
 
 	@autobind
@@ -45,29 +73,79 @@ class RegisterForm extends React.Component {
 
 	render() {
 		const { classes, activity_date, ...rest} = this.props;
-		console.log(format(activity_date, 'yyyy-mm-dd'))
+
 		return (
 			<form className={classes.container} noValidate autoComplete="off">
-				<TextField
-					id="name"
-					label="Name"
-					className={classes.textField}
-					value={this.state.name}
-					onChange={this.handleChange('name')}
-					margin="normal"
-				/>
-				<TextField
-					id="date"
-					label="Activity Date"
-					type="date"
-					defaultValue={format(activity_date, 'YYYY-MM-DD')}
-					className={classes.textField}
-					margin="normal"
-					InputLabelProps={{
-						shrink: true,
-					}}
+				<FormControl className={classes.formControl}>
+					<TextField
+						id="first_name"
+						label="First Name"
+						className={classes.textField}
+						value={this.state.first_name}
+						onChange={this.handleChange('first_name')}
+						margin="normal"
+					/>
+				</FormControl>
+				<FormControl className={classes.formControl}>
+					<TextField
+						id="last_name"
+						label="Last Name"
+						className={classes.textField}
+						value={this.state.last_name}
+						onChange={this.handleChange('last_name')}
+						margin="normal"
+					/>
+				</FormControl>
+				<FormControl className={classes.formControl}>
+					<TextField
+						id="email"
+						label="Email"
+						className={classes.textField}
+						value={this.state.email}
+						onChange={this.handleChange('email')}
+						margin="normal"
+					/>
+				</FormControl>
+				<FormControl className={classes.formControl}>
+					<InputLabel htmlFor="country">Country</InputLabel>
+					<Select
+						value={this.state.country}
+						onChange={this.handleChange('country')}
+						input={<Input name="country" id="country" />}
+					>
+						{
+							countries.map(country => <MenuItem key={country.code} value={country.code}>{country.name}</MenuItem>)
+						}
+					</Select>
+				</FormControl>
+
+				<FormControl className={classes.formControl}>
+					<InputLabel htmlFor="belt">Belt</InputLabel>
+					<Select
+						value={this.state.belt}
+						onChange={this.handleChange('belt')}
+						input={<Input name="belt" id="belt" />}
+					>
+						<MenuItem value="white">White</MenuItem>
+						<MenuItem value="blue">Blue</MenuItem>
+						<MenuItem value="purple">Purple</MenuItem>
+						<MenuItem value="brown">Brown</MenuItem>
+						<MenuItem value="black">Black</MenuItem>
+					</Select>
+				</FormControl>
+
+				<FormControlLabel
+					control={
+						<Checkbox
+							checked={this.state.is_instructor}
+							onChange={this.handleCheckboxChange('is_instructor')}
+							value={this.state.is_instructor}
+						/>
+					}
+					label="Are you an instructor/coach?"
 				/>
 
+				<ImageUpload />
 
 				<button type="button" onClick={this.submit}>Submit test</button>
 
@@ -128,7 +206,20 @@ const gqlWrapper = graphql(addClass, {
 	})
 })
 
+function mapStateToProps(state) {
+	return{
+		user: state.user,
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators(actionCreators, dispatch)
+}
+
+const reduxWrapper = connect(mapStateToProps, mapDispatchToProps);
+
 export default compose(
 	gqlWrapper,
+	reduxWrapper,
 	withStyles(styles),
 )(RegisterForm);

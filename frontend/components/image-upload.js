@@ -136,6 +136,7 @@ class ImageUpload extends Component {
 								pointer: 'cursor',
 								width: '100%',
 								height: '200px',
+								padding: '2em',
 								borderWidth: '3px',
 								borderColor: '#8f8f8f',
 								borderStyle: 'dashed',

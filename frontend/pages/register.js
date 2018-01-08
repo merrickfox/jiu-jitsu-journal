@@ -4,7 +4,6 @@ import withRoot from '../components/withRoot';
 import Page from '../components/page'
 import MessageFromMerrick from '../components/message-from-merrick'
 import RegisterForm from '../components/register-form'
-import Week from '../components/week-picker'
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';

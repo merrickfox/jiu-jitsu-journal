@@ -30,11 +30,16 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
           />
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+          <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" rel="stylesheet"/>
+          
         </Head>
         <body>
           <Main />
           <NextScript />
+
         </body>
+
+
       </html>
     );
   }
