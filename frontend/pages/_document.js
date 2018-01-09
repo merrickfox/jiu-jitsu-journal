@@ -31,7 +31,7 @@ class MyDocument extends Document {
           />
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
           <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" rel="stylesheet"/>
-          
+
         </Head>
         <body>
           <Main />

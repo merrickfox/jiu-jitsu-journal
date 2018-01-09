@@ -1,7 +1,6 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
-import {format} from 'date-fns'
 import { gql, graphql } from 'react-apollo'
 import compose from 'recompose/compose'
 import autobind from 'autobind-decorator'
@@ -15,6 +14,9 @@ import Checkbox from 'material-ui/Checkbox';
 import Select from 'material-ui/Select';
 import ImageUpload from './image-upload'
 import {countries} from '../lib/countries'
+import Paper from 'material-ui/Paper';
+import Grid from 'material-ui/Grid';
+import FindCreateAcademy from '../components/find-create-academy'
 
 const styles = theme => ({
 	container: {
@@ -31,11 +33,21 @@ const styles = theme => ({
 	},
 	formControl: {
 		margin: theme.spacing.unit,
-		minWidth: 120,
+		minWidth: 200,
 	},
 	selectEmpty: {
 		marginTop: theme.spacing.unit * 2,
 	},
+	paper: theme.mixins.gutters({
+		paddingTop: 16,
+		paddingBottom: 16,
+		marginTop: theme.spacing.unit * 3,
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+		minHeight: '250px'
+	}),
 });
 
 
@@ -76,76 +88,96 @@ class RegisterForm extends React.Component {
 
 		return (
 			<form className={classes.container} noValidate autoComplete="off">
-				<FormControl className={classes.formControl}>
-					<TextField
-						id="first_name"
-						label="First Name"
-						className={classes.textField}
-						value={this.state.first_name}
-						onChange={this.handleChange('first_name')}
-						margin="normal"
-					/>
-				</FormControl>
-				<FormControl className={classes.formControl}>
-					<TextField
-						id="last_name"
-						label="Last Name"
-						className={classes.textField}
-						value={this.state.last_name}
-						onChange={this.handleChange('last_name')}
-						margin="normal"
-					/>
-				</FormControl>
-				<FormControl className={classes.formControl}>
-					<TextField
-						id="email"
-						label="Email"
-						className={classes.textField}
-						value={this.state.email}
-						onChange={this.handleChange('email')}
-						margin="normal"
-					/>
-				</FormControl>
-				<FormControl className={classes.formControl}>
-					<InputLabel htmlFor="country">Country</InputLabel>
-					<Select
-						value={this.state.country}
-						onChange={this.handleChange('country')}
-						input={<Input name="country" id="country" />}
-					>
-						{
-							countries.map(country => <MenuItem key={country.code} value={country.code}>{country.name}</MenuItem>)
-						}
-					</Select>
-				</FormControl>
+				<Grid container spacing={24}>
+					<Grid item xs>
+						<Paper className={classes.paper} elevation={4}>
+							<FormControl className={classes.formControl}>
+								<TextField
+									id="first_name"
+									label="First Name"
+									className={classes.textField}
+									value={this.state.first_name}
+									onChange={this.handleChange('first_name')}
+									margin="normal"
+								/>
+							</FormControl>
+							<FormControl className={classes.formControl}>
+								<TextField
+									id="last_name"
+									label="Last Name"
+									className={classes.textField}
+									value={this.state.last_name}
+									onChange={this.handleChange('last_name')}
+									margin="normal"
+								/>
+							</FormControl>
+							<FormControl className={classes.formControl}>
+								<TextField
+									id="email"
+									label="Email"
+									className={classes.textField}
+									value={this.state.email}
+									onChange={this.handleChange('email')}
+									margin="normal"
+								/>
+							</FormControl>
 
-				<FormControl className={classes.formControl}>
-					<InputLabel htmlFor="belt">Belt</InputLabel>
-					<Select
-						value={this.state.belt}
-						onChange={this.handleChange('belt')}
-						input={<Input name="belt" id="belt" />}
-					>
-						<MenuItem value="white">White</MenuItem>
-						<MenuItem value="blue">Blue</MenuItem>
-						<MenuItem value="purple">Purple</MenuItem>
-						<MenuItem value="brown">Brown</MenuItem>
-						<MenuItem value="black">Black</MenuItem>
-					</Select>
-				</FormControl>
 
-				<FormControlLabel
-					control={
-						<Checkbox
-							checked={this.state.is_instructor}
-							onChange={this.handleCheckboxChange('is_instructor')}
-							value={this.state.is_instructor}
-						/>
-					}
-					label="Are you an instructor/coach?"
-				/>
+							<FormControl className={classes.formControl}>
+								<InputLabel htmlFor="country">Country</InputLabel>
+								<Select
+									value={this.state.country}
+									onChange={this.handleChange('country')}
+									input={<Input name="country" id="country" />}
+								>
+									{
+										countries.map(country => <MenuItem key={country.code} value={country.code}>{country.name}</MenuItem>)
+									}
+								</Select>
+							</FormControl>
 
-				<ImageUpload />
+							<FormControl className={classes.formControl}>
+								<InputLabel htmlFor="belt">Belt</InputLabel>
+								<Select
+									value={this.state.belt}
+									onChange={this.handleChange('belt')}
+									input={<Input name="belt" id="belt" />}
+								>
+									<MenuItem value="white">White</MenuItem>
+									<MenuItem value="blue">Blue</MenuItem>
+									<MenuItem value="purple">Purple</MenuItem>
+									<MenuItem value="brown">Brown</MenuItem>
+									<MenuItem value="black">Black</MenuItem>
+								</Select>
+							</FormControl>
+
+							<FormControl className={classes.formControl}>
+								<FormControlLabel
+									control={
+										<Checkbox
+											checked={this.state.is_instructor}
+											onChange={this.handleCheckboxChange('is_instructor')}
+											value={this.state.is_instructor}
+										/>
+									}
+									label="Are you an instructor/coach?"
+								/>
+							</FormControl>
+						</Paper>
+					</Grid>
+
+					<Grid item xs>
+						<Paper className={classes.paper} elevation={4}>
+							<ImageUpload />
+						</Paper>
+					</Grid>
+
+					<Grid item xs>
+						<Paper className={classes.paper} elevation={4}>
+							<FindCreateAcademy />
+						</Paper>
+					</Grid>
+				</Grid>
 
 				<button type="button" onClick={this.submit}>Submit test</button>
 

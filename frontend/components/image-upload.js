@@ -121,49 +121,46 @@ class ImageUpload extends Component {
 	render() {
 		const {classes} = this.props;
 		return (
-			<Grid container spacing={16} className={classes.grid}>
-				<Grid item xs={12}>
-					<Paper className={classes.paper} elevation={4}>
-						<Dropzone
-							multiple={false}
-							onDrop={this.onDrop}
-							accept=".jpeg,.jpg,.png"
-							style={{
-								display: 'flex',
-								flexDirection: 'column',
-								justifyContent: 'center',
-								alignItems: 'center',
-								pointer: 'cursor',
-								width: '100%',
-								height: '200px',
-								padding: '2em',
-								borderWidth: '3px',
-								borderColor: '#8f8f8f',
-								borderStyle: 'dashed',
-								borderRadius: '10px',
-								backgroundColor: '#fafafa'
-							}}
-							rejectStyle={{
-								backgroundColor: 'red'
-							}}
-						>
-							<Typography type="headline">Please drag your image file here, or click here to select an image.</Typography>
-							<div>
-								<Typography type="body2">
+			<div>
+				<Dropzone
+					multiple={false}
+					onDrop={this.onDrop}
+					accept=".jpeg,.jpg,.png"
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						justifyContent: 'center',
+						alignItems: 'center',
+						pointer: 'cursor',
+						width: '100%',
+						height: '200px',
+						boxSizing: 'border-box',
+						padding: '2em',
+						borderWidth: '3px',
+						borderColor: '#8f8f8f',
+						borderStyle: 'dashed',
+						borderRadius: '10px',
+						backgroundColor: '#fafafa'
+					}}
+					rejectStyle={{
+						backgroundColor: 'red'
+					}}
+				>
+					<Typography type="headline">Please drag your image file here, or click here to select an image.</Typography>
+					<div>
+						<Typography type="body2">
 
-										{
-											this.state.files.map(f => <span key={f.name}>{f.name} - {f.size} bytes</span>)
-										}
+								{
+									this.state.files.map(f => <span key={f.name}>{f.name} - {f.size} bytes</span>)
+								}
 
-								</Typography>
-							</div>
-						</Dropzone>
-					</Paper>
-				</Grid>
+						</Typography>
+					</div>
+				</Dropzone>
+
 
 				{this.state.files.length > 0 &&
-				<Grid container spacing={16} justify="center" className={classes.grid}>
-					<Grid item xs={6} className={classes.grid_item}>
+					<div>
 						<Paper className={classes.paper} elevation={4}>
 							<AvatarEditor
 								ref={this.setEditorRef}
@@ -178,25 +175,23 @@ class ImageUpload extends Component {
 							/>
 							<Typography type="body1">Drag to reposition your image</Typography>
 						</Paper>
-					</Grid>
-					<Grid item xs={6} className={classes.grid_item}>
+
 						<Paper className={classes.paper} elevation={4}>
 							<Typography type="body1">Scale your image</Typography>
 							<div style={wrapperStyle}>
 								<Slider min={0} max={200} defaultValue={100} handle={handle} onChange={this.onSliderChange} />
 							</div>
 							<Button raised color="primary" className={classes.button} onClick={this.onClickSave}>
-								Done
+							Done
 							</Button>
 						</Paper>
-					</Grid>
-				</Grid>
+					</div>
 				}
 
 				<style global jsx>
 					{sliderStyles}
 				</style>
-			</Grid>
+			</div>
 		);
 	}
 }
