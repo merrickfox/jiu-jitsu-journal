@@ -69,6 +69,7 @@ class ImageUpload extends Component {
 		files: [],
 		test_img_url: '',
 		scale: 1,
+		loading: false,
 	};
 
 	@autobind
@@ -83,8 +84,7 @@ class ImageUpload extends Component {
 		if (this.editor) {
 			const canvas = this.editor.getImage();
 			const data = canvas.toDataURL();
-			this.props.onSave(data);
-			this.props.openToast('Image cropped');
+			this.uploadImage(data);
 		}
 	}
 
@@ -100,20 +100,26 @@ class ImageUpload extends Component {
 	}
 
 	@autobind
-	uploadImage (image) {
-		const url = `${config.LOCAL_API}image-upload`;
+	async uploadImage (image) {
+		const url = `${config.API_URL}image-upload`;
 
 		const data = {
 			image
 		}
 
-		fetch(url, {
+		const response = await fetch(url, {
 			method: 'POST',
 			body: JSON.stringify(data)
-		}).then((res) => {
-			console.log(res)
 		})
 
+		if (response.status !== 200) {
+			console.log('Looks like there was a problem. Status Code: ' +
+				response.status);
+			return;
+		} else {
+			const data = await response.json();
+			this.props.handleAvatarUrl(data);
+		}
 	}
 
 
@@ -146,45 +152,46 @@ class ImageUpload extends Component {
 						backgroundColor: 'red'
 					}}
 				>
-					<Typography type="headline">Please drag your image file here, or click here to select an image.</Typography>
-					<div>
-						<Typography type="body2">
+					{/*<Typography type="headline">Please drag your image file here, or click here to select an image.</Typography>*/}
+					{/*<div>*/}
+						{/*<Typography type="body2">*/}
 
-								{
-									this.state.files.map(f => <span key={f.name}>{f.name} - {f.size} bytes</span>)
-								}
+								{/*{*/}
+									{/*this.state.files.map(f => <span key={f.name}>{f.name} - {f.size} bytes</span>)*/}
+								{/*}*/}
 
-						</Typography>
+						{/*</Typography>*/}
 					</div>
 				</Dropzone>
 
 
 				{this.state.files.length > 0 &&
 					<div>
-						<Paper className={classes.paper} elevation={4}>
-							<AvatarEditor
-								ref={this.setEditorRef}
-								image={this.state.files[0]}
-								width={200}
-								height={200}
-								border={10}
-								borderRadius={200}
-								color={[255, 255, 255, 1]} // RGBA
-								scale={this.state.scale}
-								rotate={0}
-							/>
-							<Typography type="body1">Drag to reposition your image</Typography>
-						</Paper>
+						this is the image-upload
+						{/*<Paper className={classes.paper} elevation={4}>*/}
+							{/*<AvatarEditor*/}
+								{/*ref={this.setEditorRef}*/}
+								{/*image={this.state.files[0]}*/}
+								{/*width={200}*/}
+								{/*height={200}*/}
+								{/*border={10}*/}
+								{/*borderRadius={200}*/}
+								{/*color={[255, 255, 255, 1]} // RGBA*/}
+								{/*scale={this.state.scale}*/}
+								{/*rotate={0}*/}
+							{/*/>*/}
+							{/*<Typography type="body1">Drag to reposition your image</Typography>*/}
+						{/*</Paper>*/}
 
-						<Paper className={classes.paper} elevation={4}>
-							<Typography type="body1">Scale your image</Typography>
-							<div style={wrapperStyle}>
-								<Slider min={0} max={200} defaultValue={100} handle={handle} onChange={this.onSliderChange} />
-							</div>
-							<Button raised color="primary" className={classes.button} onClick={this.onClickSave}>
-							Done
-							</Button>
-						</Paper>
+						{/*<Paper className={classes.paper} elevation={4}>*/}
+							{/*<Typography type="body1">Scale your image</Typography>*/}
+							{/*<div style={wrapperStyle}>*/}
+								{/*<Slider min={0} max={200} defaultValue={100} handle={handle} onChange={this.onSliderChange} />*/}
+							{/*</div>*/}
+							{/*<Button raised color="primary" className={classes.button} onClick={this.onClickSave}>*/}
+							{/*Done*/}
+							{/*</Button>*/}
+						{/*</Paper>*/}
 					</div>
 				}
 
@@ -198,4 +205,4 @@ class ImageUpload extends Component {
 
 
 
-export default withRoot(withStyles(styles)(ImageUpload));
+export default ImageUpload;

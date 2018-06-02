@@ -116,6 +116,7 @@ const model = `
   	address: String
   	country: String
   	picture_url: String
+  	url: String
 	}
 	
 	type Academy {
@@ -126,6 +127,7 @@ const model = `
   	postcode: String
   	country: String
   	picture_url: String
+  	url: String
 	}
 	
 	##########################################

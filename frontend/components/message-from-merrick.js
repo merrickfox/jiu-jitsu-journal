@@ -32,10 +32,6 @@ const styles = {
 	}
 };
 
-function Transition(props) {
-	return <Slide direction="up" {...props} />;
-}
-
 class MessageFromMerrick extends React.Component {
 
 	handleClose = () => {
@@ -48,32 +44,33 @@ class MessageFromMerrick extends React.Component {
 		return (
 			<div>
 				<NoSSR>
-					<Dialog
-						open={this.props.message.is_message_open}
-						transition={Transition}
-						keepMounted
-						onClose={this.handleClose}
-						aria-labelledby="alert-dialog-slide-title"
-						aria-describedby="alert-dialog-slide-description"
-						classes={{
-							paper: classes.dialog, // className, e.g. `OverridesClasses-root-X`
-						}}
-					>
-						<Avatar alt="Merrick" src="/static/me.jpg" className={classes.bigAvatar} />
-						<DialogTitle id="alert-dialog-slide-title">
-							{"A message from Merrick"}
-						</DialogTitle>
-						<DialogContent>
-							<DialogContentText id="alert-dialog-slide-description">
-								{message.message_text}
-							</DialogContentText>
-						</DialogContent>
-						<DialogActions>
-							<Button onClick={this.handleClose} color="primary">
-								Got it!
-							</Button>
-						</DialogActions>
-					</Dialog>
+					dialog box
+					{/*<Dialog*/}
+						{/*open={this.props.message.is_message_open}*/}
+						{/*transition={Transition}*/}
+						{/*keepMounted*/}
+						{/*onClose={this.handleClose}*/}
+						{/*aria-labelledby="alert-dialog-slide-title"*/}
+						{/*aria-describedby="alert-dialog-slide-description"*/}
+						{/*classes={{*/}
+							{/*paper: classes.dialog, // className, e.g. `OverridesClasses-root-X`*/}
+						{/*}}*/}
+					{/*>*/}
+						{/*<Avatar alt="Merrick" src="/static/me.jpg" className={classes.bigAvatar} />*/}
+						{/*<DialogTitle id="alert-dialog-slide-title">*/}
+							{/*{"A message from Merrick"}*/}
+						{/*</DialogTitle>*/}
+						{/*<DialogContent>*/}
+							{/*<DialogContentText id="alert-dialog-slide-description">*/}
+								{/*{message.message_text}*/}
+							{/*</DialogContentText>*/}
+						{/*</DialogContent>*/}
+						{/*<DialogActions>*/}
+							{/*<Button onClick={this.handleClose} color="primary">*/}
+								{/*Got it!*/}
+							{/*</Button>*/}
+						{/*</DialogActions>*/}
+					{/*</Dialog>*/}
 				</NoSSR>
 			</div>
 		);
@@ -94,5 +91,4 @@ const reduxWrapper = connect(mapStateToProps, mapDispatchToProps);
 
 export default compose(
 	reduxWrapper,
-	withStyles(styles)
 )(MessageFromMerrick);

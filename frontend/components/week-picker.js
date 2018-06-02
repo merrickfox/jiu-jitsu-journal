@@ -68,27 +68,28 @@ class Week extends React.Component {
 		const oneSeventh = 1.714285714;
 		return (
 			<div>
-				<Grid container spacing={16} justify="center" className={classes.grid}>
+				week picker
+				{/*<Grid container spacing={16} justify="center" className={classes.grid}>*/}
 
-					{this.generateWeek().map(day =>
-						<Grid item xs={oneSeventh} key={day.toString()}>
-							<Card className={classes.card}>
-								<CardContent>
-									<Typography className={classes.title}>{format(day, 'dddd')}</Typography>
-									<Typography type="headline">{format(day, 'Do')}</Typography>
-									<Typography type="headline">{format(day, 'MMM')}</Typography>
-								</CardContent>
-								<CardActions>
-									<Button dense onClick={()=> this.addActivity(day)}>Add Activity</Button>
-								</CardActions>
-							</Card>
-						</Grid>
-					)}
-				</Grid>
+					{/*{this.generateWeek().map(day =>*/}
+						{/*<Grid item xs={oneSeventh} key={day.toString()}>*/}
+							{/*<Card className={classes.card}>*/}
+								{/*<CardContent>*/}
+									{/*<Typography className={classes.title}>{format(day, 'dddd')}</Typography>*/}
+									{/*<Typography type="headline">{format(day, 'Do')}</Typography>*/}
+									{/*<Typography type="headline">{format(day, 'MMM')}</Typography>*/}
+								{/*</CardContent>*/}
+								{/*<CardActions>*/}
+									{/*<Button dense onClick={()=> this.addActivity(day)}>Add Activity</Button>*/}
+								{/*</CardActions>*/}
+							{/*</Card>*/}
+						{/*</Grid>*/}
+					{/*)}*/}
+				{/*</Grid>*/}
 			</div>
 		);
 	}
 }
 
 
-export default withRoot(withStyles(styles)(Week));
+export default Week;

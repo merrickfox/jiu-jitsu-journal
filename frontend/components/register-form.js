@@ -88,98 +88,99 @@ class RegisterForm extends React.Component {
 
 		return (
 			<form className={classes.container} noValidate autoComplete="off">
-				<Grid container spacing={24}>
-					<Grid item xs>
-						<Paper className={classes.paper} elevation={4}>
-							<FormControl className={classes.formControl}>
-								<TextField
-									id="first_name"
-									label="First Name"
-									className={classes.textField}
-									value={this.state.first_name}
-									onChange={this.handleChange('first_name')}
-									margin="normal"
-								/>
-							</FormControl>
-							<FormControl className={classes.formControl}>
-								<TextField
-									id="last_name"
-									label="Last Name"
-									className={classes.textField}
-									value={this.state.last_name}
-									onChange={this.handleChange('last_name')}
-									margin="normal"
-								/>
-							</FormControl>
-							<FormControl className={classes.formControl}>
-								<TextField
-									id="email"
-									label="Email"
-									className={classes.textField}
-									value={this.state.email}
-									onChange={this.handleChange('email')}
-									margin="normal"
-								/>
-							</FormControl>
+				register form
+				{/*<Grid container spacing={24}>*/}
+					{/*<Grid item xs>*/}
+						{/*<Paper className={classes.paper} elevation={4}>*/}
+							{/*<FormControl className={classes.formControl}>*/}
+								{/*<TextField*/}
+									{/*id="first_name"*/}
+									{/*label="First Name"*/}
+									{/*className={classes.textField}*/}
+									{/*value={this.state.first_name}*/}
+									{/*onChange={this.handleChange('first_name')}*/}
+									{/*margin="normal"*/}
+								{/*/>*/}
+							{/*</FormControl>*/}
+							{/*<FormControl className={classes.formControl}>*/}
+								{/*<TextField*/}
+									{/*id="last_name"*/}
+									{/*label="Last Name"*/}
+									{/*className={classes.textField}*/}
+									{/*value={this.state.last_name}*/}
+									{/*onChange={this.handleChange('last_name')}*/}
+									{/*margin="normal"*/}
+								{/*/>*/}
+							{/*</FormControl>*/}
+							{/*<FormControl className={classes.formControl}>*/}
+								{/*<TextField*/}
+									{/*id="email"*/}
+									{/*label="Email"*/}
+									{/*className={classes.textField}*/}
+									{/*value={this.state.email}*/}
+									{/*onChange={this.handleChange('email')}*/}
+									{/*margin="normal"*/}
+								{/*/>*/}
+							{/*</FormControl>*/}
 
 
-							<FormControl className={classes.formControl}>
-								<InputLabel htmlFor="country">Country</InputLabel>
-								<Select
-									value={this.state.country}
-									onChange={this.handleChange('country')}
-									input={<Input name="country" id="country" />}
-								>
-									{
-										countries.map(country => <MenuItem key={country.code} value={country.code}>{country.name}</MenuItem>)
-									}
-								</Select>
-							</FormControl>
+							{/*<FormControl className={classes.formControl}>*/}
+								{/*<InputLabel htmlFor="country">Country</InputLabel>*/}
+								{/*<Select*/}
+									{/*value={this.state.country}*/}
+									{/*onChange={this.handleChange('country')}*/}
+									{/*input={<Input name="country" id="country" />}*/}
+								{/*>*/}
+									{/*{*/}
+										{/*countries.map(country => <MenuItem key={country.code} value={country.code}>{country.name}</MenuItem>)*/}
+									{/*}*/}
+								{/*</Select>*/}
+							{/*</FormControl>*/}
 
-							<FormControl className={classes.formControl}>
-								<InputLabel htmlFor="belt">Belt</InputLabel>
-								<Select
-									value={this.state.belt}
-									onChange={this.handleChange('belt')}
-									input={<Input name="belt" id="belt" />}
-								>
-									<MenuItem value="white">White</MenuItem>
-									<MenuItem value="blue">Blue</MenuItem>
-									<MenuItem value="purple">Purple</MenuItem>
-									<MenuItem value="brown">Brown</MenuItem>
-									<MenuItem value="black">Black</MenuItem>
-								</Select>
-							</FormControl>
+							{/*<FormControl className={classes.formControl}>*/}
+								{/*<InputLabel htmlFor="belt">Belt</InputLabel>*/}
+								{/*<Select*/}
+									{/*value={this.state.belt}*/}
+									{/*onChange={this.handleChange('belt')}*/}
+									{/*input={<Input name="belt" id="belt" />}*/}
+								{/*>*/}
+									{/*<MenuItem value="white">White</MenuItem>*/}
+									{/*<MenuItem value="blue">Blue</MenuItem>*/}
+									{/*<MenuItem value="purple">Purple</MenuItem>*/}
+									{/*<MenuItem value="brown">Brown</MenuItem>*/}
+									{/*<MenuItem value="black">Black</MenuItem>*/}
+								{/*</Select>*/}
+							{/*</FormControl>*/}
 
-							<FormControl className={classes.formControl}>
-								<FormControlLabel
-									control={
-										<Checkbox
-											checked={this.state.is_instructor}
-											onChange={this.handleCheckboxChange('is_instructor')}
-											value={this.state.is_instructor}
-										/>
-									}
-									label="Are you an instructor/coach?"
-								/>
-							</FormControl>
-						</Paper>
-					</Grid>
+							{/*<FormControl className={classes.formControl}>*/}
+								{/*<FormControlLabel*/}
+									{/*control={*/}
+										{/*<Checkbox*/}
+											{/*checked={this.state.is_instructor}*/}
+											{/*onChange={this.handleCheckboxChange('is_instructor')}*/}
+											{/*value={this.state.is_instructor}*/}
+										{/*/>*/}
+									{/*}*/}
+									{/*label="Are you an instructor/coach?"*/}
+								{/*/>*/}
+							{/*</FormControl>*/}
+						{/*</Paper>*/}
+					{/*</Grid>*/}
 
-					<Grid item xs>
-						<Paper className={classes.paper} elevation={4}>
-							<ImageUpload />
-						</Paper>
-					</Grid>
+					{/*<Grid item xs>*/}
+						{/*<Paper className={classes.paper} elevation={4}>*/}
+							{/*<ImageUpload />*/}
+						{/*</Paper>*/}
+					{/*</Grid>*/}
 
-					<Grid item xs>
-						<Paper className={classes.paper} elevation={4}>
-							<FindCreateAcademy />
-						</Paper>
-					</Grid>
-				</Grid>
+					{/*<Grid item xs>*/}
+						{/*<Paper className={classes.paper} elevation={4}>*/}
+							{/*<FindCreateAcademy />*/}
+						{/*</Paper>*/}
+					{/*</Grid>*/}
+				{/*</Grid>*/}
 
-				<button type="button" onClick={this.submit}>Submit test</button>
+				{/*<button type="button" onClick={this.submit}>Submit test</button>*/}
 
 			</form>
 		);
@@ -253,5 +254,4 @@ const reduxWrapper = connect(mapStateToProps, mapDispatchToProps);
 export default compose(
 	gqlWrapper,
 	reduxWrapper,
-	withStyles(styles),
 )(RegisterForm);

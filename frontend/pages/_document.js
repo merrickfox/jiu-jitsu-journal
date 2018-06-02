@@ -24,12 +24,11 @@ class MyDocument extends Document {
           */}
           <link rel="manifest" href="/static/manifest.json" />
           {/* PWA primary color */}
-          <meta name="theme-color" content={this.props.stylesContext.theme.palette.primary[500]} />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
           />
-          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+          <link href="//cdnjs.cloudflare.com/ajax/libs/grommet/1.10.1/grommet.min.css" rel="stylesheet" type="text/css" />
           <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" rel="stylesheet"/>
 
         </Head>

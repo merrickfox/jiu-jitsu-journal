@@ -87,7 +87,5 @@ const reduxWrapper = connect(null, mapDispatchToProps);
 export default compose(
 	withData,
 	reduxWrapper,
-	withRoot,
-	withStyles(styles),
 	withApollo,
 )(Login);

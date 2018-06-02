@@ -51,52 +51,53 @@ class DrawerMenu extends React.Component {
 		const { anchor } = this.state;
 
 		return (
-			<Drawer
-				type="permanent"
-				classes={{
-					paper: classes.drawerPaper,
-				}}
-				anchor={anchor}
-			>
-				<div className={classes.drawerHeader}>
-					<Typography
-						type="headline"
-						color="secondary"
-						noWrap
-						classes={{
-							headline: classes.title,
-						}}>
-						Jiu-Jitsu Journal
-					</Typography>
-				</div>
-				<Divider />
-				<List>
-					<ListItem button onClick={this.login}>
-						<ListItemIcon classes={{
-							root: classes.text,
-						}}>
-							<PersonIcon />
-						</ListItemIcon>
-						<ListItemText primary="Login" classes={{
-							text: classes.text,
-						}} />
-					</ListItem>
-					<ListItem button onClick={() => Router.push('/dashboard')}>
-						<ListItemIcon classes={{
-							root: classes.text,
-						}}>
-							<DashboardIcon />
-						</ListItemIcon>
-						<ListItemText primary="My Dashboard" classes={{
-							text: classes.text,
-						}} />
-					</ListItem>
-				</List>
-				<Divider />
-			</Drawer>
+			<div>this is the drawer
+			{/*<Drawer*/}
+				{/*type="permanent"*/}
+				{/*classes={{*/}
+					{/*paper: classes.drawerPaper,*/}
+				{/*}}*/}
+				{/*anchor={anchor}*/}
+			{/*>*/}
+				{/*<div className={classes.drawerHeader}>*/}
+					{/*<Typography*/}
+						{/*type="headline"*/}
+						{/*color="secondary"*/}
+						{/*noWrap*/}
+						{/*classes={{*/}
+							{/*headline: classes.title,*/}
+						{/*}}>*/}
+						{/*Jiu-Jitsu Journal*/}
+					{/*</Typography>*/}
+				{/*</div>*/}
+				{/*<Divider />*/}
+				{/*<List>*/}
+					{/*<ListItem button onClick={this.login}>*/}
+						{/*<ListItemIcon classes={{*/}
+							{/*root: classes.text,*/}
+						{/*}}>*/}
+							{/*<PersonIcon />*/}
+						{/*</ListItemIcon>*/}
+						{/*<ListItemText primary="Login" classes={{*/}
+							{/*text: classes.text,*/}
+						{/*}} />*/}
+					{/*</ListItem>*/}
+					{/*<ListItem button onClick={() => Router.push('/dashboard')}>*/}
+						{/*<ListItemIcon classes={{*/}
+							{/*root: classes.text,*/}
+						{/*}}>*/}
+							{/*<DashboardIcon />*/}
+						{/*</ListItemIcon>*/}
+						{/*<ListItemText primary="My Dashboard" classes={{*/}
+							{/*text: classes.text,*/}
+						{/*}} />*/}
+					{/*</ListItem>*/}
+				{/*</List>*/}
+				{/*<Divider />*/}
+			{/*</Drawer>*/}</div>
 		);
 	}
 }
 
 
-export default withRoot(withStyles(styles)(DrawerMenu));
+export default DrawerMenu;

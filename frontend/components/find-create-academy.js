@@ -41,6 +41,8 @@ class FindCreateAcademy extends React.Component {
 		name: '',
 		country: '',
 		postcode: '',
+		url: '',
+		avatar: '',
 	};
 
 	handleChange = name => event => {
@@ -48,6 +50,10 @@ class FindCreateAcademy extends React.Component {
 			[name]: event.target.value,
 		});
 	};
+
+	handleAvatarUrl (url) {
+		console.log('avatar', url)
+	}
 
 
 
@@ -62,46 +68,60 @@ class FindCreateAcademy extends React.Component {
 		const { classes, activity_date, ...rest} = this.props;
 		console.log(format(activity_date, 'yyyy-mm-dd'))
 		return (
-			<form className={classes.container} noValidate autoComplete="off">
-				<FormControl className={classes.formControl}>
-					<TextField
-						id="name"
-						label="Academy Name"
-						className={classes.textField}
-						value={this.state.name}
-						onChange={this.handleChange('name')}
-						margin="normal"
-					/>
-				</FormControl>
+			<div className={classes.container}>
+				find create activity
+				{/*<FormControl className={classes.formControl}>*/}
+					{/*<TextField*/}
+						{/*id="name"*/}
+						{/*label="Academy Name"*/}
+						{/*className={classes.textField}*/}
+						{/*value={this.state.name}*/}
+						{/*onChange={this.handleChange('name')}*/}
+						{/*margin="normal"*/}
+					{/*/>*/}
+				{/*</FormControl>*/}
 
-				<FormControl className={classes.formControl}>
-					<InputLabel htmlFor="country">Country</InputLabel>
-					<Select
-						value={this.state.country}
-						onChange={this.handleChange('country')}
-						input={<Input name="country" id="country" />}
-					>
-						{
-							countries.map(country => <MenuItem key={country.code} value={country.code}>{country.name}</MenuItem>)
-						}
-					</Select>
-				</FormControl>
+				{/*<FormControl className={classes.formControl}>*/}
+					{/*<InputLabel htmlFor="country">Country</InputLabel>*/}
+					{/*<Select*/}
+						{/*value={this.state.country}*/}
+						{/*onChange={this.handleChange('country')}*/}
+						{/*input={<Input name="country" id="country" />}*/}
+					{/*>*/}
+						{/*{*/}
+							{/*countries.map(country => <MenuItem key={country.code} value={country.code}>{country.name}</MenuItem>)*/}
+						{/*}*/}
+					{/*</Select>*/}
+				{/*</FormControl>*/}
 
-				<FormControl className={classes.formControl}>
-					<TextField
-						id="postcode"
-						label="Postal Code/Zip"
-						className={classes.textField}
-						value={this.state.postcode}
-						onChange={this.handleChange('postcode')}
-						margin="normal"
-					/>
-				</FormControl>
-				<button type="button" onClick={this.submit}>Submit test</button>
+				{/*<FormControl className={classes.formControl}>*/}
+					{/*<TextField*/}
+						{/*id="postcode"*/}
+						{/*label="Postal Code/Zip"*/}
+						{/*className={classes.textField}*/}
+						{/*value={this.state.postcode}*/}
+						{/*onChange={this.handleChange('postcode')}*/}
+						{/*margin="normal"*/}
+					{/*/>*/}
+				{/*</FormControl>*/}
+
+				{/*<FormControl className={classes.formControl}>*/}
+					{/*<TextField*/}
+						{/*id="url"*/}
+						{/*label="Website URL"*/}
+						{/*className={classes.textField}*/}
+						{/*value={this.state.url}*/}
+						{/*onChange={this.handleChange('url')}*/}
+						{/*margin="normal"*/}
+					{/*/>*/}
+				{/*</FormControl>*/}
 
 
-				<ImageUpload {...rest}/>
-			</form>
+
+				<ImageUpload handleAvatarUrl={this.handleAvatarUrl}/>
+
+				<button type="button" onClick={this.submit}>Create Academy</button>
+			</div>
 		);
 	}
 }
@@ -160,7 +180,6 @@ const gqlWrapper = graphql(addClass, {
 
 export default compose(
 	gqlWrapper,
-	withStyles(styles),
 )(FindCreateAcademy);
 
 

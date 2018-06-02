@@ -136,7 +136,5 @@ const reduxWrapper = connect(mapStateToProps, mapDispatchToProps);
 export default compose(
 	withData,
 	reduxWrapper,
-  withRoot,
-	withStyles(styles),
 )(Dashboard);
 

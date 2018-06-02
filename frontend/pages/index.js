@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import withRoot from '../components/withRoot';
 import Page from '../components/page'
+import Button from 'grommet/components/Button';
+import Edit from 'grommet/components/icons/base/Edit';
 
 const styles = {
   root: {
@@ -30,7 +32,11 @@ class Index extends Component {
 
   render() {
     return (
-      <div className={this.props.classes.root}>
+      <div >
+        <Button
+          icon={<Edit />}
+          label='Label'
+          href='#' />
         <Page>
           <div>Thing</div>
           <div>Thing</div>
@@ -156,4 +162,4 @@ Index.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withRoot(withStyles(styles)(Index));
+export default Index;

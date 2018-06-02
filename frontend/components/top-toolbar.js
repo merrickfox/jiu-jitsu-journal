@@ -28,18 +28,18 @@ class TopToolbar extends React.Component {
 		const { anchor } = this.state;
 
 		return (
-
-			<AppBar className={classNames(classes.appBar, classes[`appBar-${anchor}`])} color="white">
-				<Toolbar>
-					<Typography type="title" color="inherit" noWrap>
-						{title}
-					</Typography>
-				</Toolbar>
-			</AppBar>
+			<div>this is the top tool bar
+			{/*<AppBar className={classNames(classes.appBar, classes[`appBar-${anchor}`])} color="white">*/}
+				{/*<Toolbar>*/}
+					{/*<Typography type="title" color="inherit" noWrap>*/}
+						{/*{title}*/}
+					{/*</Typography>*/}
+				{/*</Toolbar>*/}
+			{/*</AppBar>*/}</div>
 
 		);
 	}
 }
 
 
-export default withRoot(withStyles(styles)(TopToolbar));
+export default TopToolbar;
