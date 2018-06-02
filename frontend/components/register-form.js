@@ -1,54 +1,15 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
-import TextField from 'material-ui/TextField';
 import { gql, graphql } from 'react-apollo'
 import compose from 'recompose/compose'
 import autobind from 'autobind-decorator'
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';
-import { MenuItem } from 'material-ui/Menu';
-import Input, { InputLabel } from 'material-ui/Input';
-import { FormControl, FormHelperText, FormControlLabel } from 'material-ui/Form';
-import Checkbox from 'material-ui/Checkbox';
-import Select from 'material-ui/Select';
-import ImageUpload from './image-upload'
-import {countries} from '../lib/countries'
-import Paper from 'material-ui/Paper';
-import Grid from 'material-ui/Grid';
-import FindCreateAcademy from '../components/find-create-academy'
+import FormField from 'grommet/components/FormField';
+import TextInput from 'grommet/components/TextInput';
+import Columns from 'grommet/components/Columns';
+import Box from 'grommet/components/Box';
 
-const styles = theme => ({
-	container: {
-		display: 'flex',
-		flexWrap: 'wrap',
-	},
-	textField: {
-		marginLeft: theme.spacing.unit,
-		marginRight: theme.spacing.unit,
-		width: 200,
-	},
-	menu: {
-		width: 200,
-	},
-	formControl: {
-		margin: theme.spacing.unit,
-		minWidth: 200,
-	},
-	selectEmpty: {
-		marginTop: theme.spacing.unit * 2,
-	},
-	paper: theme.mixins.gutters({
-		paddingTop: 16,
-		paddingBottom: 16,
-		marginTop: theme.spacing.unit * 3,
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
-		minHeight: '250px'
-	}),
-});
 
 
 class RegisterForm extends React.Component {
@@ -62,12 +23,14 @@ class RegisterForm extends React.Component {
 		is_instructor: false,
 	};
 
+
 	handleChange = name => event =>  {
 		this.setState({
 			[name]: event.target.value,
 		});
 
 	};
+
 
 	handleCheckboxChange = name => (event, checked) =>  {
 		this.setState({
@@ -84,104 +47,87 @@ class RegisterForm extends React.Component {
 	}
 
 	render() {
-		const { classes, activity_date, ...rest} = this.props;
 
 		return (
-			<form className={classes.container} noValidate autoComplete="off">
-				register form
-				{/*<Grid container spacing={24}>*/}
-					{/*<Grid item xs>*/}
-						{/*<Paper className={classes.paper} elevation={4}>*/}
-							{/*<FormControl className={classes.formControl}>*/}
-								{/*<TextField*/}
-									{/*id="first_name"*/}
-									{/*label="First Name"*/}
-									{/*className={classes.textField}*/}
-									{/*value={this.state.first_name}*/}
-									{/*onChange={this.handleChange('first_name')}*/}
-									{/*margin="normal"*/}
-								{/*/>*/}
-							{/*</FormControl>*/}
-							{/*<FormControl className={classes.formControl}>*/}
-								{/*<TextField*/}
-									{/*id="last_name"*/}
-									{/*label="Last Name"*/}
-									{/*className={classes.textField}*/}
-									{/*value={this.state.last_name}*/}
-									{/*onChange={this.handleChange('last_name')}*/}
-									{/*margin="normal"*/}
-								{/*/>*/}
-							{/*</FormControl>*/}
-							{/*<FormControl className={classes.formControl}>*/}
-								{/*<TextField*/}
-									{/*id="email"*/}
-									{/*label="Email"*/}
-									{/*className={classes.textField}*/}
-									{/*value={this.state.email}*/}
-									{/*onChange={this.handleChange('email')}*/}
-									{/*margin="normal"*/}
-								{/*/>*/}
-							{/*</FormControl>*/}
+			<form noValidate autoComplete="off">
+				<Box
+					direction='row'
+					justify='center'
+					align='center'
+					wrap={true}
+					pad='none'
+					margin='small'
+					colorIndex='light-2'
+				>
+					<Box align='center'
+							 pad='none'
+							 margin='small'
+							 colorIndex='light-2'>
+						<FormField label='First Name'
+											 className='form-field'
+											 htmlFor='first_name'
+											 size='large'
+											 error=''>
+							<TextInput
+								value={this.state.first_name}
+								size='small'
+								id='first_name'
+								name='first_name'
+								onDOMChange={this.handleChange('first_name')}
+							/>
+
+						</FormField>
+					</Box>
+
+					<Box align='center'
+							 pad='none'
+							 margin='small'
+							 colorIndex='light-2'>
+						<FormField label='Last Name'
+											 className='form-field'
+											 htmlFor='last_name'
+											 size='large'
+											 error=''>
+							<TextInput
+								value={this.state.last_name}
+								id='last_name'
+								name='last_name'
+								onDOMChange={this.handleChange('last_name')}
+							/>
+
+						</FormField>
+					</Box>
+
+					<Box align='center'
+							 pad='none'
+							 margin='small'
+							 colorIndex='light-2'>
+						<FormField label='Email'
+											 className='form-field'
+											 htmlFor='email'
+											 size='large'
+											 error=''>
+							<TextInput
+								value={this.state.email}
+								id='email'
+								name='email'
+								onDOMChange={this.handleChange('email')}
+							/>
+
+						</FormField>
+					</Box>
 
 
-							{/*<FormControl className={classes.formControl}>*/}
-								{/*<InputLabel htmlFor="country">Country</InputLabel>*/}
-								{/*<Select*/}
-									{/*value={this.state.country}*/}
-									{/*onChange={this.handleChange('country')}*/}
-									{/*input={<Input name="country" id="country" />}*/}
-								{/*>*/}
-									{/*{*/}
-										{/*countries.map(country => <MenuItem key={country.code} value={country.code}>{country.name}</MenuItem>)*/}
-									{/*}*/}
-								{/*</Select>*/}
-							{/*</FormControl>*/}
 
-							{/*<FormControl className={classes.formControl}>*/}
-								{/*<InputLabel htmlFor="belt">Belt</InputLabel>*/}
-								{/*<Select*/}
-									{/*value={this.state.belt}*/}
-									{/*onChange={this.handleChange('belt')}*/}
-									{/*input={<Input name="belt" id="belt" />}*/}
-								{/*>*/}
-									{/*<MenuItem value="white">White</MenuItem>*/}
-									{/*<MenuItem value="blue">Blue</MenuItem>*/}
-									{/*<MenuItem value="purple">Purple</MenuItem>*/}
-									{/*<MenuItem value="brown">Brown</MenuItem>*/}
-									{/*<MenuItem value="black">Black</MenuItem>*/}
-								{/*</Select>*/}
-							{/*</FormControl>*/}
 
-							{/*<FormControl className={classes.formControl}>*/}
-								{/*<FormControlLabel*/}
-									{/*control={*/}
-										{/*<Checkbox*/}
-											{/*checked={this.state.is_instructor}*/}
-											{/*onChange={this.handleCheckboxChange('is_instructor')}*/}
-											{/*value={this.state.is_instructor}*/}
-										{/*/>*/}
-									{/*}*/}
-									{/*label="Are you an instructor/coach?"*/}
-								{/*/>*/}
-							{/*</FormControl>*/}
-						{/*</Paper>*/}
-					{/*</Grid>*/}
+				</Box>
 
-					{/*<Grid item xs>*/}
-						{/*<Paper className={classes.paper} elevation={4}>*/}
-							{/*<ImageUpload />*/}
-						{/*</Paper>*/}
-					{/*</Grid>*/}
-
-					{/*<Grid item xs>*/}
-						{/*<Paper className={classes.paper} elevation={4}>*/}
-							{/*<FindCreateAcademy />*/}
-						{/*</Paper>*/}
-					{/*</Grid>*/}
-				{/*</Grid>*/}
-
-				{/*<button type="button" onClick={this.submit}>Submit test</button>*/}
-
+				{ /*language=CSS*/ }
+				<style jsx global >{`
+          .form-field {
+						width: 330px;
+          }
+      `}</style>
 			</form>
 		);
 	}

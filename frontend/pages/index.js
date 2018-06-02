@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import Page from '../components/page'
 import Heading from 'grommet/components/Heading';
+import Grommet from 'grommet/components/Grommet';
 
 class Index extends Component {
   handleRequestClose = () => {
@@ -18,7 +19,7 @@ class Index extends Component {
 
   render() {
     return (
-      <div >
+      <Grommet >
         <Page>
           <Heading strong={false}
                    uppercase={false}>
@@ -26,7 +27,7 @@ class Index extends Component {
           </Heading>
         </Page>
 
-      </div>
+      </Grommet>
     );
   }
 }

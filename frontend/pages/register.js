@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { withStyles } from 'material-ui/styles';
-import withRoot from '../components/withRoot';
 import Page from '../components/page'
-import MessageFromMerrick from '../components/message-from-merrick'
 import RegisterForm from '../components/register-form'
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../lib/actionCreators';
@@ -11,22 +8,19 @@ import compose from 'recompose/compose'
 import withData from '../lib/withData'
 import config from '../config'
 
-const styles = {
-};
 
 class Register extends Component {
 
 	componentWillMount() {
-	  this.props.openMerrickMessage(config.COPY.REGISTER.MESSAGE_FROM_MERRICK)
+	  //this.props.openMerrickMessage(config.COPY.REGISTER.MESSAGE_FROM_MERRICK)
 	}
 
 	render() {
 		return (
-      <div className={this.props.classes.root}>
+      <div>
         <Page title="Register">
           <RegisterForm/>
         </Page>
-        <MessageFromMerrick/>
       </div>
 		);
 	}

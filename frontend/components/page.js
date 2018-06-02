@@ -14,7 +14,7 @@ class Page extends Component {
 
 		return (
 			<div >
-				<App >
+				<App centered={false}>
 					<Split flex='right' priority='right' fixed={true}>
 
 						<SideBar/>
@@ -28,6 +28,7 @@ class Page extends Component {
 
 					</Split>
 				</App>
+
 				{ /*language=CSS*/ }
 				<style jsx global >{`
           body {

@@ -11,8 +11,7 @@ import { gql, graphql, withApollo } from 'react-apollo'
 import Auth from '../lib/auth0';
 import Router from 'next/router';
 
-const styles = {
-};
+
 
 class Login extends Component {
 
@@ -63,7 +62,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className={this.props.classes.root}>
+      <div>
         <Page title="Login">
           <div>
 						<div>Login screen</div>
