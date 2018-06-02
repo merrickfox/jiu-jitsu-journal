@@ -12,28 +12,7 @@ import autobind from 'autobind-decorator'
 
 
 
-const styles = theme => ({
-	grid: {
-		flexGrow: 1,
-	},
-	card: {
-		minWidth: 100,
-	},
-	bullet: {
-		display: 'inline-block',
-		margin: '0 2px',
-		transform: 'scale(0.8)',
-	},
-	title: {
-		marginBottom: 16,
-		fontSize: 14,
-		color: theme.palette.text.secondary,
-	},
-	pos: {
-		marginBottom: 12,
-		color: theme.palette.text.secondary,
-	},
-});
+
 
 const daysToDisplay = 7;
 
@@ -64,7 +43,7 @@ class Week extends React.Component {
 
 	render() {
 		const {classes} = this.props;
-		const bull = <span className={classes.bullet}>•</span>;
+		const bull = <span >•</span>;
 		const oneSeventh = 1.714285714;
 		return (
 			<div>

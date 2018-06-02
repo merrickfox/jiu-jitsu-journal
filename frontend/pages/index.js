@@ -1,23 +1,9 @@
 /* eslint-disable flowtype/require-valid-file-annotation */
-
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import withRoot from '../components/withRoot';
 import Page from '../components/page'
-import Button from 'grommet/components/Button';
-import Edit from 'grommet/components/icons/base/Edit';
-
-const styles = {
-  root: {
-  },
-};
+import Heading from 'grommet/components/Heading';
 
 class Index extends Component {
-  state = {
-    open: false,
-  };
-
   handleRequestClose = () => {
     this.setState({
       open: false,
@@ -33,133 +19,17 @@ class Index extends Component {
   render() {
     return (
       <div >
-        <Button
-          icon={<Edit />}
-          label='Label'
-          href='#' />
         <Page>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
-          <div>Thing</div>
+          <Heading strong={false}
+                   uppercase={false}>
+            Welcome!
+          </Heading>
         </Page>
+
       </div>
     );
   }
 }
 
-Index.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default Index;

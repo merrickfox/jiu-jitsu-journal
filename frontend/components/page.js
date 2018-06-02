@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
 import withRoot from './withRoot';
-import DrawerMenu from './drawer'
+import SideBar from './side-bar'
 import TopToolbar from './top-toolbar'
-
-const drawerWidth = 240;
-
-
-
+import App from 'grommet/components/App';
+import Split from 'grommet/components/Split';
+import Box from 'grommet/components/Box';
 
 class Page extends Component {
 
@@ -16,13 +14,27 @@ class Page extends Component {
 
 		return (
 			<div >
-				<div >
-					<TopToolbar title={title}/>
-					<DrawerMenu/>
-					<main >
-						{children}
-					</main>
-				</div>
+				<App >
+					<Split flex='right' priority='right' fixed={true}>
+
+						<SideBar/>
+
+						<Box colorIndex='light-2' full={true} pad='medium'>
+
+							{children}
+
+						</Box>
+
+
+					</Split>
+				</App>
+				{ /*language=CSS*/ }
+				<style jsx global >{`
+          body {
+						font-family: 'Work Sans', sans-serif;
+            font-size: 16px;
+          }
+      `}</style>
 			</div>
 		);
 	}
