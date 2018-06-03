@@ -12,6 +12,7 @@ import TextInput from 'grommet/components/TextInput';
 import Select from 'grommet/components/Select';
 import BeltSelect from './belt-select'
 import Box from 'grommet/components/Box';
+import CheckBox from 'grommet/components/CheckBox';
 
 
 
@@ -44,15 +45,13 @@ class BasicDetailsForm extends React.Component {
 	};
 
 
-	// handleCheckboxChange = name => (event, checked) =>  {
-	// 	this.setState({
-	// 		[name]: checked,
-	// 	});
-	// };
+	isInstructorToggle = event =>  {
+		this.setState({
+			is_instructor: !this.state.is_instructor,
+		});
+	};
 
 	handleSelectChange = name => event =>  {
-		console.log('select change', name)
-		console.log('select change', event)
 		this.setState({
 			[name]: event.value,
 		});
@@ -180,13 +179,19 @@ class BasicDetailsForm extends React.Component {
 							 pad='none'
 							 margin='small'
 							 colorIndex='light-2'>
-						<BeltSelect placeHolder='Select Country'
-										inline={false}
-										multiple={false}
-										onSearch={this.onSearchCountry}
-										options={this.displayCountries}
-										value={this.state.country.value}
-										onChange={this.handleSelectChange('country')} />
+						<BeltSelect  />
+					</Box>
+
+					<Box align='center'
+							 pad='none'
+							 margin='small'
+							 colorIndex='light-2'>
+						<CheckBox label="I'm an instructor"
+											toggle={false}
+											disabled={false}
+											checked={this.state.is_instructor}
+											onChange={this.isInstructorToggle}
+											reverse={true} />
 					</Box>
 
 
@@ -195,7 +200,7 @@ class BasicDetailsForm extends React.Component {
 				{ /*language=CSS*/ }
 				<style jsx global>{`
           .form-field {
-						min-width: 330px;
+						min-width: 356px;
           }
 
 					.grommetux-select__options {

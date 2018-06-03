@@ -7,7 +7,8 @@ import {connect} from 'react-redux';
 import compose from 'recompose/compose'
 import withData from '../lib/withData'
 import config from '../config'
-
+import Heading from 'grommet/components/Heading';
+import ImageUpload from '../components/image-upload'
 
 class Register extends Component {
 
@@ -19,7 +20,14 @@ class Register extends Component {
 		return (
       <div>
         <Page title="Register">
+					<Heading tag='h3'>
+						The Basics
+					</Heading>
           <BasicDetailsForm/>
+					<Heading tag='h3'>
+						Your Avatar
+					</Heading>
+					<ImageUpload></ImageUpload>
         </Page>
       </div>
 		);

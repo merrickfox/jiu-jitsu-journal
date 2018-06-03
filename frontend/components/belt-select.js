@@ -55,7 +55,7 @@ class BeltSelect extends React.Component {
 				{ /*language=CSS*/ }
 				<style jsx global >{`
           .belt {
-            border: 1px solid black;
+            border: 1px solid #c7c7c7;
             width: 100px;
             height: 24px;
             position: relative;

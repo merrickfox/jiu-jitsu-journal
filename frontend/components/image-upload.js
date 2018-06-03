@@ -1,46 +1,36 @@
 import React, { Component } from 'react';
-import { withStyles } from 'material-ui/styles';
 import withRoot from './withRoot';
 import autobind from 'autobind-decorator'
 import AvatarEditor from 'react-avatar-editor'
 import Dropzone from 'react-dropzone'
 import config from '../config'
-import Grid from 'material-ui/Grid';
-import Typography from 'material-ui/Typography';
 import Tooltip from 'rc-tooltip';
 import Slider from 'rc-slider';
 import rcSliderIndex from 'rc-slider/assets/index.css';
 import rcToolTip from 'rc-tooltip/assets/bootstrap.css';
-import Button from 'material-ui/Button';
-import Paper from 'material-ui/Paper';
+import Heading from 'grommet/components/Heading';
+import Button from 'grommet/components/Button';
 
-const sliderStyles = `${rcSliderIndex} ${rcToolTip}`;
-//
-// const styles = theme => ({
-// 	dropzone_container: {
-// 		width: '100%'
-// 	},
-// 	grid: {
-// 		flexGrow: 1,
-// 	},
-// 	grid_item: {
-//
-// 	},
-// 	button: {
-// 		margin: theme.spacing.unit,
-// 	},
-// 	paper: theme.mixins.gutters({
-// 		paddingTop: 16,
-// 		paddingBottom: 16,
-// 		marginTop: theme.spacing.unit * 3,
-// 		display: 'flex',
-// 		flexDirection: 'column',
-// 		justifyContent: 'center',
-// 		alignItems: 'center',
-// 		minHeight: '250px'
-// 	}),
-// });
 
+const styles = `	
+	.editor-container {
+		display: flex;
+	}
+	
+	.editor {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.slider {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+`
+
+const sliderStyles = `${styles} ${rcSliderIndex} ${rcToolTip}`;
 
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
@@ -125,9 +115,9 @@ class ImageUpload extends Component {
 
 
 	render() {
-		const {classes} = this.props;
 		return (
 			<div>
+				{this.state.files.length === 0 &&
 				<Dropzone
 					multiple={false}
 					onDrop={this.onDrop}
@@ -152,14 +142,53 @@ class ImageUpload extends Component {
 						backgroundColor: 'red'
 					}}
 				>
+					<Heading tag='h4'>
+						Please drag your image file here, or click here to select an image.
+					</Heading>
+					<div>
+						<Heading tag='h4'>
+							{
+								this.state.files.map(f => <span key={f.name}>{f.name} - {f.size} bytes</span>)
+							}
+						</Heading>
 
-
+					</div>
 				</Dropzone>
+				}
 
 
 				{this.state.files.length > 0 &&
 					<div>
-						this is the image-upload
+						<div className='editor-container'>
+
+							<div className="editor">
+								<AvatarEditor
+									ref={this.setEditorRef}
+									image={this.state.files[0]}
+									width={200}
+									height={200}
+									border={10}
+									borderRadius={200}
+									color={[255, 255, 255, 1]} // RGBA
+									scale={this.state.scale}
+									rotate={0}
+								/>
+								<div >Drag to reposition your image</div>
+							</div>
+
+							<div className="slider">
+								<div type="body1">Scale your image</div>
+								<div style={wrapperStyle}>
+									<Slider min={0} max={200} defaultValue={100} handle={handle} onChange={this.onSliderChange} />
+								</div>
+							</div>
+
+
+
+						</div>
+						<Button label='Upload'
+										onClick={this.onClickSave}
+						/>
 
 					</div>
 				}
