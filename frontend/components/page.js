@@ -6,6 +6,8 @@ import TopToolbar from './top-toolbar'
 import App from 'grommet/components/App';
 import Split from 'grommet/components/Split';
 import Box from 'grommet/components/Box';
+import Heading from 'grommet/components/Heading';
+
 
 class Page extends Component {
 
@@ -20,7 +22,10 @@ class Page extends Component {
 						<SideBar/>
 
 						<Box colorIndex='light-2' full={true} pad='medium'>
-
+							<Heading strong={false}
+											 uppercase={false}>
+								{title}
+							</Heading>
 							{children}
 
 						</Box>

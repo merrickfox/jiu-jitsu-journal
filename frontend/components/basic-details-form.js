@@ -2,26 +2,38 @@ import React from 'react';
 import { gql, graphql } from 'react-apollo'
 import compose from 'recompose/compose'
 import autobind from 'autobind-decorator'
+import {countries} from '../lib/countries'
+import * as _ from 'lodash'
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';
 import FormField from 'grommet/components/FormField';
 import TextInput from 'grommet/components/TextInput';
-import Columns from 'grommet/components/Columns';
+import Select from 'grommet/components/Select';
+import BeltSelect from './belt-select'
 import Box from 'grommet/components/Box';
 
 
 
-class RegisterForm extends React.Component {
-	state = {
-		first_name: '',
-		last_name: '',
-		email: this.props.user.email,
-		country: '',
-		avatar_url: '',
-		belt: '',
-		is_instructor: false,
-	};
+class BasicDetailsForm extends React.Component {
+
+
+	constructor (props) {
+		super(props)
+		this.countries = this.formatCountriesForSelect()
+		this.displayCountries = _.cloneDeep(this.countries);
+
+		this.state = {
+			first_name: '',
+			last_name: '',
+			email: this.props.user.email,
+			country: '',
+			avatar_url: '',
+			belt: '',
+			is_instructor: false,
+			display_countries: this.displayCountries
+		};
+	}
 
 
 	handleChange = name => event =>  {
@@ -32,11 +44,41 @@ class RegisterForm extends React.Component {
 	};
 
 
-	handleCheckboxChange = name => (event, checked) =>  {
+	// handleCheckboxChange = name => (event, checked) =>  {
+	// 	this.setState({
+	// 		[name]: checked,
+	// 	});
+	// };
+
+	handleSelectChange = name => event =>  {
+		console.log('select change', name)
+		console.log('select change', event)
 		this.setState({
-			[name]: checked,
+			[name]: event.value,
 		});
 	};
+
+	@autobind
+	formatCountriesForSelect () {
+		return countries.map(country => {
+			return {
+				value: country.name,
+				sub: country.code,
+				label: <Box direction='row'  justify='between' className='select-value' key={country.code}>  <span title={country.name}>    {_.truncate(country.name, {'length': 35})}  </span>  <span className='secondary'>    {country.code}  </span></Box>
+			}
+		});
+	}
+
+	@autobind
+	onSearchCountry (event) {
+		this.displayCountries = _.filter(this.countries, country => {
+			return country.value.toLowerCase().includes(event.target.value.toLowerCase()) || country.sub.toLowerCase().includes(event.target.value.toLowerCase())
+		})
+
+		this.setState({
+			display_countries: this.displayCountries
+		});
+	}
 
 
 	@autobind
@@ -78,7 +120,6 @@ class RegisterForm extends React.Component {
 
 						</FormField>
 					</Box>
-
 					<Box align='center'
 							 pad='none'
 							 margin='small'
@@ -97,7 +138,6 @@ class RegisterForm extends React.Component {
 
 						</FormField>
 					</Box>
-
 					<Box align='center'
 							 pad='none'
 							 margin='small'
@@ -117,16 +157,51 @@ class RegisterForm extends React.Component {
 						</FormField>
 					</Box>
 
+					<Box align='center'
+							 pad='none'
+							 margin='small'
+							 colorIndex='light-2'>
+						<FormField label='Country'
+											 className='form-field'
+											 htmlFor='country'
+											 size='large'
+											 error=''>
+							<Select placeHolder='Select Country'
+											inline={false}
+											multiple={false}
+											onSearch={this.onSearchCountry}
+											options={this.displayCountries}
+											value={this.state.country.value}
+											onChange={this.handleSelectChange('country')} />
+						</FormField>
+					</Box>
 
+					<Box align='center'
+							 pad='none'
+							 margin='small'
+							 colorIndex='light-2'>
+						<BeltSelect placeHolder='Select Country'
+										inline={false}
+										multiple={false}
+										onSearch={this.onSearchCountry}
+										options={this.displayCountries}
+										value={this.state.country.value}
+										onChange={this.handleSelectChange('country')} />
+					</Box>
 
 
 				</Box>
 
 				{ /*language=CSS*/ }
-				<style jsx global >{`
+				<style jsx global>{`
           .form-field {
-						width: 330px;
+						min-width: 330px;
           }
+
+					.grommetux-select__options {
+						padding: 0 1em;
+						background-color: white;
+					}
       `}</style>
 			</form>
 		);
@@ -200,4 +275,4 @@ const reduxWrapper = connect(mapStateToProps, mapDispatchToProps);
 export default compose(
 	gqlWrapper,
 	reduxWrapper,
-)(RegisterForm);
+)(BasicDetailsForm);

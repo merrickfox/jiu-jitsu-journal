@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Page from '../components/page'
-import RegisterForm from '../components/register-form'
+import BasicDetailsForm from '../components/basic-details-form'
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';
@@ -19,7 +19,7 @@ class Register extends Component {
 		return (
       <div>
         <Page title="Register">
-          <RegisterForm/>
+          <BasicDetailsForm/>
         </Page>
       </div>
 		);

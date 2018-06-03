@@ -20,11 +20,7 @@ class Index extends Component {
   render() {
     return (
       <Grommet >
-        <Page>
-          <Heading strong={false}
-                   uppercase={false}>
-            Welcome!
-          </Heading>
+        <Page title='Welcome'>
         </Page>
 
       </Grommet>
