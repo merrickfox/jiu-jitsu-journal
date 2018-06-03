@@ -19,16 +19,25 @@ class Register extends Component {
 	render() {
 		return (
       <div>
-        <Page title="Register">
-					<Heading tag='h3'>
+        <Page title="Please complete your profile">
+					<Heading tag='h3' className='heading'>
 						The Basics
 					</Heading>
           <BasicDetailsForm/>
-					<Heading tag='h3'>
+					<Heading tag='h3' className='heading'>
 						Your Avatar
 					</Heading>
 					<ImageUpload></ImageUpload>
         </Page>
+
+				{ /*language=CSS*/ }
+				<style jsx global>{`
+          .heading{
+						margin: 2em 0
+          }
+
+
+      `}</style>
       </div>
 		);
 	}

@@ -10,16 +10,22 @@ import rcSliderIndex from 'rc-slider/assets/index.css';
 import rcToolTip from 'rc-tooltip/assets/bootstrap.css';
 import Heading from 'grommet/components/Heading';
 import Button from 'grommet/components/Button';
+import Spinning from 'grommet/components/icons/Spinning';
+import LoadingTick from './loading-tick'
 
-
+{ /*language=CSS*/ }
 const styles = `	
 	.editor-container {
 		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 	
 	.editor {
 		display: flex;
 		flex-direction: column;
+		margin-bottom: 2em;
 	}
 	
 	.slider {
@@ -28,6 +34,13 @@ const styles = `
 		justify-content: center;
 		align-items: center;
 	}
+	
+	.loading {
+		width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	}
 `
 
 const sliderStyles = `${styles} ${rcSliderIndex} ${rcToolTip}`;
@@ -35,7 +48,7 @@ const sliderStyles = `${styles} ${rcSliderIndex} ${rcToolTip}`;
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
 const Handle = Slider.Handle;
-const wrapperStyle = { width: 400, margin: 50 };
+const wrapperStyle = { width: 400, margin: 25 };
 
 const handle = (props) => {
 	const { value, dragging, index, ...restProps } = props;
@@ -60,6 +73,7 @@ class ImageUpload extends Component {
 		test_img_url: '',
 		scale: 1,
 		loading: false,
+		done: false,
 	};
 
 	@autobind
@@ -97,16 +111,22 @@ class ImageUpload extends Component {
 			image
 		}
 
+		this.setState({loading: true});
+
 		const response = await fetch(url, {
 			method: 'POST',
 			body: JSON.stringify(data)
 		})
+
+		this.setState({loading: false});
 
 		if (response.status !== 200) {
 			console.log('Looks like there was a problem. Status Code: ' +
 				response.status);
 			return;
 		} else {
+			this.setState({done: true});
+
 			const data = await response.json();
 			this.props.handleAvatarUrl(data);
 		}
@@ -156,8 +176,13 @@ class ImageUpload extends Component {
 				</Dropzone>
 				}
 
+				{this.state.files.length > 0 && (this.state.loading || this.state.done) &&
+					<div className='loading'>
+						<LoadingTick done={this.state.done} message='Image saved, you can always change it later.' />
+					</div>
+				}
 
-				{this.state.files.length > 0 &&
+				{this.state.files.length > 0 && !this.state.loading && !this.state.done &&
 					<div>
 						<div className='editor-container'>
 
@@ -169,7 +194,7 @@ class ImageUpload extends Component {
 									height={200}
 									border={10}
 									borderRadius={200}
-									color={[255, 255, 255, 1]} // RGBA
+									color={[245,245,245, 1]} // RGBA
 									scale={this.state.scale}
 									rotate={0}
 								/>
@@ -186,9 +211,10 @@ class ImageUpload extends Component {
 
 
 						</div>
-						<Button label='Upload'
+						<Button label='Save'
 										onClick={this.onClickSave}
 						/>
+
 
 					</div>
 				}
