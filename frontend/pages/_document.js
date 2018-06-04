@@ -25,6 +25,7 @@ class MyDocument extends Document {
           <link rel="manifest" href="/static/manifest.json" />
           {/* PWA primary color */}
           <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet"/>
+          <link href="../node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet"/>
           <link href="//cdnjs.cloudflare.com/ajax/libs/grommet/1.10.1/grommet.min.css" rel="stylesheet" type="text/css" />
           <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" rel="stylesheet"/>
 

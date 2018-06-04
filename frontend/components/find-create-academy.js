@@ -1,49 +1,71 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
-import TextField from 'material-ui/TextField';
 import {format} from 'date-fns'
 import { gql, graphql } from 'react-apollo'
 import compose from 'recompose/compose'
 import autobind from 'autobind-decorator'
 import ImageUpload from './image-upload'
 import {countries} from '../lib/countries'
-import { FormControl, FormHelperText, FormControlLabel } from 'material-ui/Form';
-import Input, { InputLabel } from 'material-ui/Input';
-import Select from 'material-ui/Select';
-import { MenuItem } from 'material-ui/Menu';
+import FormField from 'grommet/components/FormField';
+import TextInput from 'grommet/components/TextInput';
+import Select from 'grommet/components/Select';
+import Box from 'grommet/components/Box';
+import * as _ from 'lodash';
+import {search} from '../lib/algolia'
+import Search from './search'
+import AcademySearchSuggestion from './academy-search-suggestion'
 
 
-const styles = theme => ({
-	container: {
-		display: 'flex',
-		flexWrap: 'wrap',
-	},
-	textField: {
-		marginLeft: theme.spacing.unit,
-		marginRight: theme.spacing.unit,
-		width: 200,
-	},
-	formControl: {
-		margin: theme.spacing.unit,
-		minWidth: 200,
-	},
-	selectEmpty: {
-		marginTop: theme.spacing.unit * 2,
-	},
-	menu: {
-		width: 200,
-	},
-});
+
+
 
 
 class FindCreateAcademy extends React.Component {
-	state = {
-		name: '',
-		country: '',
-		postcode: '',
-		url: '',
-		avatar: '',
+
+
+	constructor (props) {
+		super(props)
+		this.countries = this.formatCountriesForSelect()
+		this.displayCountries = _.cloneDeep(this.countries);
+
+		this.state = {
+			name: '',
+			country: '',
+			postcode: '',
+			url: '',
+			avatar: '',
+			display_countries: this.displayCountries
+		};
+
+		search('car');
+	}
+
+	@autobind
+	formatCountriesForSelect () {
+		return countries.map(country => {
+			return {
+				value: country.name,
+				sub: country.code,
+				label: <Box direction='row'  justify='between' className='select-value' key={country.code}>  <span title={country.name}>    {_.truncate(country.name, {'length': 35})}  </span>  <span className='secondary'>    {country.code}  </span></Box>
+			}
+		});
+	}
+
+	handleSelectChange = name => event =>  {
+		this.setState({
+			[name]: event.value,
+		});
 	};
+
+	@autobind
+	onSearchCountry (event) {
+		this.displayCountries = _.filter(this.countries, country => {
+			return country.value.toLowerCase().includes(event.target.value.toLowerCase()) || country.sub.toLowerCase().includes(event.target.value.toLowerCase())
+		})
+
+		this.setState({
+			display_countries: this.displayCountries
+		});
+	}
 
 	handleChange = name => event => {
 		this.setState({
@@ -65,62 +87,117 @@ class FindCreateAcademy extends React.Component {
 	}
 
 	render() {
-		const { classes, activity_date, ...rest} = this.props;
-		console.log(format(activity_date, 'yyyy-mm-dd'))
 		return (
-			<div className={classes.container}>
-				find create activity
-				{/*<FormControl className={classes.formControl}>*/}
-					{/*<TextField*/}
-						{/*id="name"*/}
-						{/*label="Academy Name"*/}
-						{/*className={classes.textField}*/}
-						{/*value={this.state.name}*/}
-						{/*onChange={this.handleChange('name')}*/}
-						{/*margin="normal"*/}
-					{/*/>*/}
-				{/*</FormControl>*/}
+			<div >
+				<form noValidate autoComplete="off">
+					<Search
+						placeholder='Start typing your academy name'
+						suggestion={AcademySearchSuggestion}
+					>
+					</Search>
 
-				{/*<FormControl className={classes.formControl}>*/}
-					{/*<InputLabel htmlFor="country">Country</InputLabel>*/}
-					{/*<Select*/}
-						{/*value={this.state.country}*/}
-						{/*onChange={this.handleChange('country')}*/}
-						{/*input={<Input name="country" id="country" />}*/}
-					{/*>*/}
-						{/*{*/}
-							{/*countries.map(country => <MenuItem key={country.code} value={country.code}>{country.name}</MenuItem>)*/}
-						{/*}*/}
-					{/*</Select>*/}
-				{/*</FormControl>*/}
+					<Box
+						direction='row'
+						justify='center'
+						align='center'
+						wrap={true}
+						pad='none'
+						margin='small'
+						colorIndex='light-2'
+					>
+						<Box align='center'
+								 pad='none'
+								 margin='small'
+								 colorIndex='light-2'>
+							<FormField label='Academy Name'
+												 className='form-field'
+												 htmlFor='name'
+												 size='large'
+												 error=''>
+								<TextInput
+									value={this.state.name}
+									size='small'
+									id='name'
+									name='name'
+									onDOMChange={this.handleChange('name')}
+								/>
 
-				{/*<FormControl className={classes.formControl}>*/}
-					{/*<TextField*/}
-						{/*id="postcode"*/}
-						{/*label="Postal Code/Zip"*/}
-						{/*className={classes.textField}*/}
-						{/*value={this.state.postcode}*/}
-						{/*onChange={this.handleChange('postcode')}*/}
-						{/*margin="normal"*/}
-					{/*/>*/}
-				{/*</FormControl>*/}
+							</FormField>
+						</Box>
+						<Box align='center'
+								 pad='none'
+								 margin='small'
+								 colorIndex='light-2'>
+							<FormField label='URL'
+												 className='form-field'
+												 htmlFor='url'
+												 size='large'
+												 error=''>
+								<TextInput
+									value={this.state.url}
+									id='url'
+									name='url'
+									onDOMChange={this.handleChange('url')}
+								/>
 
-				{/*<FormControl className={classes.formControl}>*/}
-					{/*<TextField*/}
-						{/*id="url"*/}
-						{/*label="Website URL"*/}
-						{/*className={classes.textField}*/}
-						{/*value={this.state.url}*/}
-						{/*onChange={this.handleChange('url')}*/}
-						{/*margin="normal"*/}
-					{/*/>*/}
-				{/*</FormControl>*/}
+							</FormField>
+						</Box>
+						<Box align='center'
+								 pad='none'
+								 margin='small'
+								 colorIndex='light-2'>
+							<FormField label='Postcode/Zip'
+												 className='form-field'
+												 htmlFor='postcode'
+												 size='large'
+												 error=''>
+								<TextInput
+									value={this.state.postcode}
+									id='postcode'
+									name='postcode'
+									onDOMChange={this.handleChange('postcode')}
+								/>
+
+							</FormField>
+						</Box>
+
+						<Box align='center'
+								 pad='none'
+								 margin='small'
+								 colorIndex='light-2'>
+							<FormField label='Country'
+												 className='form-field'
+												 htmlFor='country'
+												 size='large'
+												 error=''>
+								<Select placeHolder='Select Country'
+												inline={false}
+												multiple={false}
+												onSearch={this.onSearchCountry}
+												options={this.displayCountries}
+												value={this.state.country.value}
+												onChange={this.handleSelectChange('country')} />
+							</FormField>
+						</Box>
+					</Box>
+
+					<ImageUpload></ImageUpload>
+
+					{ /*language=CSS*/ }
+					<style jsx global>{`
+          .form-field {
+						min-width: 356px;
+          }
+
+					.grommetux-select__options {
+						padding: 0 1em;
+						background-color: white;
+					}
+      `}</style>
+				</form>
 
 
 
-				<ImageUpload handleAvatarUrl={this.handleAvatarUrl}/>
-
-				<button type="button" onClick={this.submit}>Create Academy</button>
 			</div>
 		);
 	}

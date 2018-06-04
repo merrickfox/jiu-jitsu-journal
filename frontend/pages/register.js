@@ -6,14 +6,13 @@ import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';
 import compose from 'recompose/compose'
 import withData from '../lib/withData'
-import config from '../config'
 import Heading from 'grommet/components/Heading';
 import ImageUpload from '../components/image-upload'
+import FindCreateAcademy from '../components/find-create-academy'
 
 class Register extends Component {
 
 	componentWillMount() {
-	  //this.props.openMerrickMessage(config.COPY.REGISTER.MESSAGE_FROM_MERRICK)
 	}
 
 	render() {
@@ -25,9 +24,13 @@ class Register extends Component {
 					</Heading>
           <BasicDetailsForm/>
 					<Heading tag='h3' className='heading'>
-						Your Avatar
+						Your Avatar (optional)
 					</Heading>
 					<ImageUpload></ImageUpload>
+					<Heading tag='h3' className='heading'>
+						Your Academy/School
+					</Heading>
+					<FindCreateAcademy/>
         </Page>
 
 				{ /*language=CSS*/ }
