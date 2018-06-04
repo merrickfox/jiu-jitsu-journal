@@ -1,8 +1,9 @@
 import React from 'react';
 import Heading from 'grommet/components/Heading';
+import BrandGrommetOutlineIcon from 'grommet/components/icons/base/BrandGrommetOutline';
 
 function AcademySearchSuggestion(props) {
-	const {avatar_url, name, country} = props.data;
+	const {avatar_url, name, country, postcode, members_using_academy} = props.data;
 	console.log('url', avatar_url)
 
 	return <div className='container'>
@@ -11,20 +12,44 @@ function AcademySearchSuggestion(props) {
 		<div className="details-container">
 			<div className="detail">
 				<Heading uppercase={true}
-								 tag='h4'
+								 tag='h5'
 								 className='detail-heading'>
 					Academy Name:
 				</Heading>
-				<span>{name}</span>
+				<span className="text">{name}</span>
+			</div>
+
+			<div className="divider"><BrandGrommetOutlineIcon size='xsmall' /></div>
+
+			<div className="detail">
+				<Heading uppercase={true}
+								 tag='h5'>
+					Country:
+				</Heading>
+				<span className="text">{country}</span><img className='flag' src={`http://www.countryflags.io/${country}/shiny/64.png`} alt=""/>
 			</div>
 
 			<div className="detail">
 				<Heading uppercase={true}
-								 tag='h4'>
-					Country:
+								 tag='h5'
+								 className='detail-heading'>
+					Postal Code:
 				</Heading>
-				<span>{country}</span><img className='flag' src="http://www.countryflags.io/GB/shiny/64.png" alt=""/>
+				<span className="text">{postcode}</span>
 			</div>
+
+			<div className="divider"><BrandGrommetOutlineIcon size='xsmall' /></div>
+
+			<div className="detail">
+				<Heading uppercase={true}
+								 tag='h5'
+								 className='detail-heading'>
+					People using this academy:
+				</Heading>
+				<span className="text">{members_using_academy}</span>
+			</div>
+
+			<div className="divider"><BrandGrommetOutlineIcon size='xsmall' /></div>
 		</div>
 
 		{ /*language=CSS*/ }
@@ -36,14 +61,16 @@ function AcademySearchSuggestion(props) {
 			}
 
 			.avatar-image {
-        width: 100px;
-        height: 100px;
+        width: 75px;
+        height: 75px;
 				margin-right: 1em;
+        border-radius: 50%;
 			}
 
 			.details-container {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
 			}
 
 			.detail {
@@ -59,6 +86,14 @@ function AcademySearchSuggestion(props) {
 
 			.detail-heading {
 				color: lightslategray;
+			}
+
+			.divider {
+				margin: 0 0.5em;
+			}
+
+			.text {
+        line-height: 1.375;
 			}
 
 		`}</style>
