@@ -3,13 +3,19 @@ import SearchInput from 'grommet/components/SearchInput';
 import Button from 'grommet/components/Button';
 import FormField from 'grommet/components/FormField';
 import {search} from '../lib/algolia'
+import * as actionCreators from '../lib/actionCreators';
+import {connect} from 'react-redux';
+import compose from 'recompose/compose';
+import {bindActionCreators} from 'redux';
+
 
 class Search extends React.Component {
 	
 	state = {
 		query: '',
 		results: [],
-		number_of_results: 0
+		number_of_results: 0,
+		selected_academy: ''
 	}
 	
 	handleChange = event  =>  {
@@ -28,8 +34,20 @@ class Search extends React.Component {
 		});
 	}
 
-	createNewAcademy = event  =>  {
+	selectAcademy = id => {
+		this.setState({
+			query: '',
+			selected_academy: id,
+		}, () => {
+			this.props.selectAcademyRegister(id);
+		});
+	}
 
+	createNewAcademy = event  =>  {
+		this.props.showCreateAcademy();
+		this.setState({
+			query: '',
+		});
 	};
 
 	render() {
@@ -54,17 +72,20 @@ class Search extends React.Component {
 					<div className='suggestions-container'>
 						<div className='suggestions'>
 							{this.state.results.map( result =>
-								<div className="suggestion" key={result.id}>
-									<Suggestion data={result} key={result.id} className='suggestion'/>
+								<div className="suggestion" key={result.id} onClick={()=>{this.selectAcademy(result.id)}}>
+									<Suggestion data={result} key={result.id} />
 								</div>
 							)}
 						</div>
-						<Button label="Can't find it? Create it!"
-										onClick={this.createNewAcademy}
-										href='#'
-										accent={false}
-										primary={true}
-										className='create'/>
+						<div className="button-container">
+							<Button label="Can't find it? Create it!"
+											onClick={this.createNewAcademy}
+											href='#'
+											accent={false}
+											primary={true}
+											className='create'/>
+						</div>
+
 					</div>
 
 
@@ -73,7 +94,7 @@ class Search extends React.Component {
 
 
 				{ /*language=CSS*/ }
-				<style jsx  >{`
+				<style jsx >{`
           .search-container {
 						width: 100%;
             position: relative;
@@ -93,8 +114,20 @@ class Search extends React.Component {
 
 					.suggestion {
 						border-bottom: 1px solid gray;
+
 					}
 
+          .suggestion:hover {
+            background-color: lemonchiffon;
+
+          }
+
+					.button-container {
+						width: 100%;
+						display: flex;
+						justify-content: center;
+						margin-bottom: 1em;
+					}
 
 				`}</style>
 			</div>
@@ -103,5 +136,18 @@ class Search extends React.Component {
 	}
 }
 
+function mapStateToProps(state) {
+	return{
+		show_create_academy: state.register.show_create_academy,
+	}
+}
 
-export default Search;
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators(actionCreators, dispatch)
+}
+
+const reduxWrapper = connect(mapStateToProps, mapDispatchToProps);
+
+export default compose(
+	reduxWrapper,
+)(Search);

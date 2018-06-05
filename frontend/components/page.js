@@ -12,16 +12,16 @@ import Heading from 'grommet/components/Heading';
 class Page extends Component {
 
 	render() {
-		const { classes, children, title } = this.props;
+		const { children, title } = this.props;
 
 		return (
-			<div >
+			<div className='app-container'>
 				<App centered={false}>
 					<Split flex='right' priority='right' fixed={true}>
 
 						<SideBar/>
 
-						<Box colorIndex='light-2' full={true} pad='medium'>
+						<Box colorIndex='light-2' full={true} pad='medium' className='main-box'>
 							<Heading strong={false}
 											 uppercase={false}>
 								{title}
@@ -40,6 +40,10 @@ class Page extends Component {
 						font-family: 'Work Sans', sans-serif;
             font-size: 16px;
           }
+
+					.main-box {
+						padding-bottom: 100px;
+					}
       `}</style>
 			</div>
 		);

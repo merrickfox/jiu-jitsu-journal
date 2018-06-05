@@ -5,7 +5,6 @@ import UserIcon from 'grommet/components/icons/base/User';
 
 function AcademySearchSuggestion(props) {
 	const {avatar_url, name, country, postcode, members_using_academy} = props.data;
-	console.log('url', avatar_url)
 
 	return <div className='container'>
 

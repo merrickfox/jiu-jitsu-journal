@@ -1,7 +1,6 @@
 import React from 'react';
 import {format} from 'date-fns'
 import { gql, graphql } from 'react-apollo'
-import compose from 'recompose/compose'
 import autobind from 'autobind-decorator'
 import ImageUpload from './image-upload'
 import {countries} from '../lib/countries'
@@ -13,6 +12,10 @@ import * as _ from 'lodash';
 import {search} from '../lib/algolia'
 import Search from './search'
 import AcademySearchSuggestion from './academy-search-suggestion'
+import * as actionCreators from '../lib/actionCreators';
+import {connect} from 'react-redux';
+import compose from 'recompose/compose';
+import {bindActionCreators} from 'redux';
 
 
 
@@ -87,6 +90,7 @@ class FindCreateAcademy extends React.Component {
 	}
 
 	render() {
+		const {reduxUpdater} = this.props;
 		return (
 			<div >
 				<form noValidate autoComplete="off">
@@ -96,92 +100,97 @@ class FindCreateAcademy extends React.Component {
 					>
 					</Search>
 
-					<Box
-						direction='row'
-						justify='center'
-						align='center'
-						wrap={true}
-						pad='none'
-						margin='small'
-						colorIndex='light-2'
-					>
-						<Box align='center'
-								 pad='none'
-								 margin='small'
-								 colorIndex='light-2'>
-							<FormField label='Academy Name'
-												 className='form-field'
-												 htmlFor='name'
-												 size='large'
-												 error=''>
-								<TextInput
-									value={this.state.name}
-									size='small'
-									id='name'
-									name='name'
-									onDOMChange={this.handleChange('name')}
-								/>
+					{ this.props.show_create_academy &&
+					<div>
+						<Box
+							direction='row'
+							justify='center'
+							align='center'
+							wrap={true}
+							pad='none'
+							margin='small'
+							colorIndex='light-2'
+						>
+							<Box align='center'
+									 pad='none'
+									 margin='small'
+									 colorIndex='light-2'>
+								<FormField label='Academy Name'
+													 className='form-field'
+													 htmlFor='name'
+													 size='large'
+													 error=''>
+									<TextInput
+										value={this.state.name}
+										size='small'
+										id='name'
+										name='name'
+										onDOMChange={this.handleChange('name')}
+									/>
 
-							</FormField>
+								</FormField>
+							</Box>
+							<Box align='center'
+									 pad='none'
+									 margin='small'
+									 colorIndex='light-2'>
+								<FormField label='URL'
+													 className='form-field'
+													 htmlFor='url'
+													 size='large'
+													 error=''>
+									<TextInput
+										value={this.state.url}
+										id='url'
+										name='url'
+										onDOMChange={this.handleChange('url')}
+									/>
+
+								</FormField>
+							</Box>
+							<Box align='center'
+									 pad='none'
+									 margin='small'
+									 colorIndex='light-2'>
+								<FormField label='Postcode/Zip'
+													 className='form-field'
+													 htmlFor='postcode'
+													 size='large'
+													 error=''>
+									<TextInput
+										value={this.state.postcode}
+										id='postcode'
+										name='postcode'
+										onDOMChange={this.handleChange('postcode')}
+									/>
+
+								</FormField>
+							</Box>
+
+							<Box align='center'
+									 pad='none'
+									 margin='small'
+									 colorIndex='light-2'>
+								<FormField label='Country'
+													 className='form-field'
+													 htmlFor='country'
+													 size='large'
+													 error=''>
+									<Select placeHolder='Select Country'
+													inline={false}
+													multiple={false}
+													onSearch={this.onSearchCountry}
+													options={this.displayCountries}
+													value={this.state.country.value}
+													onChange={this.handleSelectChange('country')} />
+								</FormField>
+							</Box>
 						</Box>
-						<Box align='center'
-								 pad='none'
-								 margin='small'
-								 colorIndex='light-2'>
-							<FormField label='URL'
-												 className='form-field'
-												 htmlFor='url'
-												 size='large'
-												 error=''>
-								<TextInput
-									value={this.state.url}
-									id='url'
-									name='url'
-									onDOMChange={this.handleChange('url')}
-								/>
 
-							</FormField>
-						</Box>
-						<Box align='center'
-								 pad='none'
-								 margin='small'
-								 colorIndex='light-2'>
-							<FormField label='Postcode/Zip'
-												 className='form-field'
-												 htmlFor='postcode'
-												 size='large'
-												 error=''>
-								<TextInput
-									value={this.state.postcode}
-									id='postcode'
-									name='postcode'
-									onDOMChange={this.handleChange('postcode')}
-								/>
+						<ImageUpload></ImageUpload>
+					</div>
+					}
 
-							</FormField>
-						</Box>
-
-						<Box align='center'
-								 pad='none'
-								 margin='small'
-								 colorIndex='light-2'>
-							<FormField label='Country'
-												 className='form-field'
-												 htmlFor='country'
-												 size='large'
-												 error=''>
-								<Select placeHolder='Select Country'
-												inline={false}
-												multiple={false}
-												onSearch={this.onSearchCountry}
-												options={this.displayCountries}
-												value={this.state.country.value}
-												onChange={this.handleSelectChange('country')} />
-							</FormField>
-						</Box>
-					</Box>
-
-					<ImageUpload></ImageUpload>
 
 
 				</form>
@@ -255,8 +264,21 @@ const gqlWrapper = graphql(addClass, {
 	})
 })
 
+function mapStateToProps(state) {
+	return{
+		show_create_academy: state.register.show_create_academy,
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators(actionCreators, dispatch)
+}
+
+const reduxWrapper = connect(mapStateToProps, mapDispatchToProps);
+
 export default compose(
 	gqlWrapper,
+	reduxWrapper,
 )(FindCreateAcademy);
 
 

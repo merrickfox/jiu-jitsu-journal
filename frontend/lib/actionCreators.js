@@ -52,6 +52,19 @@ export function userImageUploadedRegister (url) {
 	}
 }
 
+export function selectAcademyRegister (id) {
+	return {
+		type: 'SELECT_ACADEMY_REGISTER',
+		id
+	}
+}
+
+export function showCreateAcademy () {
+	return {
+		type: 'SHOW_CREATE_ACADEMY',
+	}
+}
+
 export function removeUser () {
 	return {
 		type: 'REMOVE_USER'

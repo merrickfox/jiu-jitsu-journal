@@ -1,7 +1,13 @@
-const init = {}
+const init = {
+
+}
+
+const init_register = {
+		show_create_academy: false,
+}
 
 export default {
-	register: (state = init, action) => {
+	register: (state = init_register, action) => {
 		switch (action.type) {
 			case 'UPDATE_BASIC_DETAILS':
 				return Object.assign({}, state, {
@@ -10,6 +16,14 @@ export default {
 			case 'USER_AVATAR_UPLOADED_REGISTER':
 				return Object.assign({}, state, {
 					user_avatar: action.url
+				})
+			case 'SELECT_ACADEMY_REGISTER':
+				return Object.assign({}, state, {
+					academy_id: action.id
+				})
+			case 'SHOW_CREATE_ACADEMY':
+				return Object.assign({}, state, {
+					show_create_academy: !state.show_create_academy
 				})
 			default:
 				return state

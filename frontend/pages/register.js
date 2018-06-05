@@ -16,7 +16,7 @@ class Register extends Component {
 	}
 
 	render() {
-		const {updateBasicDetails, userImageUploadedRegister} = this.props
+		const {updateBasicDetails, userImageUploadedRegister, selectAcademyRegister} = this.props
 		return (
       <div>
         <Page title="Please complete your profile">
@@ -31,17 +31,16 @@ class Register extends Component {
 					<Heading tag='h3' className='heading'>
 						Your Academy/School
 					</Heading>
-					<FindCreateAcademy/>
+					<FindCreateAcademy />
         </Page>
 
 				{ /*language=CSS*/ }
-				<style jsx>{`
-          .heading{
-						margin: 2em 0
-          }
+				<style jsx global>{`
+					.heading{
+						margin: 2em 0;
+					}
+				`}</style>
 
-
-      `}</style>
       </div>
 		);
 	}
