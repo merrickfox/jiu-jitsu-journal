@@ -17,9 +17,12 @@ class LoadingTick extends React.Component {
 						<div className="checkmark draw"></div>
 					}
 
-
-					{ /*language=CSS*/ }
-					<style jsx global >{`
+				</div>
+				{ message && done &&
+					<span>{message}</span>
+				}
+				{ /*language=CSS*/ }
+				<style jsx>{`
 
 						.container {
               display: flex;
@@ -99,11 +102,6 @@ class LoadingTick extends React.Component {
 
 
 					`}</style>
-				</div>
-				{ message && done &&
-					<span>{message}</span>
-				}
-
 			</div>
 
 		);
