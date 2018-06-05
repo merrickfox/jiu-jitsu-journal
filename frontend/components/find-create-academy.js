@@ -183,8 +183,11 @@ class FindCreateAcademy extends React.Component {
 
 					<ImageUpload></ImageUpload>
 
-					{ /*language=CSS*/ }
-					<style jsx global>{`
+
+				</form>
+
+				{ /*language=CSS*/ }
+				<style jsx >{`
           .form-field {
 						min-width: 356px;
           }
@@ -194,9 +197,6 @@ class FindCreateAcademy extends React.Component {
 						background-color: white;
 					}
       `}</style>
-				</form>
-
-
 
 			</div>
 		);

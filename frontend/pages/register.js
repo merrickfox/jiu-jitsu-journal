@@ -35,7 +35,7 @@ class Register extends Component {
         </Page>
 
 				{ /*language=CSS*/ }
-				<style jsx global>{`
+				<style jsx>{`
           .heading{
 						margin: 2em 0
           }
