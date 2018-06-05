@@ -45,10 +45,31 @@ export function updateBasicDetails (details) {
 	}
 }
 
-export function userImageUploadedRegister (url) {
+export function createAcademyDetails (academyDetails) {
+	return {
+		type: 'CREATE_ACADEMY_DETAILS',
+		academyDetails
+	}
+}
+
+export function userImageUploadedRegister (user_avatar_url) {
 	return {
 		type: 'USER_AVATAR_UPLOADED_REGISTER',
-		url
+		user_avatar_url
+	}
+}
+
+export function academyImageUploadedRegister (academy_avatar_url) {
+	return {
+		type: 'ACADEMY_AVATAR_UPLOADED_REGISTER',
+		academy_avatar_url
+	}
+}
+
+export function beltRegister (belt) {
+	return {
+		type: 'BELT_REGISTER',
+		belt
 	}
 }
 

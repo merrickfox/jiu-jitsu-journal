@@ -6,6 +6,7 @@ import ImageUpload from './image-upload'
 import {countries} from '../lib/countries'
 import FormField from 'grommet/components/FormField';
 import TextInput from 'grommet/components/TextInput';
+import Heading from 'grommet/components/Heading';
 import Select from 'grommet/components/Select';
 import Box from 'grommet/components/Box';
 import * as _ from 'lodash';
@@ -43,6 +44,11 @@ class FindCreateAcademy extends React.Component {
 	}
 
 	@autobind
+	validate () {
+		this.props.createAcademyDetails(this.state);
+	}
+
+	@autobind
 	formatCountriesForSelect () {
 		return countries.map(country => {
 			return {
@@ -56,7 +62,7 @@ class FindCreateAcademy extends React.Component {
 	handleSelectChange = name => event =>  {
 		this.setState({
 			[name]: event.value,
-		});
+		},this.validate);
 	};
 
 	@autobind
@@ -73,7 +79,7 @@ class FindCreateAcademy extends React.Component {
 	handleChange = name => event => {
 		this.setState({
 			[name]: event.target.value,
-		});
+		},this.validate);
 	};
 
 	handleAvatarUrl (url) {
@@ -90,7 +96,7 @@ class FindCreateAcademy extends React.Component {
 	}
 
 	render() {
-		const {reduxUpdater} = this.props;
+		const {academyImageUploadedRegister} = this.props;
 		return (
 			<div >
 				<form noValidate autoComplete="off">
@@ -187,7 +193,10 @@ class FindCreateAcademy extends React.Component {
 							</Box>
 						</Box>
 
-						<ImageUpload></ImageUpload>
+						<Heading tag='h3' className='heading'>
+							Academy Logo
+						</Heading>
+						<ImageUpload reduxUpdater={academyImageUploadedRegister}></ImageUpload>
 					</div>
 					}
 

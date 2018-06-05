@@ -13,9 +13,17 @@ export default {
 				return Object.assign({}, state, {
 					basic_details: action.details
 				})
+			case 'CREATE_ACADEMY_DETAILS':
+				return Object.assign({}, state, {
+					new_academy_details: action.academyDetails
+				})
 			case 'USER_AVATAR_UPLOADED_REGISTER':
 				return Object.assign({}, state, {
-					user_avatar: action.url
+					user_avatar: action.user_avatar_url
+				})
+			case 'ACADEMY_AVATAR_UPLOADED_REGISTER':
+				return Object.assign({}, state, {
+					academy_avatar: action.academy_avatar_url
 				})
 			case 'SELECT_ACADEMY_REGISTER':
 				return Object.assign({}, state, {
@@ -24,6 +32,10 @@ export default {
 			case 'SHOW_CREATE_ACADEMY':
 				return Object.assign({}, state, {
 					show_create_academy: !state.show_create_academy
+				})
+			case 'BELT_REGISTER':
+				return Object.assign({}, state, {
+					belt: action.belt
 				})
 			default:
 				return state

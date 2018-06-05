@@ -12,6 +12,8 @@ class BeltSelect extends React.Component {
 	handleSelectChange = name => event =>  {
 		this.setState({
 			[name]: event.value,
+		}, () => {
+			this.props.reduxUpdater(this.state.belt.value)
 		});
 	};
 

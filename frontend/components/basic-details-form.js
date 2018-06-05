@@ -30,7 +30,6 @@ class BasicDetailsForm extends React.Component {
 			email: this.props.user.email,
 			country: '',
 			avatar_url: '',
-			belt: '',
 			is_instructor: false,
 			display_countries: this.displayCountries
 		};
@@ -184,7 +183,7 @@ class BasicDetailsForm extends React.Component {
 							 pad='none'
 							 margin='small'
 							 colorIndex='light-2'>
-						<BeltSelect  />
+						<BeltSelect reduxUpdater={this.props.beltRegister} />
 					</Box>
 
 					<Box align='center'
