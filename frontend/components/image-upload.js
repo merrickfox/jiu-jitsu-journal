@@ -128,7 +128,7 @@ class ImageUpload extends Component {
 			this.setState({done: true});
 
 			const data = await response.json();
-			this.props.handleAvatarUrl(data);
+			this.props.reduxUpdater(data.s3Response.Location);
 		}
 	}
 

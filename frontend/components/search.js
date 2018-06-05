@@ -50,7 +50,7 @@ class Search extends React.Component {
 						onDOMChange={this.handleChange}
 					/>
 				</FormField>
-				{ this.state.number_of_results > 0 &&
+				{ this.state.number_of_results > 0 && this.state.query.length > 0 &&
 					<div className='suggestions-container'>
 						<div className='suggestions'>
 							{this.state.results.map( result =>
@@ -83,6 +83,8 @@ class Search extends React.Component {
 						background-color: white;
 						display: flex;
 						flex-direction: column;
+						border: 1px solid;
+            border-color: rgba(0,0,0,.15);
 					}
 
 					.suggestions {

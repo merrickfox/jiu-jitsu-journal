@@ -37,10 +37,15 @@ class BasicDetailsForm extends React.Component {
 	}
 
 
+	@autobind
+	validate () {
+		this.props.reduxUpdater(this.state);
+	}
+
 	handleChange = name => event =>  {
 		this.setState({
 			[name]: event.target.value,
-		});
+		},this.validate);
 
 	};
 
@@ -48,13 +53,13 @@ class BasicDetailsForm extends React.Component {
 	isInstructorToggle = event =>  {
 		this.setState({
 			is_instructor: !this.state.is_instructor,
-		});
+		},this.validate);
 	};
 
 	handleSelectChange = name => event =>  {
 		this.setState({
 			[name]: event.value,
-		});
+		},this.validate);
 	};
 
 	@autobind

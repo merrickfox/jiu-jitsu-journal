@@ -1,6 +1,20 @@
 const init = {}
 
 export default {
+	register: (state = init, action) => {
+		switch (action.type) {
+			case 'UPDATE_BASIC_DETAILS':
+				return Object.assign({}, state, {
+					basic_details: action.details
+				})
+			case 'USER_AVATAR_UPLOADED_REGISTER':
+				return Object.assign({}, state, {
+					user_avatar: action.url
+				})
+			default:
+				return state
+		}
+	},
 	dates: (state = init, action) => {
 		switch (action.type) {
 			case 'SET_DATE_FOR_CREATE_ACTIVITY':

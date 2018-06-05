@@ -38,6 +38,20 @@ export function setUser (user) {
 	}
 }
 
+export function updateBasicDetails (details) {
+	return {
+		type: 'UPDATE_BASIC_DETAILS',
+		details
+	}
+}
+
+export function userImageUploadedRegister (url) {
+	return {
+		type: 'USER_AVATAR_UPLOADED_REGISTER',
+		url
+	}
+}
+
 export function removeUser () {
 	return {
 		type: 'REMOVE_USER'

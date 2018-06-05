@@ -16,17 +16,18 @@ class Register extends Component {
 	}
 
 	render() {
+		const {updateBasicDetails, userImageUploadedRegister} = this.props
 		return (
       <div>
         <Page title="Please complete your profile">
 					<Heading tag='h3' className='heading'>
 						The Basics
 					</Heading>
-          <BasicDetailsForm/>
+          <BasicDetailsForm reduxUpdater={updateBasicDetails}/>
 					<Heading tag='h3' className='heading'>
 						Your Avatar (optional)
 					</Heading>
-					<ImageUpload></ImageUpload>
+					<ImageUpload reduxUpdater={userImageUploadedRegister}></ImageUpload>
 					<Heading tag='h3' className='heading'>
 						Your Academy/School
 					</Heading>
