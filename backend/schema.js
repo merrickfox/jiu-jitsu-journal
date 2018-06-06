@@ -113,7 +113,6 @@ const model = `
 	input AcademyInput {
   	name: String
   	postcode: String
-  	address: String
   	country: String
   	picture_url: String
   	url: String
@@ -123,7 +122,6 @@ const model = `
 		id: String
 		class_reference_count: Int
 		name: String
-		address: String
   	postcode: String
   	country: String
   	picture_url: String

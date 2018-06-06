@@ -6,7 +6,7 @@
   "dependencies": {
     "apollo-server-lambda": "^1.2.0",
     "auth0": "^2.9.1",
-    "aws-sdk": "^2.136.0",
+    "aws-sdk": "^2.252.1",
     "babel-runtime": "^6.26.0",
     "eslint-plugin-react": "^7.4.0",
     "formidable": "^1.1.1",

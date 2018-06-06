@@ -23,7 +23,8 @@ export const create = (academy) => {
 
 	const params = {
 		TableName: process.env.ACADEMY_TABLE,
-		Item: newAcademy
+		Item: newAcademy,
+		ReturnValues: 'NONE'
 	};
 
 	return new Promise((resolve, reject) => {
@@ -34,8 +35,8 @@ export const create = (academy) => {
 				reject(new Error('Couldn\'t create'));
 				return;
 			}
-			console.log('created Academy!', data.Item)
-			resolve(data.Item);
+			console.log('created Academy!', data)
+			resolve({id: newAcademy.id});
 		});
 	})
 

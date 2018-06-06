@@ -6,56 +6,56 @@ import imageUpload from './handlers/image-upload'
 
 module.exports.query = function graphqlHandler(event, context, callback) {
 	// TODO clean this pile of shit up
-	console.log('headers', event.headers.Authorization)
-	if (!event.headers.Authorization) {
-		let response = {
-			statusCode: '401',
-			body: JSON.stringify({error: 'No auth token'}),
-			headers: {
-				'Content-Type': 'application/json',
-			}
-		};
-
-		context.succeed(response);
-	}
-
-	const tokenParts = event.headers.Authorization.split(' ')
-	const tokenValue = tokenParts[1];
-
-	if (!tokenValue) {
-		let response = {
-			statusCode: '401',
-			body: JSON.stringify({error: 'No auth token'}),
-			headers: {
-				'Content-Type': 'application/json',
-			}
-		};
-
-		context.succeed(response);
-	}
+	// console.log('headers', event.headers.Authorization)
+	// if (!event.headers.Authorization) {
+	// 	let response = {
+	// 		statusCode: '401',
+	// 		body: JSON.stringify({error: 'No auth token'}),
+	// 		headers: {
+	// 			'Content-Type': 'application/json',
+	// 		}
+	// 	};
+	//
+	// 	context.succeed(response);
+	// }
+	//
+	// const tokenParts = event.headers.Authorization.split(' ')
+	// const tokenValue = tokenParts[1];
+	//
+	// if (!tokenValue) {
+	// 	let response = {
+	// 		statusCode: '401',
+	// 		body: JSON.stringify({error: 'No auth token'}),
+	// 		headers: {
+	// 			'Content-Type': 'application/json',
+	// 		}
+	// 	};
+	//
+	// 	context.succeed(response);
+	// }
 
 
 
 	function callbackFilter(error, output) {
-		if (false) { // todo reject invalid tokens
-			let response = {
-				statusCode: '401',
-				body: JSON.stringify({ error: 'you messed up!' }),
-				headers: {
-					'Content-Type': 'application/json',
-				}
-			};
-
-			context.succeed(response);
-		} else {
+		// if (false) { // todo reject invalid tokens
+		// 	let response = {
+		// 		statusCode: '401',
+		// 		body: JSON.stringify({ error: 'you messed up!' }),
+		// 		headers: {
+		// 			'Content-Type': 'application/json',
+		// 		}
+		// 	};
+		//
+		// 	context.succeed(response);
+		// } else {
 			output.headers['Access-Control-Allow-Origin'] = '*';
 			context.succeed(output);
-		}
+		//}
 
 	}
 
 
-	const handler = graphqlLambda({ schema, context: {auth: tokenValue}, debug: true });
+	const handler = graphqlLambda({ schema, context: {auth: 'tokenValue'}, debug: true });
 	return handler( event, context, callbackFilter);
 };
 
