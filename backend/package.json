@@ -4,6 +4,7 @@
   "description": "jjj",
   "main": "handler.js",
   "dependencies": {
+    "algoliasearch": "^3.27.1",
     "apollo-server-lambda": "^1.2.0",
     "auth0": "^2.9.1",
     "aws-sdk": "^2.252.1",

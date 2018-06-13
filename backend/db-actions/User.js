@@ -16,15 +16,17 @@ import getUser from '../lib/auth'
 
 export async function create (_user, context) {
 	const timestamp = new Date().getTime();
-	const user = await getUser(context.auth);
+	//const user = await getUser(context.auth);
 
 	let newUser = {..._user};
 
 
-	newUser.id = user.sub;
+	//newUser.id = user.sub; change this back
+	newUser.id = 'sdfsdfsdfsdf'; // change this back
 	newUser.createdAt = timestamp;
 	newUser.updatedAt = timestamp;
-
+	console.log('new user', newUser)
+	console.log('args', _user)
 	const params = {
 		TableName: process.env.USER_TABLE,
 		Item: newUser
@@ -47,7 +49,8 @@ export async function create (_user, context) {
 
 export async function get (args, context) {
 	//const user = await getUser(context.auth);
-	console.log('id passed in:',args)
+	console.log('user args passed in:',args)
+	console.log('user context passed in:',context)
 
 	const params = {
 		TableName: process.env.USER_TABLE,

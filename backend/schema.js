@@ -166,6 +166,7 @@ const model = `
 		first_name: String 
   	last_name: String 
   	email: String 
+  	academy: Academy 
   	academy_id: String 
   	country: String 
   	belt: String 
@@ -181,6 +182,7 @@ const model = `
 	type Query {
 		# Get user by firstName
 		user(id: String!): User
+		academy(id: String!): Academy
 	}
 	
 	type Mutation {
@@ -205,6 +207,14 @@ const resolver = {
 	Query: {
 		user (_, id, context) {
 			return resolvers.getUser(id, context);
+		},
+		academy (_, id, context) {
+			return resolvers.getAcademy(id, context);
+		},
+	},
+	User: {
+		academy: (parent, args, context) => {
+			return resolvers.getAcademy({id: parent.academy_id});
 		}
 	},
 	Mutation: {
@@ -221,7 +231,7 @@ const resolver = {
 			return resolvers.addTechnique(data.technique, context);
 		},
 		addUser (_, data, context) {
-			return resolvers.addUser(data.technique, context);
+			return resolvers.addUser(data.user, context);
 		},
 	}
 }

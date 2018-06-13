@@ -25,6 +25,11 @@ export const addAcademy = async (args, context) => {
 	return academy;
 }
 
+export const getAcademy = async (args, context) => {
+	const academy = await Academy.get(args, context);
+	return academy;
+}
+
 export const addTechnique = async (args, context) => {
 	const technique = await Technique.create(args, context);
 	return technique;

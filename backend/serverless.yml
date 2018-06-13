@@ -9,6 +9,7 @@ provider:
     INSTRUCTOR_TABLE: "${self:provider.stage}-instructor-${self:service}"
     ACADEMY_TABLE: "${self:provider.stage}-academy-${self:service}"
     TECHNIQUE_TABLE: "${self:provider.stage}-technique-${self:service}"
+    ALGOLIA_ACADEMY_INDEX: "${self:provider.stage}_academies"
   iamRoleStatements:
     - Effect: Allow
       Action:
