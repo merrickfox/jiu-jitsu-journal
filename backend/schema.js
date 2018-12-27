@@ -93,7 +93,7 @@ const model = `
 	input InstructorInput {
   	first_name: String
   	last_name: String
-  	academy: String
+  	academy_id: String
   	picture_url: String
 	}
 	
@@ -102,7 +102,8 @@ const model = `
 		class_reference_count: Int
 		first_name: String
   	last_name: String
-  	academy: String
+  	academy: Academy
+  	academy_id: String
   	picture_url: String
 	}
 	
@@ -246,3 +247,64 @@ const schema = makeExecutableSchema({
 })
 
 export default schema;
+
+/*
+EXAMPLE QUERIES/MUTATIONS
+
+{
+  user(id: "sdfsdfsdfsdf") {
+    first_name
+    academy_id
+  }
+}
+
+
+{
+  user(id: "sdfsdfsdfsdf") {
+    first_name
+    academy_id
+    academy {
+      name
+    }
+  }
+}
+
+===========================================================
+mutation AddUser($user: UserInput!) {
+  addUser(user: $user) {
+    id
+  }
+}
+
+payload:
+{
+  "user": {
+    "first_name": "Merrick",
+  	"last_name": "Fox" ,
+  	"email":  "zxc@zxc.com",
+  	"academy_id": "102b5219-8dc1-4e36-bf7f-811d59606b23",
+  	"country": "GB" ,
+  	"belt": "White" ,
+  	"avatar_url" : "https://sdfdsf.com/asd.jpg" ,
+  	"is_instructor": true
+  }
+}
+==============================================================
+mutation AddAcademy($academy: AcademyInput!) {
+  addAcademy(academy: $academy) {
+    id
+  }
+}
+
+payload:
+{
+  "academy": {
+    "name": "jhbjhb",
+    "postcode": "mc tob",
+    "country": "Carlsons",
+    "url": "http://sdf",
+    "picture_url": "http://url"
+  }
+}
+================================================================
+ */

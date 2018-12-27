@@ -1,0 +1,120 @@
+/*
+=======================================================
+SCALE
+=======================================================
+*/
+
+$scale0-25: 4px;
+$scale0-5:  8px;
+$scale0-75: 12px;
+$scale1:    16px;
+$scale1-5:  24px;
+$scale2:    32px;
+$scale3:    48px;
+$scale4:    64px;
+$scale6:    96px;
+$scale8:    128px;
+$scale12:   192px;
+$scale16:   256px;
+$scale24:   384px;
+$scale32:   512px;
+$scale40:   640px;
+$scale48:   768px;
+
+
+/*
+=======================================================
+Colour
+=======================================================
+*/
+
+
+/*
+PRIMARY
+=============
+These are the splashes of color that should appear the most in your UI,
+and are the ones that determine the overall "look" of the site. Use these for things like primary actions,
+links, navigation items, icons, accent borders, or text you want to emphasize.
+*/
+
+$light-blue-vivid-1: hsl(204, 96%, 27%);
+$light-blue-vivid-2: hsl(203, 87%, 34%);
+$light-blue-vivid-3: hsl(202, 83%, 41%);
+$light-blue-vivid-4: hsl(201, 79%, 46%);
+$light-blue-vivid-5: hsl(199, 84%, 55%);
+$light-blue-vivid-6: hsl(197, 92%, 61%);
+$light-blue-vivid-7: hsl(196, 94%, 67%);
+$light-blue-vivid-8: hsl(195, 97%, 75%);
+$light-blue-vivid-9: hsl(195, 100%, 85%);
+$light-blue-vivid-10: hsl(195, 100%, 95%);
+
+/*
+NEUTRALS
+=============
+These are the colors you will use the most and will make up the majority of your UI. Use them for most of your text,
+backgrounds, and borders, as well as for things like secondary buttons and links.
+*/
+
+$cool-grey-1: hsl(210, 24%, 16%);
+$cool-grey-2: hsl(209, 20%, 25%);
+$cool-grey-3: hsl(209, 18%, 30%);
+$cool-grey-4: hsl(209, 14%, 37%);
+$cool-grey-5: hsl(211, 12%, 43%);
+$cool-grey-6: hsl(211, 10%, 53%);
+$cool-grey-7: hsl(211, 13%, 65%);
+$cool-grey-8: hsl(210, 16%, 82%);
+$cool-grey-9: hsl(214, 15%, 91%);
+$cool-grey-10: hsl(216, 33%, 97%);
+
+/*
+SUPPORTING
+==============
+These colors should be used fairly conservatively throughout your UI to avoid overpowering your primary colors.
+Use them when you need an element to stand out, or to reinforce things like error states or positive trends with
+the appropriate semantic color.
+*/
+
+$pink-vivid-1: hsl(276, 91%, 23%);
+$pink-vivid-2: hsl(274, 87%, 31%);
+$pink-vivid-3: hsl(274, 87%, 37%);
+$pink-vivid-4: hsl(274, 87%, 43%);
+$pink-vivid-5: hsl(273, 80%, 49%);
+$pink-vivid-6: hsl(268, 82%, 60%);
+$pink-vivid-7: hsl(264, 96%, 70%);
+$pink-vivid-8: hsl(262, 100%, 78%);
+$pink-vivid-9: hsl(262, 100%, 88%);
+$pink-vivid-10: hsl(262, 90%, 96%);
+
+$red-vivid-1: hsl(348, 94%, 20%);
+$red-vivid-2: hsl(350, 94%, 28%);
+$red-vivid-3: hsl(352, 90%, 35%);
+$red-vivid-4: hsl(354, 85%, 44%);
+$red-vivid-5: hsl(356, 75%, 53%);
+$red-vivid-6: hsl(360, 83%, 62%);
+$red-vivid-7: hsl(360, 91%, 69%);
+$red-vivid-8: hsl(360, 100%, 80%);
+$red-vivid-9: hsl(360, 100%, 87%);
+$red-vivid-10: hsl(360, 100%, 95%);
+
+$yellow-vivid-1: hsl(15, 86%, 30%);
+$yellow-vivid-2: hsl(22, 82%, 39%);
+$yellow-vivid-3: hsl(29, 80%, 44%);
+$yellow-vivid-4: hsl(36, 77%, 49%);
+$yellow-vivid-5: hsl(42, 87%, 55%);
+$yellow-vivid-6: hsl(44, 92%, 63%);
+$yellow-vivid-7: hsl(48, 94%, 68%);
+$yellow-vivid-8: hsl(48, 95%, 76%);
+$yellow-vivid-9: hsl(48, 100%, 88%);
+$yellow-vivid-10: hsl(49, 100%, 96%);
+
+$green-vivid-1: hsl(170, 97%, 15%);
+$green-vivid-2: hsl(168, 80%, 23%);
+$green-vivid-3: hsl(166, 72%, 28%);
+$green-vivid-4: hsl(164, 71%, 34%);
+$green-vivid-5: hsl(162, 63%, 41%);
+$green-vivid-6: hsl(160, 51%, 49%);
+$green-vivid-7: hsl(158, 58%, 62%);
+$green-vivid-8: hsl(156, 73%, 74%);
+$green-vivid-9: hsl(154, 75%, 87%);
+$green-vivid-10: hsl(152, 68%, 96%);
+
