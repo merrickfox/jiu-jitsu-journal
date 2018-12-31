@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Page from '../components/page'
+import Page from '../components/page/page'
 import BasicDetailsForm from '../components/basic-details-form'
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';
 import compose from 'recompose/compose'
 import withData from '../lib/withData'
-import Heading from 'grommet/components/Heading';
 import ImageUpload from '../components/image-upload'
 import FindCreateAcademy from '../components/find-create-academy'
+import "../styles/global.scss"
 
 class Register extends Component {
 
@@ -20,27 +20,19 @@ class Register extends Component {
 		return (
       <div>
         <Page title="Please complete your profile">
-					<Heading tag='h3' className='heading'>
+					<h3 className='heading'>
 						The Basics
-					</Heading>
+					</h3>
           <BasicDetailsForm reduxUpdater={updateBasicDetails}/>
-					<Heading tag='h3' className='heading'>
+					<h3 className='heading'>
 						Your Avatar (optional)
-					</Heading>
+					</h3>
 					<ImageUpload reduxUpdater={userImageUploadedRegister}></ImageUpload>
-					<Heading tag='h3' className='heading'>
+					<h3 className='heading'>
 						Your Academy/School
-					</Heading>
+					</h3>
 					<FindCreateAcademy />
         </Page>
-
-				{ /*language=CSS*/ }
-				<style jsx global>{`
-					.heading{
-						margin: 2em 0;
-					}
-				`}</style>
-
       </div>
 		);
 	}

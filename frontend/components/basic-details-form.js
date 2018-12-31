@@ -36,8 +36,7 @@ class BasicDetailsForm extends React.Component {
 	}
 
 
-	@autobind
-	validate () {
+	validate = () => {
 		this.props.reduxUpdater(this.state);
 	}
 
@@ -61,8 +60,7 @@ class BasicDetailsForm extends React.Component {
 		},this.validate);
 	};
 
-	@autobind
-	formatCountriesForSelect () {
+	formatCountriesForSelect = () => {
 		return countries.map(country => {
 			return {
 				value: country.name,
@@ -72,8 +70,7 @@ class BasicDetailsForm extends React.Component {
 		});
 	}
 
-	@autobind
-	onSearchCountry (event) {
+	onSearchCountry = (event) => {
 		this.displayCountries = _.filter(this.countries, country => {
 			return country.value.toLowerCase().includes(event.target.value.toLowerCase()) || country.sub.toLowerCase().includes(event.target.value.toLowerCase())
 		})
@@ -84,8 +81,7 @@ class BasicDetailsForm extends React.Component {
 	}
 
 
-	@autobind
-	submit () {
+	submit = () => {
 		console.log('submitting')
 		this.props.createActivity();
 

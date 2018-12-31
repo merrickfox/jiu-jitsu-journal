@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import withRoot from './withRoot';
-import autobind from 'autobind-decorator'
 import AvatarEditor from 'react-avatar-editor'
 import Dropzone from 'react-dropzone'
 import config from '../config'
@@ -76,15 +74,14 @@ class ImageUpload extends Component {
 		done: false,
 	};
 
-	@autobind
-	onDrop(files) {
+
+	onDrop = (files) => {
 		this.setState({
 			files
 		});
 	}
 
-	@autobind
-	onClickSave() {
+	onClickSave = () => {
 		if (this.editor) {
 			const canvas = this.editor.getImage();
 			const data = canvas.toDataURL();
@@ -95,16 +92,14 @@ class ImageUpload extends Component {
 
 	setEditorRef = (editor) => this.editor = editor
 
-	@autobind
-	onSliderChange (value) {
+	onSliderChange = (value) => {
 		const scale = value / 100;
 		this.setState({
 			scale,
 		});
 	}
 
-	@autobind
-	async uploadImage (image) {
+	uploadImage = async (image) => {
 		const url = `${config.API_URL}image-upload`;
 
 		const data = {

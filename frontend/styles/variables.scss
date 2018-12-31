@@ -118,3 +118,13 @@ $green-vivid-8: hsl(156, 73%, 74%);
 $green-vivid-9: hsl(154, 75%, 87%);
 $green-vivid-10: hsl(152, 68%, 96%);
 
+/*
+=======================================================
+MISC
+=======================================================
+*/
+
+$side-bar-width: $scale12;
+$toolbar-height: $scale4;
+$main-width: calc(100% - #{$side-bar-width});
+$main-height: calc(100vh - #{$toolbar-height});

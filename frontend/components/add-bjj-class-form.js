@@ -21,8 +21,8 @@ class BjjClassForm extends React.Component {
 
 
 
-	@autobind
-	submit () {
+
+	submit = () => {
 		console.log('submitting')
 		this.props.createActivity();
 

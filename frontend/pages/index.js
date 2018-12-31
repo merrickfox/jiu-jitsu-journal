@@ -1,8 +1,8 @@
 /* eslint-disable flowtype/require-valid-file-annotation */
 import React, { Component } from 'react';
-import Page from '../components/page'
-import Heading from 'grommet/components/Heading';
+import Page from '../components/page/page'
 import Grommet from 'grommet/components/Grommet';
+import "../styles/global.scss"
 
 class Index extends Component {
   handleRequestClose = () => {

@@ -1,0 +1,22 @@
+@import '../../styles/variables';
+
+
+.app-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.side-bar-container {
+  width: $side-bar-width;
+  height: 100vh;
+  background-color: $cool-grey-3;
+}
+
+.main {
+  background-color: $cool-grey-10;
+  width: $main-width;
+  height: $main-height;
+  overflow-y: scroll;
+  padding: $scale1;
+}

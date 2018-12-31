@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
 import withRoot from '../components/withRoot';
-import Page from '../components/page'
+import Page from '../components/page/page'
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';

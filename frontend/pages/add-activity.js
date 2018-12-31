@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
 import withRoot from '../components/withRoot';
-import Page from '../components/page'
+import Page from '../components/page/page'
 import BjjClassForm from '../components/add-bjj-class-form'
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../lib/actionCreators';
