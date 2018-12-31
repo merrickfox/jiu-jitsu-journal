@@ -17,7 +17,14 @@ class SideBar extends React.Component {
 
 		return (
 			<section className="side-bar">
-				This is the sidebar
+				<ul>
+					<li>
+
+					</li>
+					<li>
+
+					</li>
+				</ul>
 			</section>
 		);
 	}

@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 * {
   font-family: "ProximaNova";
 }
@@ -6,10 +8,37 @@ body {
   font-size: 16px;
 }
 
+h1 {
+  font-family: ProximaNova;
+  font-size: $font-scale3 !important;
+}
+
+h2 {
+  font-family: "ProximaNova Soft";
+  font-size: $font-scale2 !important;
+}
 
 h3 {
-  font-family: "ProximaNova Soft";
+  font-family: ProximaNova;
+  text-transform: uppercase;
   font-weight: bold;
+  font-size: $font-scale1-25 !important;
+  letter-spacing: 1.5px;
+}
+
+h4 {
+  font-size: $font-scale1-25 !important;
+}
+
+h5 {
+  font-size: $font-scale1 !important;
+  font-family: ProximaNova;
+  text-transform: uppercase;
+  letter-spacing: 1.25px;
+}
+
+h6 {
+  font-size: $font-scale1 !important;
 }
 
 
