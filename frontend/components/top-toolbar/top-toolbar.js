@@ -12,10 +12,7 @@ class TopToolbar extends React.Component {
 
 		return (
 			<section className='top-toolbar'>
-				<div className="logo-container">
-					<Logo/>
-					<h3>JiuJitsu Journal</h3>
-				</div>
+
 			</section>
 		);
 	}

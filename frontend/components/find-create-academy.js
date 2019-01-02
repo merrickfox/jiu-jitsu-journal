@@ -3,7 +3,7 @@ import {format} from 'date-fns'
 import { gql, graphql } from 'react-apollo'
 import autobind from 'autobind-decorator'
 import ImageUpload from './image-upload'
-import {countries} from '../lib/countries'
+import {countries} from '../config/countries'
 import FormField from 'grommet/components/FormField';
 import TextInput from 'grommet/components/TextInput';
 import Heading from 'grommet/components/Heading';

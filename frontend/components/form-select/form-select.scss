@@ -1,0 +1,13 @@
+@import "../../styles/variables";
+
+.form-element {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: $scale1;
+
+  label {
+    font-size: $font-scale0-85;
+    margin-bottom: $scale0-5;
+  }
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Page from '../components/page/page'
-import BasicDetailsForm from '../components/basic-details-form'
+import BasicDetailsForm from '../components/basic-details-form/basic-details-form'
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';
@@ -9,6 +9,7 @@ import withData from '../lib/withData'
 import ImageUpload from '../components/image-upload'
 import FindCreateAcademy from '../components/find-create-academy'
 import "../styles/global.scss"
+import "../styles/pages/register.scss"
 
 class Register extends Component {
 
@@ -18,22 +19,34 @@ class Register extends Component {
 	render() {
 		const {updateBasicDetails, userImageUploadedRegister, selectAcademyRegister} = this.props
 		return (
-      <div>
-        <Page title="Please complete your profile">
-					<h3 className='heading'>
-						The Basics
-					</h3>
-          <BasicDetailsForm reduxUpdater={updateBasicDetails}/>
-					<h3 className='heading'>
-						Your Avatar (optional)
-					</h3>
-					<ImageUpload reduxUpdater={userImageUploadedRegister}></ImageUpload>
-					<h3 className='heading'>
-						Your Academy/School
-					</h3>
-					<FindCreateAcademy />
-        </Page>
-      </div>
+
+			<Page title="Please complete your profile">
+				<div className="register-container">
+					<h2 className='heading'>
+						Register
+					</h2>
+					<hr/>
+
+					<section className="basic-details">
+						<div className="form-title">
+							<h5>Basic Details</h5>
+							<span>Just the usual basic stuff</span>
+						</div>
+
+						<BasicDetailsForm reduxUpdater={updateBasicDetails}/>
+					</section>
+
+					{/*<h3 className='heading'>*/}
+						{/*Your Avatar (optional)*/}
+					{/*</h3>*/}
+					{/*<ImageUpload reduxUpdater={userImageUploadedRegister}></ImageUpload>*/}
+					{/*<h3 className='heading'>*/}
+						{/*Your Academy/School*/}
+					{/*</h3>*/}
+					{/*<FindCreateAcademy />*/}
+				</div>
+			</Page>
+
 		);
 	}
 }

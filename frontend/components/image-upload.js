@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AvatarEditor from 'react-avatar-editor'
 import Dropzone from 'react-dropzone'
-import config from '../config'
+import config from '../config/config'
 import Tooltip from 'rc-tooltip';
 import Slider from 'rc-slider';
 import rcSliderIndex from 'rc-slider/assets/index.css';

@@ -4,4 +4,65 @@
 .side-bar {
   @include lightColorFont();
   padding: $scale1;
+
+  ul {
+    list-style: none;
+    margin: $scale2 0 0;
+    padding: 0;
+
+    li {
+      display: flex;
+      margin-bottom: $scale1;
+
+      i {
+        margin-right: $scale0-75;
+        color: $light-blue-vivid-8;
+      }
+    }
+  }
+
+  .user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: $scale2 0;
+
+    .circle {
+      width: 100px;
+      height: 100px;
+      border: 1px solid transparentize($green-vivid-7, .5 );
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 100%;
+      background-color: $cool-grey-1;
+      box-shadow: -1px -1px 43px 0px rgba($green-vivid-7, .6);
+      -moz-box-shadow: -1px -1px 43px 0px rgba($green-vivid-7, .6);
+      -webkit-box-shadow: -1px -1px 43px 0px rgba($green-vivid-7, .6);
+    }
+
+    .name {
+      font-family: "Proxima Nova Th";
+      color: $green-vivid-9;
+      font-size: $font-scale3;
+    }
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+
+    h3 {
+      padding: 0 $scale1;
+    }
+
+
+    svg {
+      width: 50px;
+      height: 47px;
+      path {
+        fill: $light-blue-vivid-6 !important;
+      }
+    }
+  }
 }

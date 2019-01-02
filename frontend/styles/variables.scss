@@ -140,7 +140,8 @@ MISC
 =======================================================
 */
 
-$side-bar-width: $scale12;
+$side-bar-width: $scale16;
 $toolbar-height: $scale4;
 $main-width: calc(100% - #{$side-bar-width});
 $main-height: calc(100vh - #{$toolbar-height});
+$nav-bg: $cool-grey-3;

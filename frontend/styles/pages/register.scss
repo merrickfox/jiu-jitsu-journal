@@ -1,0 +1,27 @@
+@import "../variables";
+
+.register-container {
+  hr {
+    border-top: $cool-grey-8 1px solid;
+    margin-bottom: $scale2;
+  }
+
+  section {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .form-title {
+    display: flex;
+    flex-direction: column;
+    margin-right: $scale6;
+
+    h5 {
+      margin-bottom: $scale1;
+    }
+
+    span {
+      color: $cool-grey-5;
+    }
+  }
+}

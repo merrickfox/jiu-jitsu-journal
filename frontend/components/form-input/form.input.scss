@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+
+.form-element {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: $scale1;
+
+  label {
+    font-size: $font-scale0-85;
+    margin-bottom: $scale0-5;
+  }
+
+  input {
+    width: 100%;
+    outline: none;
+    border: 1px solid $cool-grey-9;
+    height: $scale2;
+    border-radius: 6px;
+    padding: 0 $scale0-5;
+
+    &:hover, &:focus {
+      border-color: $cool-grey-7;
+    }
+  }
+}
