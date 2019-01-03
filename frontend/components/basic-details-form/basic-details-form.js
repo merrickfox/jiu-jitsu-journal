@@ -2,6 +2,7 @@ import React from 'react';
 import { gql, graphql } from 'react-apollo'
 import compose from 'recompose/compose'
 import {countries} from '../../config/countries'
+import {belts} from '../../config/belts'
 import * as _ from 'lodash'
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../../lib/actionCreators';
@@ -131,7 +132,7 @@ class BasicDetailsForm extends React.Component {
 
 				<FormSelect
 					label='Belt'
-					options={_.take(countries, 5)}
+					options={belts}
 					config={defaultSelectConfig}
 					name='belt'
 					value={this.state.belt}

@@ -1,0 +1,78 @@
+@import "../../styles/variables";
+
+.belt {
+  border: 1px solid black;
+  height: 30px;
+  width: 115px;
+  position: relative;
+  margin: 0 $scale3;
+
+  .strap {
+    background-color: black;
+    height: 30px;
+    width: 63px;
+    right: 11px;
+    bottom: -1px;
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 4px;
+
+
+    .stripe {
+      background-color: white;
+      height: 30px;
+      width: 7px;
+      margin: 0 3px;
+      box-shadow: inset 0px 2px 4px #888, inset 0px -2px 1px #888;
+      z-index: 2;
+    }
+  }
+
+  .crease1 {
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    bottom: 3px;
+    box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+  }
+  .crease2 {
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    bottom: 12px;
+    box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .crease3 {
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    bottom: 21px;
+    box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  &.white {
+    background-color: white;
+  }
+
+  &.blue {
+    background-color: #40b0ff;
+  }
+
+  &.purple {
+    background-color: #c363c3;
+  }
+
+  &.brown {
+    background-color: #986666;
+  }
+
+  &.black {
+    background-color: #5f5e5e;
+
+    .strap {
+      background-color: #ce0000;
+    }
+  }
+}
