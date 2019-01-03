@@ -15,9 +15,14 @@
     width: 100%;
     outline: none;
     border: 1px solid $cool-grey-9;
-    height: $scale2;
+    height: $scale3;
     border-radius: 6px;
     padding: 0 $scale0-5;
+    color: $cool-grey-2;
+
+    &::placeholder {
+      color: $cool-grey-6;
+    }
 
     &:hover, &:focus {
       border-color: $cool-grey-7;

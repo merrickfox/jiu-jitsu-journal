@@ -4,3 +4,14 @@ form {
   width: 50%;
   max-width: $scale32;
 }
+
+.menu-list {
+  height: $scale24;
+  overflow-y: scroll;
+
+  .menu-list-item {
+    &:hover {
+      background-color: $light-blue-vivid-7;
+    }
+  }
+}

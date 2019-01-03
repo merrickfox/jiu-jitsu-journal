@@ -87,6 +87,27 @@ class BasicDetailsForm extends React.Component {
 
 	}
 
+	CountryMenuList = (props) => {
+		const children = props.children;
+
+		if (!children.length) {
+			return (<div className="menu-list">{children}</div>);
+		}
+
+		return (
+			<div className="menu-list">
+				{children.length && children.map((key, i) => {
+					delete key.props.innerProps.onMouseMove; //FIX LAG!!
+					delete key.props.innerProps.onMouseOver;  //FIX LAG!!
+
+					return (
+						<div className="menu-list-item" key={i}>{key}</div>
+					);
+				})}
+			</div>
+		);
+	};
+
 	render() {
 
 		return (
@@ -126,6 +147,7 @@ class BasicDetailsForm extends React.Component {
 					value={this.state.country}
 					placeholder='Select Country'
 					handleChange={this.handleSelectChange('country')}
+					customMenuList={this.CountryMenuList}
 				/>
 
 
