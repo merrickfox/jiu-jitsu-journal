@@ -6,12 +6,12 @@ import * as _ from 'lodash'
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../../lib/actionCreators';
 import {connect} from 'react-redux';
-import BeltSelect from '../belt-select'
 import {defaultSelectConfig} from '../../config/select-configs';
 import FormInput from '../form-input/form-input'
 import FormSelect from '../form-select/form-select'
 import "../../styles/global.scss"
 import "./basic-details-form.scss"
+import BeltOptions from "../belt-options/belt-options";
 
 
 
@@ -21,17 +21,15 @@ class BasicDetailsForm extends React.Component {
 
 	constructor (props) {
 		super(props)
-		this.countries = this.formatCountriesForSelect()
-		this.displayCountries = _.cloneDeep(this.countries);
 
 		this.state = {
 			first_name: '',
 			last_name: '',
 			email: this.props.user.email,
 			country: '',
+			belt: '',
 			avatar_url: '',
 			is_instructor: false,
-			display_countries: this.displayCountries
 		};
 	}
 
@@ -60,26 +58,6 @@ class BasicDetailsForm extends React.Component {
 		},this.validate);
 	};
 
-	formatCountriesForSelect = () => {
-		return countries.map(country => {
-			return {
-				value: country.name,
-				sub: country.code,
-				// label: <Box direction='row'  justify='between' className='select-value' key={country.code}>  <span title={country.name}>    {_.truncate(country.name, {'length': 35})}  </span>  <span className='secondary'>    {country.code}  </span></Box>
-			}
-		});
-	}
-
-	onSearchCountry = (event) => {
-		this.displayCountries = _.filter(this.countries, country => {
-			return country.value.toLowerCase().includes(event.target.value.toLowerCase()) || country.sub.toLowerCase().includes(event.target.value.toLowerCase())
-		})
-
-		this.setState({
-			display_countries: this.displayCountries
-		});
-	}
-
 
 	submit = () => {
 		console.log('submitting')
@@ -106,6 +84,7 @@ class BasicDetailsForm extends React.Component {
 			</div>
 		);
 	};
+
 
 	render() {
 
@@ -147,28 +126,24 @@ class BasicDetailsForm extends React.Component {
 					placeholder='Start typing or click and select'
 					handleChange={this.handleSelectChange('country')}
 					customMenuList={this.CountryMenuList}
+					forceOpen={false}
+				/>
+
+				<FormSelect
+					label='Belt'
+					options={_.take(countries, 5)}
+					config={defaultSelectConfig}
+					name='belt'
+					value={this.state.belt}
+					placeholder='What belt are you?'
+					handleChange={this.handleSelectChange('belt')}
+					customOption={BeltOptions}
+					forceOpen={true}
 				/>
 
 
 
-					{/*<Box align='center'*/}
-							 {/*pad='none'*/}
-							 {/*margin='small'*/}
-							 {/*colorIndex='light-2'>*/}
-						{/*<FormField label='Country'*/}
-											 {/*className='form-field'*/}
-											 {/*htmlFor='country'*/}
-											 {/*size='large'*/}
-											 {/*error=''>*/}
-							{/*<Select placeHolder='Select Country'*/}
-											{/*inline={false}*/}
-											{/*multiple={false}*/}
-											{/*onSearch={this.onSearchCountry}*/}
-											{/*options={this.displayCountries}*/}
-											{/*value={this.state.country.value}*/}
-											{/*onChange={this.handleSelectChange('country')} />*/}
-						{/*</FormField>*/}
-					{/*</Box>*/}
+
 
 					{/*<Box align='center'*/}
 							 {/*pad='none'*/}

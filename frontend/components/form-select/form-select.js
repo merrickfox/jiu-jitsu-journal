@@ -10,7 +10,11 @@ class FormSelect extends React.Component {
 	}
 
 	render() {
-		const {name, label, text, value, placeholder, handleChange, options, config, customMenuList} = this.props;
+		const {name, label, text, value, placeholder, handleChange, options, config, customMenuList, customOption, forceOpen} = this.props;
+
+		let customComponents = {};
+		if (customMenuList) customComponents.MenuList = customMenuList;
+		if (customOption) customComponents.Option = customOption;
 
 		return (
 			<div className="form-element">
@@ -19,9 +23,9 @@ class FormSelect extends React.Component {
 					styles={config}
 					options={options}
 					placeholder={placeholder}
-					components={ customMenuList ? {
-						MenuList: customMenuList
-					} : undefined}
+					onChange={handleChange}
+					components={ customComponents }
+					menuIsOpen={forceOpen}
 				/>
 			</div>
 

@@ -1,0 +1,24 @@
+@import "../../styles/variables.scss";
+
+.menu-item {
+  .inner-option {
+    //mostly copied from normal select option styling, because we lose it with a custom element
+    background-color: white;
+    color: $cool-grey-1;
+    cursor: default;
+    display: block;
+    font-size: inherit;
+    padding: 8px 12px;
+    width: 100%;
+    user-select: none;
+    box-sizing: border-box;
+
+    &:hover {
+      background-color: $cool-grey-10;
+    }
+
+    &.selected {
+      background-color: $light-blue-vivid-9;
+    }
+  }
+}
