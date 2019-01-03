@@ -1,5 +1,5 @@
 @import '../../styles/variables';
-
+@import "../../styles/mixins";
 
 .app-container {
   display: flex;
@@ -24,6 +24,7 @@
 }
 
 .main {
+  @include darkColorFont();
   margin-top: $toolbar-height;
   background-color: $cool-grey-10;
   width: $main-width;

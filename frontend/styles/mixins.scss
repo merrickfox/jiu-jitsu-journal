@@ -3,3 +3,7 @@
 @mixin lightColorFont() {
   color: $cool-grey-9;
 }
+
+@mixin darkColorFont() {
+  color: $cool-grey-1;
+}

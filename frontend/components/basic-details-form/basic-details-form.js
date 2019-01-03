@@ -99,7 +99,6 @@ class BasicDetailsForm extends React.Component {
 				{children.length && children.map((key, i) => {
 					delete key.props.innerProps.onMouseMove; //FIX LAG!!
 					delete key.props.innerProps.onMouseOver;  //FIX LAG!!
-
 					return (
 						<div className="menu-list-item" key={i}>{key}</div>
 					);
@@ -145,7 +144,7 @@ class BasicDetailsForm extends React.Component {
 					config={defaultSelectConfig}
 					name='country'
 					value={this.state.country}
-					placeholder='Select Country'
+					placeholder='Start typing or click and select'
 					handleChange={this.handleSelectChange('country')}
 					customMenuList={this.CountryMenuList}
 				/>

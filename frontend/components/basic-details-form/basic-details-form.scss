@@ -8,10 +8,4 @@ form {
 .menu-list {
   height: $scale24;
   overflow-y: scroll;
-
-  .menu-list-item {
-    &:hover {
-      background-color: $light-blue-vivid-7;
-    }
-  }
 }
