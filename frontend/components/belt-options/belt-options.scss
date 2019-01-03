@@ -14,10 +14,7 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
-
-    span {
-      min-width: 151px;
-    }
+    justify-content: space-between;
 
     &:hover {
       background-color: $cool-grey-10;

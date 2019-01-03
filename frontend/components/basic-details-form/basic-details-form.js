@@ -127,7 +127,6 @@ class BasicDetailsForm extends React.Component {
 					placeholder='Start typing or click and select'
 					handleChange={this.handleSelectChange('country')}
 					customMenuList={this.CountryMenuList}
-					forceOpen={false}
 				/>
 
 				<FormSelect
@@ -139,7 +138,6 @@ class BasicDetailsForm extends React.Component {
 					placeholder='What belt are you?'
 					handleChange={this.handleSelectChange('belt')}
 					customOption={BeltOptions}
-					forceOpen={true}
 				/>
 
 
