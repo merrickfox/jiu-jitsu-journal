@@ -137,7 +137,7 @@ class ImageUpload extends Component {
 	render() {
 		return (
 			<div className="image-upload">
-				<Button clickHandler={{}} text="button" />
+
 				{this.state.files.length === 0 &&
 				<Dropzone
 					multiple={false}
@@ -229,7 +229,7 @@ class ImageUpload extends Component {
 							<div className="labelling">
 								<label>Step 3.</label>
 								<div className="additional">
-									<button onClick={this.onClickSave}>save</button>
+									<Button clickHandler={this.onClickSave} text="Save" />
 									<button onClick={this.onClickCancel}>cancel</button>
 								</div>
 							</div>
