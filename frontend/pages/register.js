@@ -8,8 +8,7 @@ import compose from 'recompose/compose'
 import withData from '../lib/withData'
 import ImageUpload from '../components/image-upload'
 import FindCreateAcademy from '../components/find-create-academy'
-import "../styles/global.scss"
-import "../styles/pages/register.scss"
+import "../styles/styles.scss"
 
 class Register extends Component {
 

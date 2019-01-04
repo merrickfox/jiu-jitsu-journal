@@ -1,6 +1,5 @@
 import React from "react";
-import '../../styles/global.scss'
-import './belt-options.scss'
+
 import classNames from "classnames";
 import Belt from "../belt/belt";
 

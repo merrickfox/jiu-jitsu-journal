@@ -37,16 +37,16 @@ export const defaultSelectConfig = {
 	}),
 	indicatorSeparator: (provided, state) => ({
 		...provided,
-		backgroundColor: 'regularBorderColor',
+		backgroundColor: regularBorderColor,
 		'&:hover': {
-			backgroundColor: 'hoverBorderColor'
+			backgroundColor: hoverBorderColor
 		},
 	}),
 	dropdownIndicator: (provided, state) => ({
 		...provided,
-		color: 'regularBorderColor',
+		color: regularBorderColor,
 		'&:hover': {
-			color: 'hoverBorderColor'
+			color: hoverBorderColor
 		},
 	}),
 	option: (provided, state) => ({

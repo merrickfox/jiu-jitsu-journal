@@ -1,5 +1,3 @@
-import '../../styles/global.scss'
-import './page.scss'
 import React, { Component } from 'react';
 import SideBar from '../side-bar/side-bar'
 import TopToolbar from '../top-toolbar/top-toolbar'
@@ -10,7 +8,7 @@ class Page extends Component {
 		const { children, title } = this.props;
 
 		return (
-			<div className='app-container'>
+			<div className='page'>
 				<div className="topbar-container">
 					<TopToolbar />
 				</div>

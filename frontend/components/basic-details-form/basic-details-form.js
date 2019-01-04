@@ -10,9 +10,8 @@ import {connect} from 'react-redux';
 import {defaultSelectConfig} from '../../config/select-configs';
 import FormInput from '../form-input/form-input'
 import FormSelect from '../form-select/form-select'
-import "../../styles/global.scss"
-import "./basic-details-form.scss"
 import BeltOptions from "../belt-options/belt-options";
+import FormCheckbox from "../form-checkbox/form-checkbox";
 
 
 
@@ -90,82 +89,85 @@ class BasicDetailsForm extends React.Component {
 	render() {
 
 		return (
-			<form >
-				<FormInput
-					label='First Name'
-					type='text'
-					name='firstName'
-					value={this.state.first_name}
-					placeholder='First Name'
-					handleChange={this.handleChange('first_name')}
-				/>
+			<form className='basic-details-form'>
+				<div className="form-element">
+					<FormInput
+						label='First Name'
+						type='text'
+						name='firstName'
+						value={this.state.first_name}
+						placeholder='First Name'
+						handleChange={this.handleChange('first_name')}
+					/>
+				</div>
 
-				<FormInput
-					label='Last Name'
-					type='text'
-					name='lastName'
-					value={this.state.last_name}
-					placeholder='Last Name'
-					handleChange={this.handleChange('last_name')}
-				/>
+				<div className="form-element">
+					<FormInput
+						label='First Name'
+						type='text'
+						name='firstName'
+						value={this.state.first_name}
+						placeholder='First Name'
+						handleChange={this.handleChange('first_name')}
+					/>
+				</div>
 
-				<FormInput
-					label='Email Address'
-					type='text'
-					name='email'
-					value={this.state.email}
-					placeholder='Email Address'
-					handleChange={this.handleChange('email')}
-				/>
+				<div className="form-element">
+					<FormInput
+						label='Last Name'
+						type='text'
+						name='lastName'
+						value={this.state.last_name}
+						placeholder='Last Name'
+						handleChange={this.handleChange('last_name')}
+					/>
+				</div>
 
-				<FormSelect
-					label='Country'
-					options={countries}
-					config={defaultSelectConfig}
-					name='country'
-					value={this.state.country}
-					placeholder='Start typing or click and select'
-					handleChange={this.handleSelectChange('country')}
-					customMenuList={this.CountryMenuList}
-				/>
+				<div className="form-element">
+					<FormInput
+						label='Email Address'
+						type='text'
+						name='email'
+						value={this.state.email}
+						placeholder='Email Address'
+						handleChange={this.handleChange('email')}
+					/>
+				</div>
 
-				<FormSelect
-					label='Belt'
-					options={belts}
-					config={defaultSelectConfig}
-					name='belt'
-					value={this.state.belt}
-					placeholder='What belt are you?'
-					handleChange={this.handleSelectChange('belt')}
-					customOption={BeltOptions}
-				/>
+				<div className="form-element">
+					<FormSelect
+						label='Country'
+						options={countries}
+						config={defaultSelectConfig}
+						name='country'
+						value={this.state.country}
+						placeholder='Start typing or click and select'
+						handleChange={this.handleSelectChange('country')}
+						customMenuList={this.CountryMenuList}
+					/>
+				</div>
 
+				<div className="form-element">
+					<FormSelect
+						label='Belt'
+						options={belts}
+						config={defaultSelectConfig}
+						name='belt'
+						value={this.state.belt}
+						placeholder='What belt are you?'
+						handleChange={this.handleSelectChange('belt')}
+						customOption={BeltOptions}
+					/>
+				</div>
 
-
-
-
-					{/*<Box align='center'*/}
-							 {/*pad='none'*/}
-							 {/*margin='small'*/}
-							 {/*colorIndex='light-2'>*/}
-						{/*<BeltSelect reduxUpdater={this.props.beltRegister} />*/}
-					{/*</Box>*/}
-
-					{/*<Box align='center'*/}
-							 {/*pad='none'*/}
-							 {/*margin='small'*/}
-							 {/*colorIndex='light-2'>*/}
-						{/*<CheckBox label="I'm an instructor"*/}
-											{/*toggle={false}*/}
-											{/*disabled={false}*/}
-											{/*checked={this.state.is_instructor}*/}
-											{/*onChange={this.isInstructorToggle}*/}
-											{/*reverse={true} />*/}
-					{/*</Box>*/}
-
-
-				{/*</Box>*/}
-
+				<div className="form-elemeent">
+					<FormCheckbox
+						label='Are you an instructor?'
+						name='instructor'
+						value={this.state.is_instructor}
+						handleChange={this.isInstructorToggle}
+					/>
+				</div>
 			</form>
 		);
 	}

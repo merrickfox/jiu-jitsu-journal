@@ -1,0 +1,18 @@
+@import "./global";
+@import "./variables";
+@import "./mixins";
+
+@import "./pages/dashboard";
+@import "./pages/index";
+@import "./pages/register";
+
+
+@import "../components/basic-details-form/basic-details-form";
+@import "../components/belt/belt";
+@import "../components/belt-options/belt-options";
+@import "../components/form-checkbox/form-checkbox";
+@import "../components/form-input/form-input";
+@import "../components/form-select/form-select";
+@import "../components/page/page";
+@import "../components/side-bar/side-bar";
+@import "../components/top-toolbar/top-toolbar";

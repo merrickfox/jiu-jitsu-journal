@@ -1,5 +1,4 @@
-import '../../styles/global.scss';
-import './top-toolbar.scss';
+
 import Logo from '../logo'
 import React from 'react';
 

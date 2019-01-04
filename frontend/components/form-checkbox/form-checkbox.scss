@@ -1,0 +1,47 @@
+@import "../../styles/variables";
+
+.form-checkbox {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  .custom-toggle {
+
+    &.react-toggle--checked{
+      .react-toggle-track {
+        background-color: $green-vivid-6;
+      }
+    }
+    .react-toggle-track {
+      background-color: $cool-grey-6;
+    }
+
+    &.react-toggle--focus{
+      .react-toggle-thumb {
+        box-shadow: 0px 0px 2px 3px $cool-grey-7;
+      }
+    }
+
+
+  }
+
+  .toggle {
+    margin-right: $scale3;
+  }
+
+  .labelling {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-size: $font-scale1;
+      margin-bottom: $scale0-5;
+    }
+
+    .additional {
+      font-size: $font-scale0-85;
+      color: $cool-grey-6;
+    }
+  }
+
+}

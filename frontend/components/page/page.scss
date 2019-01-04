@@ -1,34 +1,35 @@
 @import '../../styles/variables';
 @import "../../styles/mixins";
 
-.app-container {
+.page {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+  .topbar-container {
+    position: fixed;
+    width: calc(100vw - #{$side-bar-width});
+    right: 0;
+    height: $toolbar-height;
+    background-color: $nav-bg;
+    border-bottom: 1px solid $cool-grey-6;
+  }
+
+  .side-bar-container {
+    width: $side-bar-width;
+    height: 100vh;
+    background-color: $nav-bg;
+    border-right: 1px solid $cool-grey-6;
+  }
+
+  .main {
+    @include darkColorFont();
+    margin-top: $toolbar-height;
+    background-color: $cool-grey-10;
+    width: $main-width;
+    height: $main-height;
+    overflow-y: scroll;
+    padding: $scale1;
+  }
 }
 
-.topbar-container {
-  position: fixed;
-  width: calc(100vw - #{$side-bar-width});
-  right: 0;
-  height: $toolbar-height;
-  background-color: $nav-bg;
-  border-bottom: 1px solid $cool-grey-6;
-}
-
-.side-bar-container {
-  width: $side-bar-width;
-  height: 100vh;
-  background-color: $nav-bg;
-  border-right: 1px solid $cool-grey-6;
-}
-
-.main {
-  @include darkColorFont();
-  margin-top: $toolbar-height;
-  background-color: $cool-grey-10;
-  width: $main-width;
-  height: $main-height;
-  overflow-y: scroll;
-  padding: $scale1;
-}

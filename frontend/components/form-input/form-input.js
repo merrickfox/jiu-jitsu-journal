@@ -1,6 +1,4 @@
-import React from "react";
-import '../../styles/global.scss'
-import './form.input.scss'
+
 
 class FormInput extends React.Component {
 	constructor (props) {
@@ -8,13 +6,13 @@ class FormInput extends React.Component {
 	}
 
 	render() {
-		const {name, label, text, value, placeholder, handleChange} = this.props;
+		const {name, label, type, value, placeholder, handleChange} = this.props;
 
 		return (
-			<div className="form-element">
+			<div className="form-input">
 				<label htmlFor={name}>{label}</label>
 				<input
-					type={text}
+					type={type}
 					name={name}
 					id={name}
 					value={value}

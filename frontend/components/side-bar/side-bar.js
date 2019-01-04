@@ -1,5 +1,3 @@
-import '../../styles/global.scss'
-import './side-bar.scss'
 import React from 'react';
 import Auth from '../../lib/auth0';
 import Logo from "../logo";

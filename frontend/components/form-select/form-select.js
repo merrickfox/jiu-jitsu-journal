@@ -1,7 +1,6 @@
 import React from "react";
 import Select from 'react-select'
-import '../../styles/global.scss'
-import './form-select.scss'
+
 
 
 class FormSelect extends React.Component {
@@ -17,7 +16,7 @@ class FormSelect extends React.Component {
 		if (customOption) customComponents.Option = customOption;
 
 		return (
-			<div className="form-element">
+			<div className="form-select">
 				<label htmlFor={name}>{label}</label>
 				<Select
 					styles={config}
