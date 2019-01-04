@@ -6,8 +6,9 @@ import Tooltip from 'rc-tooltip';
 import Slider from 'rc-slider';
 import rcSliderIndex from 'rc-slider/assets/index.css';
 import rcToolTip from 'rc-tooltip/assets/bootstrap.css';
-import LoadingTick from '../loading-tick/loading-tick'
+import LoadingTick from '../loading-tick/loading-tick';
 import CONFIG from '../../config/config';
+import Button from '../button/button';
 
 { /*language=CSS*/ }
 const styles = `	
@@ -136,6 +137,7 @@ class ImageUpload extends Component {
 	render() {
 		return (
 			<div className="image-upload">
+				<Button clickHandler={{}} text="button" />
 				{this.state.files.length === 0 &&
 				<Dropzone
 					multiple={false}

@@ -1,0 +1,19 @@
+@import "../../styles/variables";
+
+.button {
+  text-transform: capitalize;
+  padding: $scale0-75 $scale2;
+  font-family: "Proxima Nova";
+  letter-spacing: 0.5px;
+  font-weight: 800;
+  border-radius: 8px;
+
+  margin: 16px;
+
+  box-shadow: 3px 3px 22px -6px rgba(0,0,0,0.75);
+
+
+  border: 1px solid $light-blue-vivid-6;
+  background-color: $light-blue-vivid-5;
+  color: $cool-grey-10;
+}
