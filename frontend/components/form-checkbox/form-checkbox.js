@@ -8,7 +8,7 @@ class FormCheckbox extends React.Component {
 	}
 
 	render() {
-		const {name, label, value, placeholder, handleChange} = this.props;
+		const {label, value, handleChange, additional} = this.props;
 
 		return (
 			<div className="form-checkbox">
@@ -23,8 +23,7 @@ class FormCheckbox extends React.Component {
 				<div className="labelling">
 					<label>{label}</label>
 					<span className="additional">
-						By selecting yes you will be associated with your chosen academy as an instructor.
-						Future features will allow you to interact and coach students at this academy.
+						{additional}
 					</span>
 				</div>
 

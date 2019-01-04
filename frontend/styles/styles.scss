@@ -1,3 +1,6 @@
+@import "../node_modules/rc-slider/assets/index.css";
+@import "../node_modules/rc-tooltip/assets/bootstrap.css";
+
 @import "./global";
 @import "./variables";
 @import "./mixins";
@@ -16,3 +19,5 @@
 @import "../components/page/page";
 @import "../components/side-bar/side-bar";
 @import "../components/top-toolbar/top-toolbar";
+@import "../components/image-upload/image-upload";
+@import "../components/loading-tick/loading-tick";

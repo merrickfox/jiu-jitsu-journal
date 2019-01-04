@@ -3,7 +3,6 @@ import { gql, graphql } from 'react-apollo'
 import compose from 'recompose/compose'
 import {countries} from '../../config/countries'
 import {belts} from '../../config/belts'
-import * as _ from 'lodash'
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../../lib/actionCreators';
 import {connect} from 'react-redux';
@@ -12,6 +11,7 @@ import FormInput from '../form-input/form-input'
 import FormSelect from '../form-select/form-select'
 import BeltOptions from "../belt-options/belt-options";
 import FormCheckbox from "../form-checkbox/form-checkbox";
+import Config from "../../config/config"
 
 
 
@@ -103,17 +103,6 @@ class BasicDetailsForm extends React.Component {
 
 				<div className="form-element">
 					<FormInput
-						label='First Name'
-						type='text'
-						name='firstName'
-						value={this.state.first_name}
-						placeholder='First Name'
-						handleChange={this.handleChange('first_name')}
-					/>
-				</div>
-
-				<div className="form-element">
-					<FormInput
 						label='Last Name'
 						type='text'
 						name='lastName'
@@ -165,6 +154,7 @@ class BasicDetailsForm extends React.Component {
 						label='Are you an instructor?'
 						name='instructor'
 						value={this.state.is_instructor}
+						additional={Config.COPY.REGISTER.IS_INSTRUCTOR_ADDITIONAL}
 						handleChange={this.isInstructorToggle}
 					/>
 				</div>

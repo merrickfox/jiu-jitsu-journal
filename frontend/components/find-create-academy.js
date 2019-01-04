@@ -2,7 +2,7 @@ import React from 'react';
 import {format} from 'date-fns'
 import { gql, graphql } from 'react-apollo'
 import autobind from 'autobind-decorator'
-import ImageUpload from './image-upload'
+import ImageUpload from './image-upload/image-upload'
 import {countries} from '../config/countries'
 import FormField from 'grommet/components/FormField';
 import TextInput from 'grommet/components/TextInput';

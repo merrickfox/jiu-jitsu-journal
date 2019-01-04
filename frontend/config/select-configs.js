@@ -19,7 +19,7 @@ export const defaultSelectConfig = {
 		display: 'flex',
 		flexWrap: 'wrap',
 		justifyContent: 'space-between',
-		maxHeight: '48px',
+		height: '48px',
 		position: 'relative',
 		transition: 'all 100ms',
 		boxSizing: 'border-box',

@@ -9,12 +9,19 @@
   section {
     display: flex;
     flex-direction: row;
+    margin-bottom: $scale4;
+  }
+
+  .form-section {
+    width: 50%;
+    max-width: $scale32;
   }
 
   .form-title {
     display: flex;
     flex-direction: column;
     margin-right: $scale6;
+    width: $scale16;
 
     h5 {
       margin-bottom: $scale1;

@@ -19,6 +19,7 @@ class FormSelect extends React.Component {
 			<div className="form-select">
 				<label htmlFor={name}>{label}</label>
 				<Select
+					id={name}
 					styles={config}
 					options={options}
 					placeholder={placeholder}

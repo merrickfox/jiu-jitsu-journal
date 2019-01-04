@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import AvatarEditor from 'react-avatar-editor'
 import Dropzone from 'react-dropzone'
-import config from '../config/config'
+import config from '../../config/config'
 import Tooltip from 'rc-tooltip';
 import Slider from 'rc-slider';
 import rcSliderIndex from 'rc-slider/assets/index.css';
 import rcToolTip from 'rc-tooltip/assets/bootstrap.css';
-import Heading from 'grommet/components/Heading';
-import Button from 'grommet/components/Button';
-import Spinning from 'grommet/components/icons/Spinning';
-import LoadingTick from './loading-tick'
+import LoadingTick from '../loading-tick/loading-tick'
+import CONFIG from '../../config/config';
 
 { /*language=CSS*/ }
 const styles = `	
@@ -89,6 +87,12 @@ class ImageUpload extends Component {
 		}
 	}
 
+	onClickCancel = () => {
+		this.setState({
+			files: []
+		});
+	}
+
 
 	setEditorRef = (editor) => this.editor = editor
 
@@ -131,13 +135,15 @@ class ImageUpload extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="image-upload">
 				{this.state.files.length === 0 &&
 				<Dropzone
 					multiple={false}
 					onDrop={this.onDrop}
 					accept=".jpeg,.jpg,.png"
 					style={{
+						textAlign: 'center',
+						color: '#515F6C',
 						display: 'flex',
 						flexDirection: 'column',
 						justifyContent: 'center',
@@ -148,24 +154,24 @@ class ImageUpload extends Component {
 						boxSizing: 'border-box',
 						padding: '2em',
 						borderWidth: '3px',
-						borderColor: '#8f8f8f',
+						borderColor: '#B3ECFF',
 						borderStyle: 'dashed',
 						borderRadius: '10px',
-						backgroundColor: '#fafafa'
+						backgroundColor: '#E6F9FF'
 					}}
 					rejectStyle={{
 						backgroundColor: 'red'
 					}}
 				>
-					<Heading tag='h4'>
-						Please drag your image file here, or click here to select an image.
-					</Heading>
+					<h4 >
+						{CONFIG.COPY.IMAGE_UPLOAD.DROPZONE}
+					</h4>
 					<div>
-						<Heading tag='h4'>
+						<h4 >
 							{
 								this.state.files.map(f => <span key={f.name}>{f.name} - {f.size} bytes</span>)
 							}
-						</Heading>
+						</h4>
 
 					</div>
 				</Dropzone>
@@ -178,37 +184,57 @@ class ImageUpload extends Component {
 				}
 
 				{this.state.files.length > 0 && !this.state.loading && !this.state.done &&
-					<div>
-						<div className='editor-container'>
+					<div className='editor-container'>
 
-							<div className="editor">
-								<AvatarEditor
-									ref={this.setEditorRef}
-									image={this.state.files[0]}
-									width={200}
-									height={200}
-									border={10}
-									borderRadius={200}
-									color={[245,245,245, 1]} // RGBA
-									scale={this.state.scale}
-									rotate={0}
-								/>
-								<div >Drag to reposition your image</div>
+						<div className="step">
+							<div className="labelling">
+								<label>Step 1.</label>
+								<span className="additional">
+								{CONFIG.COPY.IMAGE_UPLOAD.STEP_ONE}
+							</span>
+							</div>
+
+							<div className="hackoutline"></div>
+							<AvatarEditor
+								ref={this.setEditorRef}
+								image={this.state.files[0]}
+								width={200}
+								height={200}
+								border={10}
+								borderRadius={200}
+								color={[245,247,250, 1]} // RGBA
+								scale={this.state.scale}
+								rotate={0}
+							/>
+						</div>
+
+						<div className="step">
+							<div className="labelling">
+								<label>Step 2.</label>
+								<span className="additional">
+								{CONFIG.COPY.IMAGE_UPLOAD.STEP_TWO}
+							</span>
 							</div>
 
 							<div className="slider">
-								<div type="body1">Scale your image</div>
 								<div style={wrapperStyle}>
 									<Slider min={0} max={200} defaultValue={100} handle={handle} onChange={this.onSliderChange} />
 								</div>
 							</div>
+						</div>
 
-
+						<div className="step">
+							<div className="labelling">
+								<label>Step 3.</label>
+								<div className="additional">
+									<button onClick={this.onClickSave}>save</button>
+									<button onClick={this.onClickCancel}>cancel</button>
+								</div>
+							</div>
 
 						</div>
-						<Button label='Save'
-										onClick={this.onClickSave}
-						/>
+
+
 
 
 					</div>

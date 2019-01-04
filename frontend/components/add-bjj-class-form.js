@@ -4,7 +4,7 @@ import {format} from 'date-fns'
 import { gql, graphql } from 'react-apollo'
 import compose from 'recompose/compose'
 import autobind from 'autobind-decorator'
-import ImageUpload from './image-upload'
+import ImageUpload from './image-upload/image-upload'
 
 
 

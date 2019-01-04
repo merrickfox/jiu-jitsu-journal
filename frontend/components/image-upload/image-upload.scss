@@ -1,0 +1,43 @@
+@import "../../styles/variables";
+
+
+.image-upload {
+
+  .step {
+    margin-bottom: $scale4;
+    position: relative;
+  }
+
+  .labelling {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $scale2;
+
+    label {
+      font-size: $font-scale1;
+      margin-bottom: $scale0-5;
+    }
+
+    .additional {
+      font-size: $font-scale0-85;
+      color: $cool-grey-6;
+    }
+  }
+
+  .hackoutline {
+    border: 1px solid $cool-grey-5;
+    width: 201px;
+    height: 201px;
+    border-radius: 100%;
+    position: absolute;
+    top: 83px;
+    left: 10px;
+    pointer-events: none;
+  }
+
+  .slider {
+    >div {
+      margin: $scale1-5 0 !important;
+    }
+  }
+}
