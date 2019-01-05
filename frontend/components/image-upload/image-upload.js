@@ -9,6 +9,7 @@ import rcToolTip from 'rc-tooltip/assets/bootstrap.css';
 import LoadingTick from '../loading-tick/loading-tick';
 import CONFIG from '../../config/config';
 import Button from '../button/button';
+import TertiaryCta from "../tertiary-cta/tertiary-cta";
 
 { /*language=CSS*/ }
 const styles = `	
@@ -228,9 +229,10 @@ class ImageUpload extends Component {
 						<div className="step">
 							<div className="labelling">
 								<label>Step 3.</label>
-								<div className="additional">
-									<Button clickHandler={this.onClickSave} text="Save" />
-									<button onClick={this.onClickCancel}>cancel</button>
+								<div className="button-group">
+									<Button clickHandler={this.onClickSave} text="Save" color="blue" />
+									<span>or</span>
+									<TertiaryCta clickHandler={this.onClickCancel} text="Cancel" color="blue" />
 								</div>
 							</div>
 

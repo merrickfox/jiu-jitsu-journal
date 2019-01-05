@@ -13,7 +13,8 @@ export default {
 			MESSAGE_FROM_MERRICK: 'Hi, and welcome to JiuJitsu Journal! JiuJitsu Journal is in the early stages of development so you may notice a few bugs here and there, please let me know about these and any other features you would like to see. Lets get you registered..',
 			IS_INSTRUCTOR_ADDITIONAL: "By selecting yes you will be associated with your chosen academy as an instructor.\n" +
 				"\t\t\t\t\t\tFuture features will allow you to interact and coach students at this academy though this app.",
-			DROPZONE: "Please drag your image file here, or click here to select an image."
+			DROPZONE: "Please drag your image file here, or click here to select an image.",
+			ACADEMY: "Where do you train?"
 
 		}
 	}

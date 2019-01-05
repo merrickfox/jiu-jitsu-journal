@@ -49,6 +49,17 @@ class Register extends Component {
 						</div>
 					</section>
 
+					<section className="academy">
+						<div className="form-title">
+							<h5>Your Academy</h5>
+							<span>{CONFIG.COPY.REGISTER.ACADEMY}</span>
+						</div>
+
+						<div className="form-section">
+							<FindCreateAcademy />
+						</div>
+					</section>
+
 					{/*<h3 className='heading'>*/}
 						{/*Your Avatar (optional)*/}
 					{/*</h3>*/}

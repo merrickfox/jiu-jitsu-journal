@@ -1,18 +1,18 @@
 import classNames from "classnames";
 
-const Button = (props) => {
+const TertiaryCta = (props) => {
 
 	const {clickHandler, text, color} = props;
 	let buttonClasses = classNames({
-		'button': true,
+		'tertiary-cta': true,
 		[`${color}`]: true,
 	});
 
 	return (
-		<button onClick={clickHandler} className={buttonClasses}>
+		<div onClick={clickHandler} className={buttonClasses}>
 			{text}
-		</button>
+		</div>
 	)
 }
 
-export default Button;
+export default TertiaryCta;
