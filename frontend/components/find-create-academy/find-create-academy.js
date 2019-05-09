@@ -2,18 +2,18 @@ import React from 'react';
 import {format} from 'date-fns'
 import { gql, graphql } from 'react-apollo'
 import autobind from 'autobind-decorator'
-import ImageUpload from './image-upload/image-upload'
-import {countries} from '../config/countries'
+import ImageUpload from '../image-upload/image-upload'
+import {countries} from '../../config/countries'
 import FormField from 'grommet/components/FormField';
 import TextInput from 'grommet/components/TextInput';
 import Heading from 'grommet/components/Heading';
 import Select from 'grommet/components/Select';
 import Box from 'grommet/components/Box';
 import * as _ from 'lodash';
-import {search} from '../lib/algolia'
-import Search from './search'
-import AcademySearchSuggestion from './academy-search-suggestion'
-import * as actionCreators from '../lib/actionCreators';
+import {search} from '../../lib/algolia'
+import Search from '../search'
+import AcademySearchSuggestion from '../academy-search-suggestion'
+import * as actionCreators from '../../lib/actionCreators';
 import {connect} from 'react-redux';
 import compose from 'recompose/compose';
 import {bindActionCreators} from 'redux';
@@ -94,7 +94,7 @@ class FindCreateAcademy extends React.Component {
 	render() {
 		const {academyImageUploadedRegister} = this.props;
 		return (
-			<div >
+			<div className="find-create-academy">
 				<form noValidate autoComplete="off">
 					<Search
 						placeholder='Start typing your academy name'
@@ -195,23 +195,7 @@ class FindCreateAcademy extends React.Component {
 						<ImageUpload reduxUpdater={academyImageUploadedRegister}></ImageUpload>
 					</div>
 					}
-
-
-
 				</form>
-
-				{ /*language=CSS*/ }
-				<style jsx >{`
-          .form-field {
-						min-width: 356px;
-          }
-
-					.grommetux-select__options {
-						padding: 0 1em;
-						background-color: white;
-					}
-      `}</style>
-
 			</div>
 		);
 	}

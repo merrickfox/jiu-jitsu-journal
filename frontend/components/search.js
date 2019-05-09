@@ -1,7 +1,4 @@
 import React from 'react';
-import SearchInput from 'grommet/components/SearchInput';
-import Button from 'grommet/components/Button';
-import FormField from 'grommet/components/FormField';
 import {search} from '../lib/algolia'
 import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';

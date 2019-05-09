@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import compose from 'recompose/compose'
 import withData from '../lib/withData'
 import ImageUpload from '../components/image-upload/image-upload'
-import FindCreateAcademy from '../components/find-create-academy'
+import FindCreateAcademy from '../components/find-create-academy/find-create-academy'
 import "../styles/styles.scss"
 import CONFIG from "../config/config"
 
