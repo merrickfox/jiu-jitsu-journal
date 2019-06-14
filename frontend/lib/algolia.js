@@ -1,6 +1,6 @@
 import algoliasearch from 'algoliasearch';
-const client = algoliasearch('AKABV1FVTA', 'b6c02b8bab61a2826ab967cf25781d15');
-const index = client.initIndex('dev_academies');
+const client = algoliasearch('QPK7FTMF2N', '3a2f007699f0bcb49dd27292bd0adfc9');
+const index = client.initIndex('dev_ACADEMIES');
 
 export const search = async (query) => {
 	const response = await index.search(query);

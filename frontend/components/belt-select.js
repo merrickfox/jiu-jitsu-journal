@@ -1,6 +1,4 @@
 import React from 'react';
-import Box from 'grommet/components/Box';
-import FormField from 'grommet/components/FormField';
 
 import Select from 'grommet/components/Select';
 
@@ -21,11 +19,7 @@ class BeltSelect extends React.Component {
 
 		return (
 			<div>
-				<FormField label='Belt'
-									 className='form-field'
-									 htmlFor='belt'
-									 size='large'
-									 error=''>
+				<div className='form-field'>
 					<Select placeHolder='Select Belt'
 									inline={false}
 									multiple={false}
@@ -53,7 +47,7 @@ class BeltSelect extends React.Component {
 									]}
 									value={this.state.belt}
 									onChange={this.handleSelectChange('belt')} />
-				</FormField>
+				</div>
 				{ /*language=CSS*/ }
 				<style jsx global >{`
           .belt {

@@ -4,7 +4,8 @@ import * as actionCreators from '../lib/actionCreators';
 import {connect} from 'react-redux';
 import compose from 'recompose/compose';
 import {bindActionCreators} from 'redux';
-
+import FormInput from './form-input/form-input';
+import Button from './button/button';
 
 class Search extends React.Component {
 	
@@ -53,18 +54,14 @@ class Search extends React.Component {
 
 		return (
 			<div className='search-container'>
-				<FormField
-									 className='form-field'
-									 htmlFor='search'
-									 size='large'
-									 error=''>
-					<SearchInput
+				<div className='form-field'>
+					<FormInput
 						placeHolder={placeholder}
 						className='search'
 						value={this.state.query}
-						onDOMChange={this.handleChange}
+						handleChange={this.handleChange}
 					/>
-				</FormField>
+				</div>
 				{ this.state.number_of_results > 0 && this.state.query.length > 0 &&
 					<div className='suggestions-container'>
 						<div className='suggestions'>
@@ -75,12 +72,10 @@ class Search extends React.Component {
 							)}
 						</div>
 						<div className="button-container">
-							<Button label="Can't find it? Create it!"
-											onClick={this.createNewAcademy}
-											href='#'
-											accent={false}
-											primary={true}
-											className='create'/>
+							<Button text="Can't find it? Create it!"
+											clickHandler={this.createNewAcademy}
+											color="blue"
+											/>
 						</div>
 
 					</div>
