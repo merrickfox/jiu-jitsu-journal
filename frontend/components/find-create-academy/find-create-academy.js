@@ -7,7 +7,7 @@ import {countries} from '../../config/countries'
 import * as _ from 'lodash';
 import {search} from '../../lib/algolia'
 import Search from '../search'
-import AcademySearchSuggestion from '../academy-search-suggestion'
+import AcademySearchSuggestion from '../academy-search-suggestion/academy-search-suggestion'
 import * as actionCreators from '../../lib/actionCreators';
 import {connect} from 'react-redux';
 import compose from 'recompose/compose';
