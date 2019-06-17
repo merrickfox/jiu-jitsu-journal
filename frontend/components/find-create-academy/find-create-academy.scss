@@ -1,3 +1,7 @@
-.find-create-academy {
+@import "../../styles/variables";
 
+.find-create-academy {
+  .form-element {
+    margin-bottom: $scale1-5;
+  }
 }

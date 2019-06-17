@@ -1,11 +1,17 @@
 import React from 'react';
+import RoundedAvatar from '../rounded-avatar/rounded-avatar';
+
 
 function AcademySearchSuggestion(props) {
 	const {avatar_url, name, country, postcode, members_using_academy} = props.data;
 
 	return <div className='academy-search-suggestion'>
 
-		<img src={avatar_url} alt="academy image" className='avatar-image'/>
+		<RoundedAvatar
+			imageUrl={avatar_url}
+			alt="academy image"
+			size="regular"
+		/>
 		<div className="details-container">
 			<div className="heading-container">
 				<h4>

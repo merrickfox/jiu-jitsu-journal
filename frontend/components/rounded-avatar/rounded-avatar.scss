@@ -1,0 +1,13 @@
+@import "../../styles/variables";
+
+.rounded-avatar {
+  .avatar-image {
+    margin-right: 1em;
+    border-radius: 50%;
+
+    &.regular {
+      width: $scale4;
+      height: $scale4;
+    }
+  }
+}

@@ -1,17 +1,24 @@
 import React from 'react';
 import {format} from 'date-fns'
 import { gql, graphql } from 'react-apollo'
-import autobind from 'autobind-decorator'
 import ImageUpload from '../image-upload/image-upload'
 import {countries} from '../../config/countries'
 import * as _ from 'lodash';
 import {search} from '../../lib/algolia'
-import Search from '../search'
+import Search from '../search-input/search-input'
 import AcademySearchSuggestion from '../academy-search-suggestion/academy-search-suggestion'
 import * as actionCreators from '../../lib/actionCreators';
 import {connect} from 'react-redux';
 import compose from 'recompose/compose';
 import {bindActionCreators} from 'redux';
+import FormInput from "../form-input/form-input";
+import FormSelect from "../form-select/form-select";
+import {defaultSelectConfig} from "../../config/select-configs";
+import {belts} from "../../config/belts";
+import BeltOptions from "../belt-options/belt-options";
+import FormCheckbox from "../form-checkbox/form-checkbox";
+import Config from "../../config/config";
+import Button from "../button/button";
 
 
 
@@ -32,7 +39,7 @@ class FindCreateAcademy extends React.Component {
 			postcode: '',
 			url: '',
 			avatar: '',
-			display_countries: this.displayCountries
+			display_countries: this.displayCountries,
 		};
 
 		search('car');
@@ -91,103 +98,75 @@ class FindCreateAcademy extends React.Component {
 		return (
 			<div className="find-create-academy">
 				<form noValidate autoComplete="off">
+					{!this.props.show_create_academy &&
 					<Search
 						placeholder='Start typing your academy name'
 						suggestion={AcademySearchSuggestion}
 					>
 					</Search>
+					}
 
 					{ this.props.show_create_academy &&
 					<div>
-						{/*<Box*/}
-							{/*direction='row'*/}
-							{/*justify='center'*/}
-							{/*align='center'*/}
-							{/*wrap={true}*/}
-							{/*pad='none'*/}
-							{/*margin='small'*/}
-							{/*colorIndex='light-2'*/}
-						{/*>*/}
-							{/*<Box align='center'*/}
-									 {/*pad='none'*/}
-									 {/*margin='small'*/}
-									 {/*colorIndex='light-2'>*/}
-								{/*<FormField label='Academy Name'*/}
-													 {/*className='form-field'*/}
-													 {/*htmlFor='name'*/}
-													 {/*size='large'*/}
-													 {/*error=''>*/}
-									{/*<TextInput*/}
-										{/*value={this.state.name}*/}
-										{/*size='small'*/}
-										{/*id='name'*/}
-										{/*name='name'*/}
-										{/*onDOMChange={this.handleChange('name')}*/}
-									{/*/>*/}
 
-								{/*</FormField>*/}
-							{/*</Box>*/}
-							{/*<Box align='center'*/}
-									 {/*pad='none'*/}
-									 {/*margin='small'*/}
-									 {/*colorIndex='light-2'>*/}
-								{/*<FormField label='URL'*/}
-													 {/*className='form-field'*/}
-													 {/*htmlFor='url'*/}
-													 {/*size='large'*/}
-													 {/*error=''>*/}
-									{/*<TextInput*/}
-										{/*value={this.state.url}*/}
-										{/*id='url'*/}
-										{/*name='url'*/}
-										{/*onDOMChange={this.handleChange('url')}*/}
-									{/*/>*/}
+						<div className="form-element">
+							<FormInput
+								label='Academy Name'
+								type='text'
+								name='name'
+								value={this.state.name}
+								placeholder='Academy Name'
+								handleChange={this.handleChange('name')}
+							/>
+						</div>
 
-								{/*</FormField>*/}
-							{/*</Box>*/}
-							{/*<Box align='center'*/}
-									 {/*pad='none'*/}
-									 {/*margin='small'*/}
-									 {/*colorIndex='light-2'>*/}
-								{/*<FormField label='Postcode/Zip'*/}
-													 {/*className='form-field'*/}
-													 {/*htmlFor='postcode'*/}
-													 {/*size='large'*/}
-													 {/*error=''>*/}
-									{/*<TextInput*/}
-										{/*value={this.state.postcode}*/}
-										{/*id='postcode'*/}
-										{/*name='postcode'*/}
-										{/*onDOMChange={this.handleChange('postcode')}*/}
-									{/*/>*/}
+						<div className="form-element">
+							<FormInput
+								label='Academy Website'
+								type='text'
+								name='url'
+								value={this.state.url}
+								placeholder='Academy Website'
+								handleChange={this.handleChange('url')}
+							/>
+						</div>
 
-								{/*</FormField>*/}
-							{/*</Box>*/}
+						<div className="form-element">
+							<FormInput
+								label='Postcode'
+								type='text'
+								name='postcode'
+								value={this.state.postcode}
+								placeholder='Postcode'
+								handleChange={this.handleChange('postcode')}
+							/>
+						</div>
 
-							{/*<Box align='center'*/}
-									 {/*pad='none'*/}
-									 {/*margin='small'*/}
-									 {/*colorIndex='light-2'>*/}
-								{/*<FormField label='Country'*/}
-													 {/*className='form-field'*/}
-													 {/*htmlFor='country'*/}
-													 {/*size='large'*/}
-													 {/*error=''>*/}
-									{/*<Select placeHolder='Select Country'*/}
-													{/*inline={false}*/}
-													{/*multiple={false}*/}
-													{/*onSearch={this.onSearchCountry}*/}
-													{/*options={this.displayCountries}*/}
-													{/*value={this.state.country.value}*/}
-													{/*onChange={this.handleSelectChange('country')} />*/}
-								{/*</FormField>*/}
-							{/*</Box>*/}
-						{/*</Box>*/}
+						<div className="form-element">
+							<FormSelect
+								label='Country'
+								options={countries}
+								config={defaultSelectConfig}
+								name='country'
+								value={this.state.country}
+								placeholder='Start typing or click and select'
+								handleChange={this.handleSelectChange('country')}
+								customMenuList={this.CountryMenuList}
+							/>
+						</div>
 
-						<Heading tag='h3' className='heading'>
-							Academy Logo
-						</Heading>
-						<ImageUpload reduxUpdater={academyImageUploadedRegister}></ImageUpload>
+						<h5>Upload Academy Avatar</h5>
+						<div className="form-element">
+							<ImageUpload reduxUpdater={academyImageUploadedRegister}></ImageUpload>
+						</div>
+
+						<div className="form-element">
+							<Button text="Register This Academy"
+											clickHandler={this.createNewAcademy}
+											color="blue"
+							/>
+						</div>
+						
 					</div>
 					}
 				</form>

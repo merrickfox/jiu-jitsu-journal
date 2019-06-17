@@ -13,3 +13,13 @@ Backend:
  `dynamodb-admin`
 
  `sls offline`
+
+
+# Next to do
+
+* handle select academy (display that academy, also if selected by mistake option to go back)
+* Create academy flow without grommet
+* Save user
+
+
+

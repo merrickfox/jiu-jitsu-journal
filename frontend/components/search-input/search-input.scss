@@ -1,0 +1,55 @@
+@import "../../styles/variables";
+
+.search-input {
+  width: 100%;
+  position: relative;
+
+  label {
+    font-size: $font-scale0-85;
+    margin-bottom: $scale0-5;
+  }
+
+  .suggestions-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    border-color: rgba(0,0,0,.15);
+  }
+
+  .suggestions {
+    margin-bottom: 1em;
+  }
+
+  .suggestion {
+    border-bottom: 1px solid gray;
+
+  }
+
+  .suggestion:hover {
+    background-color: lemonchiffon;
+
+  }
+
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+  }
+
+  .selected-academy-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .academy-details {
+    display: flex;
+    align-items: center;
+
+    .name {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
