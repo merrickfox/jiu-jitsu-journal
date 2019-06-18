@@ -10,10 +10,15 @@ import ImageUpload from '../components/image-upload/image-upload'
 import FindCreateAcademy from '../components/find-create-academy/find-create-academy'
 import "../styles/styles.scss"
 import CONFIG from "../config/config"
+import Button from "../components/button/button";
 
 class Register extends Component {
 
 	componentWillMount() {
+	}
+
+	register = ()=> {
+
 	}
 
 	render() {
@@ -60,14 +65,19 @@ class Register extends Component {
 						</div>
 					</section>
 
-					{/*<h3 className='heading'>*/}
-						{/*Your Avatar (optional)*/}
-					{/*</h3>*/}
-					{/*<ImageUpload reduxUpdater={userImageUploadedRegister}></ImageUpload>*/}
-					{/*<h3 className='heading'>*/}
-						{/*Your Academy/School*/}
-					{/*</h3>*/}
-					{/*<FindCreateAcademy />*/}
+					<section className="academy">
+						<div className="form-title">
+							<h5>Finished</h5>
+							<span>{CONFIG.COPY.REGISTER.FINISHED}</span>
+						</div>
+
+						<div className="form-section">
+							<Button clickHandler={this.register} text="All Done" color="blue" />
+						</div>
+					</section>
+
+
+
 				</div>
 			</Page>
 

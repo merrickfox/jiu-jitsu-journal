@@ -11,37 +11,6 @@ import CONFIG from '../../config/config';
 import Button from '../button/button';
 import TertiaryCta from "../tertiary-cta/tertiary-cta";
 
-{ /*language=CSS*/ }
-const styles = `	
-	.editor-container {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-	
-	.editor {
-		display: flex;
-		flex-direction: column;
-		margin-bottom: 2em;
-	}
-	
-	.slider {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-	
-	.loading {
-		width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-	}
-`
-
-const sliderStyles = `${styles} ${rcSliderIndex} ${rcToolTip}`;
 
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
@@ -244,9 +213,6 @@ class ImageUpload extends Component {
 					</div>
 				}
 
-				<style global jsx>
-					{sliderStyles}
-				</style>
 			</div>
 		);
 	}

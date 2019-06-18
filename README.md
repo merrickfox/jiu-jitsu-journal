@@ -19,6 +19,7 @@ Backend:
 
 * handle select academy (display that academy, also if selected by mistake option to go back)
 * Create academy flow without grommet
+* error handling for image upload
 * Save user
 
 

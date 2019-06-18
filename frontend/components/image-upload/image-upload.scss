@@ -1,4 +1,6 @@
 @import "../../styles/variables";
+@import "~rc-slider/assets/index";
+@import "~rc-tooltip/assets/bootstrap";
 
 
 .image-upload {
@@ -49,5 +51,32 @@
     >div {
       margin: $scale1-5 0 !important;
     }
+  }
+
+  .editor-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .editor {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+  }
+
+  .slider {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .loading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

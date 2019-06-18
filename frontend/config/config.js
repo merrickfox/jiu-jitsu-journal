@@ -14,7 +14,8 @@ export default {
 			IS_INSTRUCTOR_ADDITIONAL: "By selecting yes you will be associated with your chosen academy as an instructor.\n" +
 				"\t\t\t\t\t\tFuture features will allow you to interact and coach students at this academy though this app.",
 			DROPZONE: "Please drag your image file here, or click here to select an image.",
-			ACADEMY: "Where do you train?"
+			ACADEMY: "Where do you train?",
+			FINISHED: "All done? Click the button to complete registration",
 
 		}
 	}

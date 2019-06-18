@@ -14,11 +14,8 @@ import {bindActionCreators} from 'redux';
 import FormInput from "../form-input/form-input";
 import FormSelect from "../form-select/form-select";
 import {defaultSelectConfig} from "../../config/select-configs";
-import {belts} from "../../config/belts";
-import BeltOptions from "../belt-options/belt-options";
-import FormCheckbox from "../form-checkbox/form-checkbox";
-import Config from "../../config/config";
-import Button from "../button/button";
+import TertiaryCta from "../tertiary-cta/tertiary-cta";
+
 
 
 
@@ -80,6 +77,10 @@ class FindCreateAcademy extends React.Component {
 			[name]: event.target.value,
 		},this.validate);
 	};
+
+	onClickCancelCreate = e => {
+		this.props.showCreateAcademy();
+	}
 
 	handleAvatarUrl (url) {
 		console.log('avatar', url)
@@ -160,13 +161,7 @@ class FindCreateAcademy extends React.Component {
 							<ImageUpload reduxUpdater={academyImageUploadedRegister}></ImageUpload>
 						</div>
 
-						<div className="form-element">
-							<Button text="Register This Academy"
-											clickHandler={this.createNewAcademy}
-											color="blue"
-							/>
-						</div>
-						
+						<TertiaryCta clickHandler={this.onClickCancelCreate} text="Cancel and try to search again" color="blue" />
 					</div>
 					}
 				</form>
