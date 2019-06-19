@@ -5,10 +5,22 @@
   flex-direction: column;
   width: 100%;
 
-  label {
-    font-size: $font-scale0-85;
+  .labels {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
     margin-bottom: $scale0-5;
+
+    label {
+      font-size: $font-scale0-85;
+      margin-right: $scale0-5;
+    }
+
+    span {
+      color: $red-vivid-7;
+    }
   }
+
 
   input {
     width: 100%;

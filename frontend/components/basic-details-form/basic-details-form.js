@@ -97,6 +97,8 @@ class BasicDetailsForm extends React.Component {
 						name='firstName'
 						value={this.state.first_name}
 						placeholder='First Name'
+						validationRule="required"
+						validationText="This field is required"
 						handleChange={this.handleChange('first_name')}
 					/>
 				</div>
